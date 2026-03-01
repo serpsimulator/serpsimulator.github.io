@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Post Preview Tool - Visualize Your Social Feed</title>
+    <meta name="description" content="Free Facebook Post Preview tool. Upload an image and write your post text to see exactly how it looks in the Facebook feed before you hit publish.">
+    <meta name="keywords" content="Facebook post simulator, social media preview, FB feed visualizer, post mockup tool, Facebook marketing tool">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%231877F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>'>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Facebook Post Preview Tool",
+  "url": "https://serppreview.github.io/facebook-post-preview",
+  "description": "A free tool to visualize how your Facebook posts will appear to users. Upload images and preview text layout before publishing.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Real-time Facebook Post Visualization",
+    "Image Upload Preview",
+    "Post Text Formatting Preview",
+    "Desktop Feed Layout Simulation"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2; /* Facebook Blue */
+            --primary-dark: #166fe5;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; }
+
+        /* Tool Section */
+        .tool-header { padding: 60px 0 40px; text-align: center; background: var(--white); }
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; }
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); text-align: left; }
+        .preview-panel { background: #f0f2f5; padding: 40px 20px; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 100px; height: fit-content; }
+        
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; font-family: inherit; }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+
+        /* FB Mockup Style */
+        .fb-post { background: white; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; overflow: hidden; font-family: Helvetica, Arial, sans-serif; }
+        .fb-header { padding: 12px; display: flex; align-items: center; gap: 10px; }
+        .fb-avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; }
+        .fb-user-info { display: flex; flex-direction: column; }
+        .fb-name { font-weight: 700; font-size: 15px; color: #050505; }
+        .fb-time { font-size: 13px; color: #65676b; }
+        .fb-content { padding: 4px 12px 12px; font-size: 15px; color: #050505; white-space: pre-wrap; }
+        .fb-image-container { width: 100%; background: #f0f2f5; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+        .fb-image-container img { width: 100%; height: auto; display: block; }
+        .fb-footer { padding: 10px 12px; border-top: 1px solid #ebedf0; display: flex; justify-content: space-around; }
+        .fb-action { color: #65676b; font-weight: 600; font-size: 14px; }
+
+        /* Footer */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; }
+
+        @media (max-width: 768px) { .main-tool-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="/" class="logo">SERP Preview</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Engines</a></li>
+                    <li><a href="/#social-media">Social Media</a></li>
+                    <li><a href="/#live-preview">Live Tool</a></li>
+                </ul>
+            </nav>
+            <a href="/#live-preview" class="btn">Google Previewing</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="tool-header">
+            <div class="container">
+                <h1>Facebook Post Preview</h1>
+                <p>Draft your Facebook posts with confidence. See how your text and images align in the newsfeed before posting.</p>
+                
+                <div class="main-tool-grid">
+                    <div class="input-panel">
+                        <div class="form-group">
+                            <label for="user-name">Page/Profile Name</label>
+                            <input type="text" id="user-name" placeholder="Your Brand Name" maxlength="50">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-text">Post Content</label>
+                            <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image-upload">Upload Image</label>
+                            <input type="file" id="image-upload" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="preview-panel">
+                        <div class="fb-post">
+                            <div class="fb-header">
+                                <div class="fb-avatar"></div>
+                                <div class="fb-user-info">
+                                    <span class="fb-name" id="prev-name">Your Brand Name</span>
+                                    <span class="fb-time">Just now · 🌎</span>
+                                </div>
+                            </div>
+                            <div class="fb-content" id="prev-content">Your post content will appear here as you type...</div>
+                            <div class="fb-image-container">
+                                <img id="prev-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='%23ccc'%3E%3Cpath d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/%3E%3C/svg%3E" alt="Preview">
+                            </div>
+                            <div class="fb-footer">
+                                <span class="fb-action">Like</span>
+                                <span class="fb-action">Comment</span>
+                                <span class="fb-action">Share</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 40px 0;">
+            <h2>How to use the Facebook Post Previewer</h2>
+            <p style="color: var(--gray); margin-top: 10px;">Simply enter your brand name and post text in the fields provided. You can also upload a JPG or PNG image to see how it scales within the Facebook desktop feed layout. This tool helps you ensure that your most important message isn't hidden behind the "See More" link and that your images aren't awkwardly cropped.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4>SERP Preview</h4>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem; line-height: 1.6;">
+                        The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.
+                    </p>
+                </div>
+                <div class="footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#search-engines">Search Tools</a></li>
+                        <li><a href="#social-media">Social Tools</a></li>
+                        <li><a href="/#live-preview">Live Preview</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="terms">Terms of Service</a></li>
+                        <li><a href="cookie">Cookie Policy</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SERP simulator. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nameIn = document.getElementById('user-name');
+        const textIn = document.getElementById('post-text');
+        const imgIn = document.getElementById('image-upload');
+        
+        const prevName = document.getElementById('prev-name');
+        const prevText = document.getElementById('prev-content');
+        const prevImg = document.getElementById('prev-img');
+
+        nameIn.addEventListener('input', () => {
+            prevName.innerText = nameIn.value || "Your Brand Name";
+        });
+
+        textIn.addEventListener('input', () => {
+            prevText.innerText = textIn.value || "Your post content will appear here as you type...";
+        });
+
+        imgIn.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    prevImg.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

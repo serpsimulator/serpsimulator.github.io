@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bing SERP Preview Tool - Visualizer for Microsoft Search</title>
+    <meta name="description" content="Free Bing SERP Preview tool. See how your website's title and meta description appear on Bing. Optimize for better visibility and click-through rates.">
+    <meta name="keywords" content="Bing SERP simulator, Bing snippet preview, Microsoft search SEO tool, meta tag checker, Bing search preview">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2300809d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>'>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Bing SERP Preview Tool",
+      "url": "https://serppreview.github.io/bing.html",
+      "description": "A specialized tool to simulate and optimize how your web pages appear in Bing search results.",
+      "applicationCategory": "SEO Tool",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Bing-specific Snippet Rendering",
+        "Character and Pixel Count for Bing",
+        "Meta Title Optimization",
+        "Meta Description Preview"
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #00809d; /* Bing Teal */
+            --primary-dark: #006075;
+            --secondary: #4f46e5;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+            --bing-blue: #005da7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg { width: 28px; height: 28px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover { background: var(--primary-dark); }
+
+        /* Tool Section */
+        .tool-header { padding: 60px 0 40px; text-align: center; background: var(--white); }
+        .tool-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .tool-header p { color: var(--gray); max-width: 700px; margin: 0 auto; }
+
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; }
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); text-align: left; }
+        .preview-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 100px; height: fit-content; text-align: left; }
+        
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; font-family: inherit; }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+        .counter { display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.8rem; color: var(--gray); }
+        .warning { color: #e11d48; }
+
+        /* Bing Snippet Styling */
+        .bing-card { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; }
+        .b-url { font-size: 14px; color: #006d21; margin-bottom: 2px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .b-title { font-size: 19px; color: var(--bing-blue); line-height: 1.3; margin-bottom: 4px; cursor: pointer; font-weight: 400; }
+        .b-title:hover { text-decoration: underline; }
+        .b-desc { font-size: 14px; color: #333; line-height: 1.5; word-wrap: break-word; }
+
+        /* Content Sections */
+        .content-section { padding: 80px 0; background: var(--white); }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .content-section h2 { font-size: 2rem; margin-bottom: 20px; }
+        .content-section p { margin-bottom: 15px; color: var(--gray); }
+        .content-section ul { margin-left: 20px; list-style: disc; color: var(--gray); margin-bottom: 20px; }
+        .content-section li { margin-bottom: 8px; }
+
+        /* Footer */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: var(--white); margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--white); }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .main-tool-grid, .content-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                SERP Preview
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Engines</a></li>
+                    <li><a href="/#social-media">Social Media</a></li>
+                    <li><a href="/#live-preview">Live Tool</a></li>
+                </ul>
+            </nav>
+            <a href="/#live-preview" class="btn">Google Previewing</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="tool-header">
+            <div class="container">
+                <h1>Bing SERP Preview Tool</h1>
+                <p>Ensure your site looks professional on Microsoft Bing. Preview how your meta titles and descriptions render on the world's second-largest search engine.</p>
+                
+                <div class="main-tool-grid">
+                    <div class="input-panel">
+                        <div class="form-group">
+                            <label for="title-input">Title Tag</label>
+                            <input type="text" id="title-input" placeholder="Enter your page title..." maxlength="100">
+                            <div class="counter">
+                                <span id="title-char-count">0 / 65 characters</span>
+                                <span id="title-pixel-count">Optimal: ~550px</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="url-input">URL</label>
+                            <input type="text" id="url-input" placeholder="https://example.com/your-page">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-input">Meta Description</label>
+                            <textarea id="desc-input" placeholder="Enter your meta description..." maxlength="300"></textarea>
+                            <div class="counter">
+                                <span id="desc-char-count">0 / 160 characters</span>
+                                <span id="desc-pixel-count">Optimal: ~980px</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-panel">
+                        <label style="display: block; margin-bottom: 20px; font-weight: 700; color: var(--gray); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;">Bing Search Desktop Preview</label>
+                        <div class="bing-card">
+                            <div class="b-title" id="prev-title">Your Page Title Goes Here</div>
+                            <cite class="b-url" id="prev-url">https://example.com</cite>
+                            <div class="b-desc" id="prev-desc">This is your Bing meta description. Bing generally allows slightly longer titles than Google, but it's best to stay concise for maximum impact.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background: var(--light);">
+            <div class="container content-grid">
+                <div>
+                    <h2>Bing Optimization Tips</h2>
+                    <p>Bing has its own set of rules for displaying search results. Here is how to master them:</p>
+                    <ul>
+                        <li><strong>Character Limits:</strong> Bing typically displays up to 65 characters for titles, slightly more than Google's 60.</li>
+                        <li><strong>Keywords:</strong> Bing places a heavy emphasis on exact keyword matches in the title tag.</li>
+                        <li><strong>Clean URLs:</strong> Bing displays the URL directly below the title. Short, readable paths perform better.</li>
+                        <li><strong>Meta Descriptions:</strong> While 160 is the standard, Bing sometimes displays longer snippets for specific informational queries.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Bing vs Google Snippets</h2>
+                    <p>While they look similar, Bing's layout uses different font weights and colors. Bing's titles are a slightly different shade of blue and the URL is placed below the title rather than above it as seen in modern Google UI.</p>
+                    <p>Optimizing for Bing is crucial for capturing traffic from <strong>Windows users</strong> and integrated <strong>Microsoft Copilot</strong> search experiences.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4>SERP Preview</h4>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem; line-height: 1.6;">
+                        The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.
+                    </p>
+                </div>
+                <div class="footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#search-engines">Search Tools</a></li>
+                        <li><a href="#social-media">Social Tools</a></li>
+                        <li><a href="/#live-preview">Live Preview</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="terms">Terms of Service</a></li>
+                        <li><a href="cookie">Cookie Policy</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SERP simulator. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const titleIn = document.getElementById('title-input');
+        const urlIn = document.getElementById('url-input');
+        const descIn = document.getElementById('desc-input');
+
+        const prevTitle = document.getElementById('prev-title');
+        const prevUrl = document.getElementById('prev-url');
+        const prevDesc = document.getElementById('prev-desc');
+
+        const titleChar = document.getElementById('title-char-count');
+        const descChar = document.getElementById('desc-char-count');
+
+        function update() {
+            prevTitle.innerText = titleIn.value || "Your Page Title Goes Here";
+            prevUrl.innerText = urlIn.value || "https://example.com";
+            prevDesc.innerText = descIn.value || "This is your Bing meta description. Bing generally allows slightly longer titles than Google, but it's best to stay concise.";
+
+            const tLen = titleIn.value.length;
+            const dLen = descIn.value.length;
+
+            titleChar.innerText = `${tLen} / 65 characters`;
+            titleChar.classList.toggle('warning', tLen > 65);
+
+            descChar.innerText = `${dLen} / 160 characters`;
+            descChar.classList.toggle('warning', dLen > 160);
+        }
+
+        titleIn.addEventListener('input', update);
+        urlIn.addEventListener('input', update);
+        descIn.addEventListener('input', update);
+    </script>
+</body>
+</html>

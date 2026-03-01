@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J66R5YDSE3');
+</script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERP Preview - Social Media & Search Engine Post Preview Tools</title>
+    <meta name="description" content="Free online tools to preview how your content looks on Google, Bing, Facebook, Twitter, LinkedIn, and more. Optimize your SEO and social media snippets instantly.">
+    <meta name="keywords" content="SERP simulator, SERP preview, social media preview, SEO tool, title tag checker, meta description preview, Facebook post preview, Twitter card preview">
+    <meta name="author" content="SERP simulator">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://serppreview.github.io/">
+    <meta property="og:title" content="SERP Preview - Ultimate Social Media & SEO Preview Tool">
+    <meta property="og:description" content="Check how your posts look on all major platforms before you publish. Free, fast, and accurate.">
+    <meta property="og:image" content="https://image.qwenlm.ai/public_source/8bc08cf1-ddff-4b2a-b290-1afbf344ac7b/110d53d33-ad48-468b-b5c8-236a42cdfdc1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://serppreview.github.io/">
+    <meta property="twitter:title" content="SERP Preview - Ultimate Social Media & SEO Preview Tool">
+    <meta property="twitter:description" content="Check how your posts look on all major platforms before you publish. Free, fast, and accurate.">
+    <meta property="twitter:image" content="https://image.qwenlm.ai/public_source/8bc08cf1-ddff-4b2a-b290-1afbf344ac7b/110d53d33-ad48-468b-b5c8-236a42cdfdc1.png">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>'>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SERP simulator",
+      "url": "https://serppreview.github.io",
+      "description": "A collection of free tools to preview how content appears on search engines and social media platforms.",
+      "applicationCategory": "SEO Tool",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #4f46e5;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: var(--light);
+            border-radius: var(--radius);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 80px 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 25px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+        
+        /* SVG Icons placeholder styles */
+        .tool-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Live Preview Component */
+        .live-preview-section {
+            background: var(--dark);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .preview-container {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        .preview-inputs {
+            padding: 40px;
+            background: #f1f5f9;
+            color: var(--dark);
+        }
+
+        .preview-display {
+            padding: 40px;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Google Snippet Style */
+        .google-snippet {
+            font-family: arial, sans-serif;
+        }
+        
+        .snippet-url {
+            font-size: 14px;
+            color: #202124;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .snippet-favicon {
+            width: 16px;
+            height: 16px;
+            background: #eee;
+            border-radius: 50%;
+        }
+
+        .snippet-title {
+            font-size: 20px;
+            color: #1a0dab;
+            cursor: pointer;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .snippet-title:hover {
+            text-decoration: underline;
+        }
+
+        .snippet-desc {
+            font-size: 14px;
+            color: #4d5156;
+            line-height: 1.58;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-widget h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-grid, .preview-container, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none; /* Simple mobile hide for demo */
+            }
+            
+            .hero-content h1 {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                SERP Preview
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#search-engines">Search Engines</a></li>
+                    <li><a href="#social-media">Social Media</a></li>
+                    <li><a href="#live-preview">Live Tool</a></li>
+                </ul>
+            </nav>
+            <a href="#live-preview" class="btn">Start Previewing</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Preview Your Content Before You Publish</h1>
+                    <p>The ultimate toolkit for SEO specialists and social media managers. See exactly how your titles, descriptions, and posts appear across Google, Facebook, Twitter, and more.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; md:justify-content: flex-start;">
+                        <a href="#search-engines" class="btn">Search Tools</a>
+                        <a href="#social-media" class="btn btn-outline">Social Tools</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://image.qwenlm.ai/public_source/8bc08cf1-ddff-4b2a-b290-1afbf344ac7b/110d53d33-ad48-468b-b5c8-236a42cdfdc1.png" alt="SERP Preview Dashboard showing social media and search results">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Use SERP simulator?</h2>
+                    <p>Optimize your click-through rates (CTR) by ensuring your content looks perfect on every platform.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3>100% Accurate</h3>
+                        <p>Our algorithms mimic the latest rendering engines of major platforms to give you a true-to-life preview.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3>Real-time Updates</h3>
+                        <p>Type your content and see the changes instantly. No page reloads or waiting times.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>Multi-Platform</h3>
+                        <p>From Google Search to TikTok, manage all your preview needs in one centralized dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Engines Section -->
+        <section id="search-engines" class="tools-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Search Engine Preview Tools</h2>
+                    <p>Optimize your meta tags for maximum visibility in search results.</p>
+                </div>
+                <div class="tools-grid">
+                    <!-- Google -->
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10" stroke="#EA4335"/><path d="M22 12a10 10 0 0 1-10 10" stroke="#FBBC05"/><path d="M12 22a10 10 0 0 1-10-10" stroke="#34A853"/><path d="M2 12a10 10 0 0 1 10-10" stroke="#4285F4"/></svg>
+                        </div>
+                        <h3>Google Preview</h3>
+                        <p>Desktop & Mobile SERP</p>
+                    </div>
+                    <!-- Bing -->
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="#00809d"><path d="M5.5 3L12 12L5.5 21H2L5.5 3ZM12 12L18.5 3H22L15.5 12L22 21H18.5L12 12Z"/></svg>
+                        </div>
+                        <h3>Bing Preview</h3>
+                        <p>Search Result Snippet</p>
+                    </div>
+                    <!-- Yahoo -->
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="#6001d2"><path d="M3 3L9 15L15 3H12L9 9L6 3H3ZM15 3L21 21H18L15 12L12 21H9L15 3Z"/></svg>
+                        </div>
+                        <h3>Yahoo Preview</h3>
+                        <p>Search Listing</p>
+                    </div>
+                    <!-- DuckDuckGo -->
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <svg viewBox="0 0 24 24" fill="#de5833"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="white" stroke-width="2" fill="none"/><circle cx="9" cy="9" r="1.5" fill="white"/><circle cx="15" cy="9" r="1.5" fill="white"/></svg>
+                        </div>
+                        <h3>DuckDuckGo</h3>
+                        <p>Privacy Search Preview</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social-media" class="tools-section" style="background: #f8fafc;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Social Media Preview Tools</h2>
+                    <p>Ensure your posts look engaging on every social network.</p>
+                </div>
+                <div class="tools-grid">
+                    <!-- Facebook -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></div>
+                        <h3>Facebook Post</h3>
+                        <p>Link & Image Preview</p>
+                    </div>
+                    <!-- Twitter/X -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#000000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></div>
+                        <h3>Twitter / X Card</h3>
+                        <p>Summary & Large Image</p>
+                    </div>
+                    <!-- LinkedIn -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
+                        <h3>LinkedIn Post</h3>
+                        <p>Professional Share</p>
+                    </div>
+                    <!-- Instagram -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div>
+                        <h3>Instagram Bio</h3>
+                        <p>Profile & Link</p>
+                    </div>
+                    <!-- Pinterest -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#E60023"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.65 0-5.789 2.738-5.789 5.57 0 1.103.425 2.286.956 2.928.105.128.12.24.089.373-.098.403-.316 1.293-.359 1.472-.057.238-.189.289-.436.174-1.627-.756-2.645-3.134-2.645-5.045 0-4.114 2.994-7.894 8.63-7.894 4.538 0 8.068 3.236 8.068 7.56 0 4.51-2.843 8.14-6.79 8.14-1.326 0-2.573-.69-3.001-1.506l-.817 3.103c-.294 1.125-1.09 2.532-1.626 3.396C9.266 23.94 10.614 24 12 24c6.627 0 12-5.373 12-12S16.627 0 12 0z"></path></svg></div>
+                        <h3>Pinterest Pin</h3>
+                        <p>Rich Pin Preview</p>
+                    </div>
+                    <!-- TikTok -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#000000"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v6.16c0 2.52-1.12 4.84-2.9 6.24-1.72 1.36-4.02 1.94-6.16 1.56-2.14-.38-4.06-1.68-5.26-3.52-1.2-1.84-1.54-4.16-.96-6.32.58-2.16 2.04-4.02 4.02-5.12 1.98-1.1 4.34-1.32 6.5-.62v4.08c-1.28-.44-2.7-.32-3.88.34-1.18.66-2.06 1.82-2.36 3.16-.3 1.34.04 2.76.92 3.84.88 1.08 2.22 1.72 3.62 1.72 1.4 0 2.74-.64 3.62-1.72.88-1.08 1.22-2.5.92-3.84-.3-1.34-1.18-2.5-2.36-3.16-1.18-.66-2.6-.78-3.88-.34V.02z"></path></svg></div>
+                        <h3>TikTok Profile</h3>
+                        <p>Video & Bio Link</p>
+                    </div>
+                    <!-- YouTube -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></div>
+                        <h3>YouTube Video</h3>
+                        <p>Search & Share</p>
+                    </div>
+                    <!-- WhatsApp -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg></div>
+                        <h3>WhatsApp Share</h3>
+                        <p>Link Preview Card</p>
+                    </div>
+                    <!-- Reddit -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"></path></svg></div>
+                        <h3>Reddit Post</h3>
+                        <p>Card & Text Post</p>
+                    </div>
+                    <!-- Telegram -->
+                    <div class="tool-card">
+                        <div class="tool-icon"><svg viewBox="0 0 24 24" fill="#0088cc"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></div>
+                        <h3>Telegram Link</h3>
+                        <p>Channel Preview</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Preview Component (Standalone) -->
+        <section id="live-preview" class="live-preview-section">
+            <div class="container">
+                <div class="section-header" style="color: white;">
+                    <h2 style="color: white;">Try Our Live Google Preview</h2>
+                    <p style="color: #94a3b8;">Type below to see how your SEO snippet looks in real-time.</p>
+                </div>
+                
+                <div class="preview-container">
+                    <div class="preview-inputs">
+                        <div class="form-group">
+                            <label for="meta-title">Page Title (Max 60 chars)</label>
+                            <input type="text" id="meta-title" placeholder="Enter your page title..." maxlength="60">
+                            <small id="title-count" style="color: #64748b; font-size: 0.8rem;">0 / 60</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="meta-url">Page URL</label>
+                            <input type="text" id="meta-url" placeholder="https://example.com/page">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta-desc">Meta Description (Max 160 chars)</label>
+                            <textarea id="meta-desc" placeholder="Enter your meta description..." maxlength="160"></textarea>
+                            <small id="desc-count" style="color: #64748b; font-size: 0.8rem;">0 / 160</small>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-display">
+                        <div class="google-snippet">
+                            <div class="snippet-url">
+                                <div class="snippet-favicon"></div>
+                                <span id="preview-url">https://example.com</span>
+                            </div>
+                            <div class="snippet-title" id="preview-title">Your Page Title Will Appear Here</div>
+                            <div class="snippet-desc" id="preview-desc">Your meta description will appear here. Make sure it is compelling and includes your main keywords to improve click-through rates.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4>SERP Preview</h4>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem; line-height: 1.6;">
+                        The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.
+                    </p>
+                </div>
+                <div class="footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#search-engines">Search Tools</a></li>
+                        <li><a href="#social-media">Social Tools</a></li>
+                        <li><a href="#live-preview">Live Preview</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="terms">Terms of Service</a></li>
+                        <li><a href="cookie">Cookie Policy</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SERP simulator. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Live Preview Logic
+        const titleInput = document.getElementById('meta-title');
+        const urlInput = document.getElementById('meta-url');
+        const descInput = document.getElementById('meta-desc');
+        
+        const previewTitle = document.getElementById('preview-title');
+        const previewUrl = document.getElementById('preview-url');
+        const previewDesc = document.getElementById('preview-desc');
+        
+        const titleCount = document.getElementById('title-count');
+        const descCount = document.getElementById('desc-count');
+
+        // Default values
+        let currentTitle = "Your Page Title Will Appear Here";
+        let currentUrl = "https://example.com";
+        let currentDesc = "Your meta description will appear here. Make sure it is compelling and includes your main keywords to improve click-through rates.";
+
+        function updatePreview() {
+            // Title
+            const tVal = titleInput.value.trim();
+            previewTitle.textContent = tVal || currentTitle;
+            titleCount.textContent = `${tVal.length} / 60`;
+            
+            // URL
+            const uVal = urlInput.value.trim();
+            previewUrl.textContent = uVal || currentUrl;
+
+            // Description
+            const dVal = descInput.value.trim();
+            previewDesc.textContent = dVal || currentDesc;
+            descCount.textContent = `${dVal.length} / 160`;
+        }
+
+        // Event Listeners
+        titleInput.addEventListener('input', updatePreview);
+        urlInput.addEventListener('input', updatePreview);
+        descInput.addEventListener('input', updatePreview);
+
+        // Initialize
+        updatePreview();
+    </script>
+</body>
+</html>
+
