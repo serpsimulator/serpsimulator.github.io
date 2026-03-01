@@ -460,6 +460,16 @@
             .hero-content h1 {
                 font-size: 2.25rem;
             }
+            .tool-card {
+    display: block; /* Makes the whole area clickable */
+    text-decoration: none; /* Removes underline from text */
+    color: inherit; /* Keeps your original text colors */
+    transition: transform 0.2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px); /* Optional: adds a nice "lift" effect on hover */
+}
         }
     </style>
 </head>
@@ -537,47 +547,61 @@
 
         <!-- Search Engines Section -->
         <section id="search-engines" class="tools-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Search Engine Preview Tools</h2>
-                    <p>Optimize your meta tags for maximum visibility in search results.</p>
+    <div class="container">
+        <div class="section-header">
+            <h2>Search Engine Preview Tools</h2>
+            <p>Optimize your meta tags for maximum visibility in search results.</p>
+        </div>
+        <div class="tools-grid">
+            <a href="/google-preview" class="tool-card">
+                <div class="tool-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 2a10 10 0 0 1 10 10" stroke="#EA4335" />
+                        <path d="M22 12a10 10 0 0 1-10 10" stroke="#FBBC05" />
+                        <path d="M12 22a10 10 0 0 1-10-10" stroke="#34A853" />
+                        <path d="M2 12a10 10 0 0 1 10-10" stroke="#4285F4" />
+                    </svg>
                 </div>
-                <div class="tools-grid">
-                    <!-- Google -->
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10" stroke="#EA4335"/><path d="M22 12a10 10 0 0 1-10 10" stroke="#FBBC05"/><path d="M12 22a10 10 0 0 1-10-10" stroke="#34A853"/><path d="M2 12a10 10 0 0 1 10-10" stroke="#4285F4"/></svg>
-                        </div>
-                        <h3>Google Preview</h3>
-                        <p>Desktop & Mobile SERP</p>
-                    </div>
-                    <!-- Bing -->
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <svg viewBox="0 0 24 24" fill="#00809d"><path d="M5.5 3L12 12L5.5 21H2L5.5 3ZM12 12L18.5 3H22L15.5 12L22 21H18.5L12 12Z"/></svg>
-                        </div>
-                        <h3>Bing Preview</h3>
-                        <p>Search Result Snippet</p>
-                    </div>
-                    <!-- Yahoo -->
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <svg viewBox="0 0 24 24" fill="#6001d2"><path d="M3 3L9 15L15 3H12L9 9L6 3H3ZM15 3L21 21H18L15 12L12 21H9L15 3Z"/></svg>
-                        </div>
-                        <h3>Yahoo Preview</h3>
-                        <p>Search Listing</p>
-                    </div>
-                    <!-- DuckDuckGo -->
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <svg viewBox="0 0 24 24" fill="#de5833"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="white" stroke-width="2" fill="none"/><circle cx="9" cy="9" r="1.5" fill="white"/><circle cx="15" cy="9" r="1.5" fill="white"/></svg>
-                        </div>
-                        <h3>DuckDuckGo</h3>
-                        <p>Privacy Search Preview</p>
-                    </div>
+                <h3>Google Preview</h3>
+                <p>Desktop & Mobile SERP</p>
+            </a>
+
+            <a href="/bing-preview" class="tool-card">
+                <div class="tool-icon">
+                    <svg viewBox="0 0 24 24" fill="#00809d">
+                        <path d="M5.5 3L12 12L5.5 21H2L5.5 3ZM12 12L18.5 3H22L15.5 12L22 21H18.5L12 12Z" />
+                    </svg>
                 </div>
-            </div>
-        </section>
+                <h3>Bing Preview</h3>
+                <p>Search Result Snippet</p>
+            </a>
+
+            <a href="/yahoo-preview" class="tool-card">
+                <div class="tool-icon">
+                    <svg viewBox="0 0 24 24" fill="#6001d2">
+                        <path d="M3 3L9 15L15 3H12L9 9L6 3H3ZM15 3L21 21H18L15 12L12 21H9L15 3Z" />
+                    </svg>
+                </div>
+                <h3>Yahoo Preview</h3>
+                <p>Search Listing</p>
+            </a>
+
+            <a href="/duckduckgo-preview" class="tool-card">
+                <div class="tool-icon">
+                    <svg viewBox="0 0 24 24" fill="#de5833">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="white" stroke-width="2" fill="none" />
+                        <circle cx="9" cy="9" r="1.5" fill="white" />
+                        <circle cx="15" cy="9" r="1.5" fill="white" />
+                    </svg>
+                </div>
+                <h3>DuckDuckGo</h3>
+                <p>Privacy Search Preview</p>
+            </a>
+        </div>
+    </div>
+</section>
 
         <!-- Social Media Section -->
         <section id="social-media" class="tools-section" style="background: #f8fafc;">
