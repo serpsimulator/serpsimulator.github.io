@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Post Preview Tool – Free Subreddit Feed Simulator & Post Mockup</title>
+    <meta name="description" content="Free Reddit Post Preview tool. Simulate your Reddit post exactly as it appears in the feed before publishing. Preview titles, text body, images, flairs, upvotes, awards and comments.">
+    <meta name="keywords" content="Reddit post preview, Reddit post simulator, subreddit feed mockup, Reddit post checker, Reddit title preview, Reddit marketing tool, Reddit post generator, Reddit flair preview, upvote simulator, Reddit content tool, Reddit feed preview, Reddit post mockup, r/subreddit preview">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Reddit Post Preview Tool",
+  "url": "https://serppreview.github.io/reddit-post-preview",
+  "description": "A free tool to visualize how your Reddit posts will appear in the feed. Preview post title, body text, images, flairs, upvote counts, awards and comment counts before publishing.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Real-time Reddit Feed Visualization",
+    "Post title character count with truncation warning",
+    "Text body preview with formatting",
+    "Image and link post types",
+    "Subreddit and flair display",
+    "Upvote / downvote simulation",
+    "Award badges display",
+    "Dark and Light mode preview",
+    "Screenshot export"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #166fe5;
+            --primary-light: #e7f0fd;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f0f2f5;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+            --success: #00c851;
+
+            /* Reddit palette */
+            --rd-orange: #FF4500;
+            --rd-orange-dark: #CC3600;
+            --rd-orange-light: #FFF3EF;
+            --rd-blue: #0079D3;
+            --rd-upvote: #FF4500;
+            --rd-downvote: #7193FF;
+            --rd-award-gold: #FFD700;
+            --rd-award-silver: #C0C0C0;
+            --rd-award-plat: #E5E4E2;
+
+            /* Light mode Reddit */
+            --rd-bg: #DAE0E6;
+            --rd-card: #FFFFFF;
+            --rd-card-hover: #F8F8F8;
+            --rd-border: #EDEFF1;
+            --rd-text: #1C1C1C;
+            --rd-meta: #878A8C;
+            --rd-sub-bar: #FFFFFF;
+            --rd-vote-bar: #F8F8F8;
+
+            /* Dark mode Reddit */
+            --rd-dark-bg: #1A1A1B;
+            --rd-dark-card: #272729;
+            --rd-dark-border: #343536;
+            --rd-dark-text: #D7DADC;
+            --rd-dark-meta: #818384;
+            --rd-dark-vote: #1A1A1B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── Header ── */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; transition: background .2s; font-family: inherit; font-size: 0.9rem; }
+        .btn:hover { background: var(--primary-dark); }
+
+        /* ── Hero ── */
+        .tool-header { padding: 56px 0 36px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border); }
+        .tool-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--dark); }
+        .tool-header h1 span { color: var(--rd-orange); }
+        .tool-header p { color: var(--gray); margin-top: 10px; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .badge-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: var(--rd-orange-light); color: var(--rd-orange); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+        /* ── Main Tool Grid ── */
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; align-items: start; }
+
+        /* ── Input Panel ── */
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); }
+        .panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .rd-logo-icon { width: 22px; height: 22px; background: var(--rd-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .rd-logo-icon svg { width: 14px; height: 14px; fill: white; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .form-group label .hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="url"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.95rem; font-family: inherit; transition: border-color .2s, box-shadow .2s;
+            background: #fafafa; color: var(--dark);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--rd-orange); box-shadow: 0 0 0 3px rgba(255,69,0,.1); background: #fff;
+        }
+        .form-group textarea { resize: vertical; line-height: 1.65; min-height: 100px; }
+        .form-group select { cursor: pointer; }
+
+        /* Char counter */
+        .char-row { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.78rem; color: var(--gray); }
+        .char-row .warn { color: #f59e0b; }
+        .char-row .over { color: #ef4444; }
+        .char-row .truncate-hint { color: var(--rd-orange); font-weight: 600; display: none; }
+
+        /* Progress bar */
+        .prog-bar-track { height: 3px; background: #e2e8f0; border-radius: 2px; margin-top: 5px; overflow: hidden; }
+        .prog-bar-fill { height: 100%; background: var(--rd-orange); border-radius: 2px; transition: width .2s, background .2s; width: 0%; }
+        .prog-bar-fill.warn { background: #f59e0b; }
+        .prog-bar-fill.over  { background: #ef4444; }
+
+        /* Upload */
+        .upload-area { border: 2px dashed var(--border); border-radius: 8px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+        .upload-area:hover, .upload-area.drag-over { border-color: var(--rd-orange); background: var(--rd-orange-light); }
+        .upload-area input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .upload-area p { font-size: 0.875rem; color: var(--gray); }
+        .file-name { font-size: 0.82rem; color: var(--rd-orange); font-weight: 600; margin-top: 4px; display: none; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Flair chips */
+        .flair-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .flair-chip { padding: 3px 10px; border: 1.5px solid var(--border); border-radius: 20px; font-size: 0.75rem; font-weight: 700; cursor: pointer; background: #f8f8f8; color: var(--gray); transition: all .15s; font-family: inherit; }
+        .flair-chip:hover { border-color: var(--rd-orange); color: var(--rd-orange); }
+        .flair-chip.active { border-color: transparent; }
+
+        /* Award chips */
+        .award-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .award-chip { padding: 4px 10px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; background: #f8f8f8; color: var(--gray); transition: all .15s; font-family: inherit; display: flex; align-items: center; gap: 4px; }
+        .award-chip:hover { border-color: var(--rd-orange); }
+        .award-chip.active { border-color: var(--rd-orange); background: var(--rd-orange-light); }
+
+        /* Toggle */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label-text { font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 11px; position: relative; transition: background .2s; flex-shrink: 0; cursor: pointer; }
+        .toggle-switch.on { background: var(--rd-orange); }
+        .toggle-knob { width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .toggle-switch.on .toggle-knob { left: 21px; }
+
+        /* Action row */
+        .action-row { display: flex; gap: 10px; margin-top: 6px; }
+        .btn-outline { padding: 10px 18px; border: 1.5px solid var(--rd-orange); color: var(--rd-orange); background: transparent; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .2s; font-family: inherit; }
+        .btn-outline:hover { background: var(--rd-orange-light); }
+        .btn-rd { background: var(--rd-orange); }
+        .btn-rd:hover { background: var(--rd-orange-dark); }
+        .btn-full { flex: 1; }
+
+        /* ── Preview Panel ── */
+        .preview-panel { padding: 24px 18px; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 90px; height: fit-content; transition: background .3s; background: var(--rd-bg); }
+        .preview-panel.dark-mode { background: var(--rd-dark-bg); }
+        .preview-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 12px; text-align: center; }
+
+        /* Mode tabs */
+        .mode-tabs { display: flex; gap: 8px; margin-bottom: 14px; justify-content: center; }
+        .mode-tab { padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); transition: all .2s; }
+        .mode-tab.active { background: var(--rd-orange); color: white; border-color: var(--rd-orange); }
+
+        /* Sort bar */
+        .rd-sort-bar { background: var(--rd-sub-bar); border: 1px solid var(--rd-border); border-radius: 4px; padding: 8px 12px; display: flex; gap: 14px; align-items: center; margin-bottom: 10px; transition: background .3s, border-color .3s; }
+        .preview-panel.dark-mode .rd-sort-bar { background: var(--rd-dark-card); border-color: var(--rd-dark-border); }
+        .rd-sort-item { font-size: 12px; font-weight: 700; color: var(--rd-meta); display: flex; align-items: center; gap: 4px; cursor: pointer; border-radius: 2px; padding: 2px 6px; }
+        .rd-sort-item svg { width: 14px; height: 14px; }
+        .rd-sort-item.active { background: rgba(255,69,0,.1); color: var(--rd-orange); }
+        .preview-panel.dark-mode .rd-sort-item { color: var(--rd-dark-meta); }
+        .preview-panel.dark-mode .rd-sort-item.active { color: var(--rd-orange); }
+
+        /* ── Reddit Post Card ── */
+        .rd-post {
+            background: var(--rd-card); border: 1px solid var(--rd-border); border-radius: 4px;
+            overflow: hidden; font-family: -apple-system, 'Segoe UI', sans-serif;
+            display: flex; transition: background .3s, border-color .3s;
+            cursor: pointer;
+        }
+        .rd-post:hover { border-color: #818384; }
+        .preview-panel.dark-mode .rd-post { background: var(--rd-dark-card); border-color: var(--rd-dark-border); }
+        .preview-panel.dark-mode .rd-post:hover { border-color: #818384; }
+
+        /* Vote column */
+        .rd-vote-col {
+            width: 40px; background: var(--rd-vote-bar); flex-shrink: 0;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 8px 4px; gap: 2px; border-radius: 4px 0 0 4px;
+            transition: background .3s;
+        }
+        .preview-panel.dark-mode .rd-vote-col { background: var(--rd-dark-vote); }
+        .rd-vote-btn { background: none; border: none; cursor: pointer; padding: 4px; border-radius: 2px; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+        .rd-vote-btn:hover { background: rgba(255,69,0,.1); }
+        .rd-vote-btn svg { width: 18px; height: 18px; color: var(--rd-meta); }
+        .rd-vote-btn.upvoted svg { color: var(--rd-upvote); fill: var(--rd-upvote); }
+        .rd-vote-btn.downvoted svg { color: var(--rd-downvote); fill: var(--rd-downvote); }
+        .rd-vote-count { font-size: 12px; font-weight: 700; color: var(--rd-meta); min-width: 28px; text-align: center; }
+        .rd-vote-count.upvoted { color: var(--rd-upvote); }
+        .rd-vote-count.downvoted { color: var(--rd-downvote); }
+
+        /* Post content */
+        .rd-post-content { flex: 1; padding: 8px; min-width: 0; }
+
+        /* Meta row */
+        .rd-meta-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+        .rd-sub-icon { width: 18px; height: 18px; border-radius: 50%; background: var(--rd-orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .rd-sub-icon svg { width: 11px; height: 11px; fill: white; }
+        .rd-subreddit { font-size: 12px; font-weight: 700; color: var(--rd-text); }
+        .rd-subreddit:hover { text-decoration: underline; cursor: pointer; }
+        .preview-panel.dark-mode .rd-subreddit { color: var(--rd-dark-text); }
+        .rd-dot { font-size: 10px; color: var(--rd-meta); }
+        .rd-posted-by { font-size: 12px; color: var(--rd-meta); }
+        .rd-posted-by span { color: var(--rd-text); font-weight: 500; cursor: pointer; }
+        .rd-posted-by span:hover { text-decoration: underline; }
+        .preview-panel.dark-mode .rd-posted-by span { color: var(--rd-dark-text); }
+
+        /* Flair */
+        .rd-flair { font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 12px; margin-left: 2px; }
+
+        /* Title */
+        .rd-post-title { font-size: 18px; font-weight: 500; color: var(--rd-text); line-height: 1.35; margin-bottom: 8px; word-break: break-word; }
+        .preview-panel.dark-mode .rd-post-title { color: var(--rd-dark-text); }
+
+        /* Awards row */
+        .rd-awards-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
+        .rd-award { display: flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 600; color: var(--rd-meta); }
+        .rd-award-icon { font-size: 14px; }
+
+        /* Link post thumbnail */
+        .rd-link-thumb { width: 100%; max-height: 300px; object-fit: cover; border-radius: 4px; display: block; margin-bottom: 8px; }
+        .rd-link-domain-bar { display: none; align-items: center; gap: 5px; font-size: 12px; color: var(--rd-meta); margin-bottom: 6px; padding: 4px 8px; background: var(--rd-vote-bar); border-radius: 4px; }
+        .rd-link-domain-bar.visible { display: flex; }
+        .preview-panel.dark-mode .rd-link-domain-bar { background: var(--rd-dark-vote); }
+        .rd-link-domain-bar svg { width: 14px; height: 14px; color: var(--rd-blue); flex-shrink: 0; }
+        .rd-link-url { font-size: 11px; color: var(--rd-blue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Image area */
+        .rd-img-area { width: 100%; margin-bottom: 8px; border-radius: 4px; overflow: hidden; background: #f6f7f8; display: none; }
+        .rd-img-area.visible { display: block; }
+        .preview-panel.dark-mode .rd-img-area { background: #333; }
+        .rd-img-area img { width: 100%; display: block; max-height: 320px; object-fit: cover; }
+        .rd-img-placeholder { height: 160px; display: flex; align-items: center; justify-content: center; }
+        .rd-img-placeholder svg { width: 40px; height: 40px; color: #ccc; }
+
+        /* Text body */
+        .rd-post-body { font-size: 14px; color: var(--rd-meta); line-height: 1.6; margin-bottom: 8px; display: none; max-height: 250px; overflow: hidden; position: relative; }
+        .rd-post-body.visible { display: block; }
+        .preview-panel.dark-mode .rd-post-body { color: var(--rd-dark-meta); }
+        .rd-post-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(transparent, var(--rd-card)); pointer-events: none; }
+        .preview-panel.dark-mode .rd-post-body::after { background: linear-gradient(transparent, var(--rd-dark-card)); }
+
+        /* Actions bar */
+        .rd-actions-bar { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
+        .rd-action { display: flex; align-items: center; gap: 4px; padding: 6px 8px; border-radius: 2px; font-size: 12px; font-weight: 700; color: var(--rd-meta); cursor: pointer; transition: background .15s, color .15s; white-space: nowrap; }
+        .rd-action:hover { background: rgba(0,0,0,.06); color: var(--rd-text); }
+        .preview-panel.dark-mode .rd-action:hover { background: rgba(255,255,255,.08); color: var(--rd-dark-text); }
+        .rd-action svg { width: 16px; height: 16px; }
+        .preview-panel.dark-mode .rd-action { color: var(--rd-dark-meta); }
+
+        /* Promoted / NSFW / OC badges */
+        .rd-tag { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 2px; margin-left: 4px; }
+        .rd-tag.nsfw { background: #ff585b; color: white; }
+        .rd-tag.oc { background: #46d160; color: white; }
+        .rd-tag.spoiler { background: #888; color: white; }
+
+        /* Copy btn */
+        .copy-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; margin-top: 14px; padding: 10px; background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .2s; font-family: inherit; }
+        .copy-btn:hover { border-color: var(--rd-orange); color: var(--rd-orange); }
+        .copy-btn.copied { border-color: var(--success); color: var(--success); }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .info-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .info-section p { color: var(--gray); font-size: 0.97rem; line-height: 1.75; max-width: 780px; }
+
+        /* ── Features ── */
+        .features-section { padding: 60px 0; background: var(--light); }
+        .features-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; text-align: center; }
+        .features-section .sub { text-align: center; color: var(--gray); margin-bottom: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; transition: box-shadow .2s, transform .2s; }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--rd-orange-light); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .feature-icon svg { width: 22px; height: 22px; color: var(--rd-orange); }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── Tips ── */
+        .tips-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .tips-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-card { background: var(--light); border-radius: 10px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+        .tip-num { width: 32px; height: 32px; background: var(--rd-orange); color: white; border-radius: 50%; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tip-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 60px 0; background: var(--light); border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; font-weight: 600; font-size: 0.97rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background .15s; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-q .arrow { font-size: 1.1rem; transition: transform .3s; color: var(--gray); }
+        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .faq-item.open .faq-a { max-height: 320px; padding: 0 20px 18px; }
+
+        /* ── Footer ── */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
+        .footer-widget p { font-size: 0.875rem; line-height: 1.7; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { font-size: 0.875rem; color: #94a3b8; transition: color .2s; }
+        .footer-links a:hover { color: white; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.875rem; }
+
+        /* Responsive */
+        @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } .tips-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .main-tool-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .tool-header h1 { font-size: 1.8rem; }
+            .preview-panel { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="/" class="logo">SERP Preview</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#search-engines">Search Engines</a></li>
+                <li><a href="/#social-media">Social Media</a></li>
+                <li><a href="/#live-preview">Live Tool</a></li>
+            </ul>
+        </nav>
+        <a href="/#live-preview" class="btn">Google Previewing</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="tool-header">
+    <div class="container">
+        <h1>Reddit Post <span>Preview Tool</span></h1>
+        <p>See exactly how your Reddit post looks in the feed before you publish — title, body, flair, image, upvotes, awards and action bar all in a live mockup.</p>
+        <div class="badge-row">
+            <span class="badge">✓ 100% Free</span>
+            <span class="badge">✓ No Sign-up</span>
+            <span class="badge">✓ Dark &amp; Light Mode</span>
+            <span class="badge">✓ Post Types</span>
+            <span class="badge">✓ Awards &amp; Flair</span>
+            <span class="badge">✓ Screenshot Export</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section style="padding:0;">
+    <div class="container">
+        <div class="main-tool-grid">
+
+            <!-- LEFT: Input Panel -->
+            <div class="input-panel">
+                <div class="panel-title">
+                    <div class="rd-logo-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                    </div>
+                    Compose Your Reddit Post
+                </div>
+
+                <!-- Subreddit + username -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="subreddit-name">Subreddit</label>
+                        <input type="text" id="subreddit-name" placeholder="AskReddit" maxlength="21">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="u/yourname" maxlength="20">
+                    </div>
+                </div>
+
+                <!-- Post type -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="post-type">Post Type</label>
+                        <select id="post-type">
+                            <option value="text">Text Post</option>
+                            <option value="image">Image Post</option>
+                            <option value="link">Link Post</option>
+                            <option value="poll">Poll</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="time-ago">Posted</label>
+                        <select id="time-ago">
+                            <option value="just now">just now</option>
+                            <option value="5 minutes ago">5 minutes ago</option>
+                            <option value="1 hour ago" selected>1 hour ago</option>
+                            <option value="3 hours ago">3 hours ago</option>
+                            <option value="8 hours ago">8 hours ago</option>
+                            <option value="1 day ago">1 day ago</option>
+                            <option value="3 days ago">3 days ago</option>
+                            <option value="1 week ago">1 week ago</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="post-title">
+                        Post Title
+                        <span class="hint">Up to 300 characters</span>
+                    </label>
+                    <textarea id="post-title" placeholder="Write an engaging title that gets clicks in the feed…" maxlength="300" rows="3"></textarea>
+                    <div class="prog-bar-track"><div class="prog-bar-fill" id="title-bar"></div></div>
+                    <div class="char-row">
+                        <span id="title-char">0 / 300 characters</span>
+                        <span class="truncate-hint" id="title-hint">⚠ Titles over 230 chars may wrap awkwardly</span>
+                    </div>
+                </div>
+
+                <!-- Body text (text posts) -->
+                <div class="form-group" id="body-group">
+                    <label for="post-body">Body Text <span class="hint">Text posts only — optional</span></label>
+                    <textarea id="post-body" placeholder="Add more detail here. Supports Markdown-style formatting…" rows="4"></textarea>
+                    <div class="char-row">
+                        <span id="body-char">0 / 40,000 characters</span>
+                    </div>
+                </div>
+
+                <!-- Link URL (link posts) -->
+                <div class="form-group" id="link-group" style="display:none;">
+                    <label for="link-url">Link URL</label>
+                    <input type="url" id="link-url" placeholder="https://example.com/article">
+                </div>
+
+                <!-- Image upload -->
+                <div class="form-group" id="img-group" style="display:none;">
+                    <label for="image-upload">Image <span class="hint">JPG, PNG, GIF, WebP</span></label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*">
+                        <div class="upload-icon">🖼️</div>
+                        <p>Click to upload or drag &amp; drop</p>
+                        <div class="file-name" id="file-name"></div>
+                    </div>
+                </div>
+
+                <!-- Flair selector -->
+                <div class="form-group">
+                    <label for="flair-text">Post Flair <span class="hint">Optional</span></label>
+                    <input type="text" id="flair-text" placeholder="Discussion, Question, News…" maxlength="64">
+                    <div class="flair-row">
+                        <button class="flair-chip" style="background:#FF4500;color:white;border-color:#FF4500;" data-color="#FF4500" data-text="Discussion">💬 Discussion</button>
+                        <button class="flair-chip" style="background:#0079D3;color:white;border-color:#0079D3;" data-color="#0079D3" data-text="Question">❓ Question</button>
+                        <button class="flair-chip" style="background:#46D160;color:white;border-color:#46D160;" data-color="#46D160" data-text="News">📰 News</button>
+                        <button class="flair-chip" style="background:#FFB000;color:white;border-color:#FFB000;" data-color="#FFB000" data-text="Meme">😂 Meme</button>
+                        <button class="flair-chip" style="background:#CC0000;color:white;border-color:#CC0000;" data-color="#CC0000" data-text="Serious">🔴 Serious</button>
+                        <button class="flair-chip" style="background:#7193FF;color:white;border-color:#7193FF;" data-color="#7193FF" data-text="Meta">⚙️ Meta</button>
+                    </div>
+                </div>
+
+                <!-- Awards -->
+                <div class="form-group">
+                    <label>Awards <span class="hint">Toggle to display on post</span></label>
+                    <div class="award-row">
+                        <button class="award-chip" data-award="silver" data-icon="🥈" data-label="Silver">🥈 Silver</button>
+                        <button class="award-chip" data-award="gold" data-icon="🥇" data-label="Gold">🥇 Gold</button>
+                        <button class="award-chip" data-award="platinum" data-icon="🏆" data-label="Platinum">🏆 Platinum</button>
+                        <button class="award-chip" data-award="helpful" data-icon="❤️" data-label="Helpful">❤️ Helpful</button>
+                        <button class="award-chip" data-award="wholesome" data-icon="✨" data-label="Wholesome">✨ Wholesome</button>
+                    </div>
+                </div>
+
+                <!-- Special tags -->
+                <div class="form-group">
+                    <label>Content Tags</label>
+                    <div class="flair-row" style="gap:8px;">
+                        <label style="display:flex;align-items:center;gap:5px;font-weight:500;font-size:.85rem;cursor:pointer;margin-bottom:0;">
+                            <input type="checkbox" id="tag-nsfw"> <span class="rd-tag nsfw">NSFW</span>
+                        </label>
+                        <label style="display:flex;align-items:center;gap:5px;font-weight:500;font-size:.85rem;cursor:pointer;margin-bottom:0;">
+                            <input type="checkbox" id="tag-oc"> <span class="rd-tag oc">OC</span>
+                        </label>
+                        <label style="display:flex;align-items:center;gap:5px;font-weight:500;font-size:.85rem;cursor:pointer;margin-bottom:0;">
+                            <input type="checkbox" id="tag-spoiler"> <span class="rd-tag spoiler">Spoiler</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Engagement -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="upvotes-count">Upvotes</label>
+                        <input type="number" id="upvotes-count" placeholder="e.g. 24,100" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments-count">Comments</label>
+                        <input type="number" id="comments-count" placeholder="e.g. 847" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="upvote-ratio">Upvote Ratio <span class="hint">%</span></label>
+                    <input type="number" id="upvote-ratio" placeholder="e.g. 97" min="1" max="100" value="97">
+                </div>
+
+                <!-- Toggles -->
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Pinned / Stickied Post</span>
+                        <div class="toggle-switch" id="pinned-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-outline" id="reset-btn">Reset</button>
+                    <button class="btn btn-rd btn-full" id="screenshot-btn">📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview Panel -->
+            <div class="preview-panel" id="preview-panel">
+                <div class="preview-label">Live Preview · Reddit Feed</div>
+
+                <!-- Light / Dark tabs -->
+                <div class="mode-tabs">
+                    <div class="mode-tab active" id="tab-light">☀️ Light</div>
+                    <div class="mode-tab" id="tab-dark">🌙 Dark</div>
+                </div>
+
+                <!-- Sort bar -->
+                <div class="rd-sort-bar">
+                    <div class="rd-sort-item active">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.523 0 10 2.239 10 5v1H2v-1c0-2.761 4.477-5 10-5z" opacity=".4"/><path d="M17.006 7.972a7 7 0 0 1-10.012 0A4 4 0 0 0 4 12H2a6 6 0 0 1 4.412-5.785 7 7 0 0 0 11.176 0A6 6 0 0 1 22 12h-2a4 4 0 0 0-2.994-4.028z"/></svg>
+                        Hot
+                    </div>
+                    <div class="rd-sort-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        Top
+                    </div>
+                    <div class="rd-sort-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        New
+                    </div>
+                    <div class="rd-sort-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Rising
+                    </div>
+                </div>
+
+                <!-- Pinned indicator -->
+                <div id="pinned-bar" style="display:none; background:#46d160; color:white; font-size:11px; font-weight:700; padding:4px 10px; border-radius:4px; margin-bottom:8px; display:none; align-items:center; gap:6px;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+                    Pinned by moderators
+                </div>
+
+                <!-- ── Reddit Post Card ── -->
+                <div class="rd-post" id="rd-post">
+
+                    <!-- Vote column -->
+                    <div class="rd-vote-col">
+                        <button class="rd-vote-btn" id="upvote-btn" title="Upvote">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                        </button>
+                        <span class="rd-vote-count" id="prev-upvotes">24.1k</span>
+                        <button class="rd-vote-btn" id="downvote-btn" title="Downvote">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <span style="font-size:9px;color:var(--rd-meta);margin-top:2px;" id="prev-ratio">97%</span>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="rd-post-content">
+                        <!-- Meta row -->
+                        <div class="rd-meta-row">
+                            <div class="rd-sub-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                            </div>
+                            <span class="rd-subreddit" id="prev-subreddit">r/AskReddit</span>
+                            <span class="rd-dot">•</span>
+                            <span class="rd-posted-by">Posted by <span id="prev-username">u/yourname</span> <span id="prev-time">1 hour ago</span></span>
+                            <span class="rd-flair" id="prev-flair" style="display:none;"></span>
+                            <span class="rd-tag nsfw" id="tag-nsfw-badge" style="display:none;">NSFW</span>
+                            <span class="rd-tag oc" id="tag-oc-badge" style="display:none;">OC</span>
+                            <span class="rd-tag spoiler" id="tag-spoiler-badge" style="display:none;">Spoiler</span>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="rd-post-title" id="prev-title">Your post title will appear here as you type…</div>
+
+                        <!-- Awards -->
+                        <div class="rd-awards-row" id="prev-awards" style="display:none;"></div>
+
+                        <!-- Link domain bar -->
+                        <div class="rd-link-domain-bar" id="prev-link-bar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            <span class="rd-link-url" id="prev-link-url">example.com</span>
+                        </div>
+
+                        <!-- Image area -->
+                        <div class="rd-img-area" id="prev-img-area">
+                            <div class="rd-img-placeholder" id="img-placeholder">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Poll preview -->
+                        <div id="prev-poll" style="display:none; margin-bottom:8px; border:1px solid var(--rd-border); border-radius:4px; overflow:hidden;">
+                            <div style="padding:8px 12px; font-size:13px; font-weight:600; color:var(--rd-meta);">📊 Poll · 4 options</div>
+                            <div style="padding:4px 12px 10px; display:flex; flex-direction:column; gap:6px;">
+                                <div style="background:rgba(255,69,0,.12); border:1.5px solid var(--rd-orange); border-radius:20px; padding:6px 14px; font-size:13px; font-weight:600; color:var(--rd-orange);">Option A</div>
+                                <div style="background:#f6f7f8; border:1.5px solid var(--rd-border); border-radius:20px; padding:6px 14px; font-size:13px; color:var(--rd-text);">Option B</div>
+                                <div style="background:#f6f7f8; border:1.5px solid var(--rd-border); border-radius:20px; padding:6px 14px; font-size:13px; color:var(--rd-text);">Option C</div>
+                                <div style="background:#f6f7f8; border:1.5px solid var(--rd-border); border-radius:20px; padding:6px 14px; font-size:13px; color:var(--rd-text);">Option D</div>
+                            </div>
+                        </div>
+
+                        <!-- Text body -->
+                        <div class="rd-post-body" id="prev-body"></div>
+
+                        <!-- Actions bar -->
+                        <div class="rd-actions-bar">
+                            <div class="rd-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                <span id="prev-comments">847 Comments</span>
+                            </div>
+                            <div class="rd-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                Share
+                            </div>
+                            <div class="rd-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                                Save
+                            </div>
+                            <div class="rd-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end .rd-post -->
+
+                <button class="copy-btn" id="copy-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Post Title
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="info-section">
+    <div class="container">
+        <h2>How to Use the Reddit Post Preview Tool</h2>
+        <p>Start by entering your subreddit name and username — both render in the post meta row exactly as Reddit displays them in the feed. Choose a post type from the dropdown: Text reveals a body text field, Image shows the upload area and renders your photo inside the card, Link shows a URL field and parses the domain into a clickable link bar, and Poll shows a four-option ballot preview. Type your post title in the text area — the progress bar and character counter track your usage up to the 300-character limit, warning you at 230 where long titles start to wrap awkwardly. Pick a flair by clicking one of the coloured preset chips or typing a custom label; the flair renders inline next to your subreddit name. Toggle NSFW, OC or Spoiler tags to see how they overlay the meta row. Click award chips to add Silver, Gold, Platinum, Helpful or Wholesome badges below the title. Enter custom upvote and comment counts and adjust the upvote ratio percentage. Switch between the light and dark Reddit themes with one click. When everything looks right, hit Screenshot to download a PNG — perfect for Reddit marketing strategy, subreddit mod submissions, or content calendar mockups.</p>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section">
+    <div class="container">
+        <h2>Everything in This Reddit Post Preview Tool</h2>
+        <p class="sub">Built for Reddit marketers, community managers, subreddit moderators, content strategists and social media agencies.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Pixel-accurate Reddit Feed Mockup</h3>
+                <p>Every field update instantly reflects in an accurate Reddit post card — vote column, subreddit meta row, flair, title, awards, image or body text, and the full action bar — light and dark modes included.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>Four Post Type Previews</h3>
+                <p>Switch between Text (body preview), Image (photo card), Link (domain bar with URL) and Poll (four-option ballot card). Each type renders the correct Reddit layout in real time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+                </div>
+                <h3>Flair &amp; Award Display</h3>
+                <p>Apply coloured preset flairs (Discussion, Question, News, Meme, Serious, Meta) or type a custom label. Toggle Silver, Gold, Platinum, Helpful and Wholesome award badges to see them render below the title.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                </div>
+                <h3>Upvote Simulation &amp; Ratio</h3>
+                <p>Set custom upvote counts and an upvote ratio percentage — both render in the vote column. Click the upvote or downvote arrows to toggle the orange/blue highlight states, exactly as Reddit renders them.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </div>
+                <h3>Light &amp; Dark Mode Preview</h3>
+                <p>Toggle between Reddit's classic white light theme and its dark mode with one click. Both modes use authentic Reddit colour variables so the mockup matches exactly what Redditors see on either setting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3>NSFW, OC, Spoiler &amp; Pinned Tags</h3>
+                <p>Toggle NSFW, Original Content and Spoiler labels to see how they appear inline in the post meta row. Enable the Pinned toggle to see the green moderator stickied banner above the post card.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section">
+    <div class="container">
+        <h2>Tips for Writing High-Performing Reddit Posts</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div>
+                    <h4>Your Title Is Everything — Optimise It First</h4>
+                    <p>Reddit's feed shows only the title for most post types. It must be compelling, clear and complete on its own. Use the 300-character title field and preview here to verify the full title is legible and grabs attention before submitting.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div>
+                    <h4>Match the Tone of the Subreddit Precisely</h4>
+                    <p>Each subreddit has unwritten rules about voice, format and topic scope. Preview your post with the correct r/subreddit name to visualize how the title and flair combination reads in the context of that community before posting.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div>
+                    <h4>Use Flair to Signal Post Type Immediately</h4>
+                    <p>Subreddits with active flair systems see higher engagement on appropriately labelled posts. Toggle the coloured flair chips in this tool to verify how your chosen flair renders beside the subreddit name in the feed card.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div>
+                    <h4>Ask a Question to Drive Comment Volume</h4>
+                    <p>Question-format titles consistently generate more comments than statement titles on Reddit because they require a response. Preview the question mark placement and phrasing in the title field to confirm it reads naturally in the post card.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div>
+                    <h4>Keep Image Posts Visually Striking at Card Size</h4>
+                    <p>Reddit image thumbnails are cropped and compressed. Upload your image to the preview to see exactly how it fills the post card at feed dimensions — ensuring text overlays, faces and key visuals remain clear and unobstructed.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">6</div>
+                <div>
+                    <h4>Preview in Dark Mode Before Posting</h4>
+                    <p>A significant portion of Reddit's user base browses in dark mode. Use the dark mode toggle in this tool to check that your title contrast, flair colours and image content all remain fully legible against the dark background.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Is this Reddit post preview tool free? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes — completely free with no account required, no watermarks and no usage limits. Open the page, compose your post and preview it live without signing up for anything.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does this tool post to Reddit for me? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. This is a simulation and mockup tool only. It does not connect to the Reddit API. Once your post looks perfect here, copy the title and body text and submit it directly through Reddit.com or the Reddit mobile app.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What is the Reddit post title character limit? <span class="arrow">▼</span></div>
+            <div class="faq-a">Reddit allows post titles up to 300 characters. The progress bar in this tool tracks your usage in real time and warns you at 230 characters — approximately where long titles begin to wrap or appear truncated in some feed layouts. Most high-performing posts keep titles between 60 and 150 characters.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What image sizes work best for Reddit posts? <span class="arrow">▼</span></div>
+            <div class="faq-a">Reddit recommends images of at least 1200×628 px for link post thumbnails. For full image posts, 1080×1080 px (square) or 1920×1080 px (landscape) work well. Upload any image to this tool to preview how it fills the Reddit post card before publishing.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Can I preview NSFW, OC and Spoiler tags? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes. Check the NSFW, OC or Spoiler checkboxes in the input panel to see the corresponding red, green or grey tags render inline in the post meta row — exactly as Reddit displays them in the feed and on the post page.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my post content or image stored anywhere? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. Everything runs entirely inside your browser using the JavaScript FileReader API and DOM rendering. No text, image or personal data is ever transmitted to any server — your content stays completely private on your own device.</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>SERP Preview</h4>
+                <p>The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Tools</a></li>
+                    <li><a href="/#social-media">Social Tools</a></li>
+                    <li><a href="/#live-preview">Live Preview</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="cookie">Cookie Policy</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 SERP Simulator. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function () {
+    const TITLE_MAX   = 300;
+    const TITLE_WARN  = 230;
+    const BODY_MAX    = 40000;
+
+    // Inputs
+    const subredditIn   = document.getElementById('subreddit-name');
+    const usernameIn    = document.getElementById('username');
+    const postTypeSel   = document.getElementById('post-type');
+    const timeAgoSel    = document.getElementById('time-ago');
+    const postTitleIn   = document.getElementById('post-title');
+    const postBodyIn    = document.getElementById('post-body');
+    const linkUrlIn     = document.getElementById('link-url');
+    const imgIn         = document.getElementById('image-upload');
+    const flairTextIn   = document.getElementById('flair-text');
+    const upvotesIn     = document.getElementById('upvotes-count');
+    const commentsIn    = document.getElementById('comments-count');
+    const ratioIn       = document.getElementById('upvote-ratio');
+    const pinnedToggle  = document.getElementById('pinned-toggle');
+    const tagNSFW       = document.getElementById('tag-nsfw');
+    const tagOC         = document.getElementById('tag-oc');
+    const tagSpoiler    = document.getElementById('tag-spoiler');
+
+    // Preview elements
+    const prevSubreddit   = document.getElementById('prev-subreddit');
+    const prevUsername    = document.getElementById('prev-username');
+    const prevTime        = document.getElementById('prev-time');
+    const prevTitle       = document.getElementById('prev-title');
+    const prevBody        = document.getElementById('prev-body');
+    const prevFlair       = document.getElementById('prev-flair');
+    const prevLinkBar     = document.getElementById('prev-link-bar');
+    const prevLinkUrl     = document.getElementById('prev-link-url');
+    const prevImgArea     = document.getElementById('prev-img-area');
+    const imgPlaceholder  = document.getElementById('img-placeholder');
+    const prevPoll        = document.getElementById('prev-poll');
+    const prevUpvotes     = document.getElementById('prev-upvotes');
+    const prevRatio       = document.getElementById('prev-ratio');
+    const prevComments    = document.getElementById('prev-comments');
+    const prevAwards      = document.getElementById('prev-awards');
+    const upvoteBtn       = document.getElementById('upvote-btn');
+    const downvoteBtn     = document.getElementById('downvote-btn');
+    const pinnedBar       = document.getElementById('pinned-bar');
+    const previewPanel    = document.getElementById('preview-panel');
+    const titleBar        = document.getElementById('title-bar');
+    const titleChar       = document.getElementById('title-char');
+    const titleHint       = document.getElementById('title-hint');
+    const bodyChar        = document.getElementById('body-char');
+    const uploadArea      = document.getElementById('upload-area');
+    const fileNameEl      = document.getElementById('file-name');
+    const badgeNSFW       = document.getElementById('tag-nsfw-badge');
+    const badgeOC         = document.getElementById('tag-oc-badge');
+    const badgeSpoiler    = document.getElementById('tag-spoiler-badge');
+
+    let voteState      = 'none'; // 'none' | 'up' | 'down'
+    let isDark         = false;
+    let isPinned       = false;
+    let currentImg     = null;
+    let activeAwards   = new Set();
+    let activeFlair    = { text: '', color: '', bg: '' };
+
+    // ── Helpers ──
+    function fmtNum(val) {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) return null;
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 10000)   return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        if (n >= 1000)    return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+        return String(n);
+    }
+
+    function getDomain(url) {
+        try {
+            const u = new URL(url.startsWith('http') ? url : 'https://' + url);
+            return u.hostname.replace('www.', '');
+        } catch (_) {
+            return url.replace(/^https?:\/\//,'').split('/')[0].replace('www.','');
+        }
+    }
+
+    // ── Subreddit ──
+    subredditIn.addEventListener('input', () => {
+        const v = subredditIn.value.trim().replace(/^r\//, '') || 'AskReddit';
+        prevSubreddit.textContent = 'r/' + v;
+    });
+
+    // ── Username ──
+    usernameIn.addEventListener('input', () => {
+        const v = usernameIn.value.trim().replace(/^u\//, '') || 'yourname';
+        prevUsername.textContent = 'u/' + v;
+    });
+
+    // ── Time ago ──
+    timeAgoSel.addEventListener('change', () => {
+        prevTime.textContent = timeAgoSel.value;
+    });
+
+    // ── Post type ──
+    postTypeSel.addEventListener('change', updatePostType);
+    function updatePostType() {
+        const type = postTypeSel.value;
+        document.getElementById('body-group').style.display = (type === 'text') ? 'block' : 'none';
+        document.getElementById('link-group').style.display = (type === 'link') ? 'block' : 'none';
+        document.getElementById('img-group').style.display  = (type === 'image') ? 'block' : 'none';
+
+        prevBody.classList.toggle('visible', type === 'text' && postBodyIn.value.trim().length > 0);
+        prevImgArea.classList.toggle('visible', type === 'image');
+        prevLinkBar.classList.toggle('visible', type === 'link' && linkUrlIn.value.trim().length > 0);
+        prevPoll.style.display = (type === 'poll') ? 'block' : 'none';
+    }
+
+    // ── Title ──
+    postTitleIn.addEventListener('input', () => {
+        const v   = postTitleIn.value;
+        const len = v.length;
+        const pct = Math.min((len / TITLE_MAX) * 100, 100);
+        titleBar.style.width = pct + '%';
+        titleBar.className   = 'prog-bar-fill' + (len > TITLE_MAX ? ' over' : len > TITLE_WARN ? ' warn' : '');
+        titleChar.textContent = len + ' / 300 characters';
+        titleChar.className   = len > TITLE_MAX ? 'over' : len > TITLE_WARN ? 'warn' : '';
+        titleHint.style.display = len > TITLE_WARN ? 'inline' : 'none';
+        prevTitle.textContent = v || 'Your post title will appear here as you type…';
+    });
+
+    // ── Body ──
+    postBodyIn.addEventListener('input', () => {
+        const v   = postBodyIn.value;
+        const len = v.length;
+        bodyChar.textContent = len.toLocaleString() + ' / 40,000 characters';
+        if (v.trim()) {
+            prevBody.textContent = v;
+            prevBody.classList.add('visible');
+        } else {
+            prevBody.classList.remove('visible');
+        }
+    });
+
+    // ── Link URL ──
+    linkUrlIn.addEventListener('input', () => {
+        const v = linkUrlIn.value.trim();
+        if (v && postTypeSel.value === 'link') {
+            prevLinkBar.classList.add('visible');
+            prevLinkUrl.textContent = getDomain(v);
+        } else {
+            prevLinkBar.classList.remove('visible');
+        }
+    });
+
+    // ── Image upload ──
+    imgIn.addEventListener('change', handleImg);
+    function handleImg() {
+        const file = imgIn.files[0];
+        if (!file) return;
+        fileNameEl.textContent = file.name;
+        fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = e => {
+            currentImg = e.target.result;
+            imgPlaceholder.style.display = 'none';
+            const old = prevImgArea.querySelector('.rd-uploaded-img');
+            if (old) old.remove();
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Post image';
+            img.className = 'rd-uploaded-img';
+            img.style.cssText = 'width:100%;display:block;max-height:320px;object-fit:cover;';
+            prevImgArea.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    }
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault(); uploadArea.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        fileNameEl.textContent = file.name; fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = ev => {
+            currentImg = ev.target.result;
+            imgPlaceholder.style.display = 'none';
+            const old = prevImgArea.querySelector('.rd-uploaded-img');
+            if (old) old.remove();
+            const img = document.createElement('img');
+            img.src = ev.target.result; img.alt = 'Post image'; img.className = 'rd-uploaded-img';
+            img.style.cssText = 'width:100%;display:block;max-height:320px;object-fit:cover;';
+            prevImgArea.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // ── Flair text ──
+    flairTextIn.addEventListener('input', () => {
+        const v = flairTextIn.value.trim();
+        if (v) {
+            prevFlair.textContent = v;
+            prevFlair.style.display = 'inline';
+            if (!activeFlair.color) {
+                prevFlair.style.cssText = `background:#edeff1;color:#1c1c1c;font-size:11px;font-weight:700;padding:1px 7px;border-radius:12px;margin-left:2px;display:inline;`;
+            }
+            activeFlair.text = v;
+        } else {
+            if (!activeFlair.color) {
+                prevFlair.style.display = 'none';
+            }
+        }
+    });
+
+    // ── Flair chips ──
+    document.querySelectorAll('.flair-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            document.querySelectorAll('.flair-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const color = chip.dataset.color;
+            const text  = chip.dataset.text;
+            activeFlair = { text, color, bg: color };
+            flairTextIn.value = text;
+            prevFlair.textContent = text;
+            prevFlair.style.cssText = `background:${color};color:white;font-size:11px;font-weight:700;padding:1px 7px;border-radius:12px;margin-left:2px;display:inline;`;
+        });
+    });
+
+    // ── Awards ──
+    document.querySelectorAll('.award-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            const award = chip.dataset.award;
+            if (activeAwards.has(award)) {
+                activeAwards.delete(award);
+                chip.classList.remove('active');
+            } else {
+                activeAwards.add(award);
+                chip.classList.add('active');
+            }
+            renderAwards();
+        });
+    });
+
+    function renderAwards() {
+        if (activeAwards.size === 0) {
+            prevAwards.style.display = 'none';
+            return;
+        }
+        prevAwards.style.display = 'flex';
+        prevAwards.innerHTML = '';
+        const icons = { silver:'🥈', gold:'🥇', platinum:'🏆', helpful:'❤️', wholesome:'✨' };
+        const labels = { silver:'Silver', gold:'Gold', platinum:'Platinum', helpful:'Helpful', wholesome:'Wholesome' };
+        activeAwards.forEach(a => {
+            const div = document.createElement('div');
+            div.className = 'rd-award';
+            div.innerHTML = `<span class="rd-award-icon">${icons[a]}</span><span>${labels[a]}</span>`;
+            prevAwards.appendChild(div);
+        });
+    }
+
+    // ── Content tags ──
+    tagNSFW.addEventListener('change',    () => { badgeNSFW.style.display    = tagNSFW.checked    ? 'inline' : 'none'; });
+    tagOC.addEventListener('change',      () => { badgeOC.style.display      = tagOC.checked      ? 'inline' : 'none'; });
+    tagSpoiler.addEventListener('change', () => { badgeSpoiler.style.display = tagSpoiler.checked ? 'inline' : 'none'; });
+
+    // ── Engagement ──
+    function updateEngagement() {
+        const u = fmtNum(upvotesIn.value);
+        const c = fmtNum(commentsIn.value);
+        const r = parseInt(ratioIn.value, 10);
+        prevUpvotes.textContent  = u || '24.1k';
+        prevComments.textContent = (c || '847') + ' Comments';
+        prevRatio.textContent    = (isNaN(r) ? '97' : Math.min(100, Math.max(1, r))) + '%';
+    }
+    [upvotesIn, commentsIn, ratioIn].forEach(el => el.addEventListener('input', updateEngagement));
+
+    // ── Vote buttons ──
+    upvoteBtn.addEventListener('click', () => {
+        voteState = voteState === 'up' ? 'none' : 'up';
+        updateVoteUI();
+    });
+    downvoteBtn.addEventListener('click', () => {
+        voteState = voteState === 'down' ? 'none' : 'down';
+        updateVoteUI();
+    });
+    function updateVoteUI() {
+        upvoteBtn.classList.toggle('upvoted',    voteState === 'up');
+        downvoteBtn.classList.toggle('downvoted', voteState === 'down');
+        prevUpvotes.className = 'rd-vote-count' + (voteState === 'up' ? ' upvoted' : voteState === 'down' ? ' downvoted' : '');
+    }
+
+    // ── Pinned toggle ──
+    pinnedToggle.addEventListener('click', () => {
+        isPinned = !isPinned;
+        pinnedToggle.classList.toggle('on', isPinned);
+        pinnedBar.style.display = isPinned ? 'flex' : 'none';
+    });
+
+    // ── Dark / Light ──
+    document.getElementById('tab-light').addEventListener('click', () => {
+        isDark = false;
+        previewPanel.classList.remove('dark-mode');
+        document.getElementById('tab-light').classList.add('active');
+        document.getElementById('tab-dark').classList.remove('active');
+    });
+    document.getElementById('tab-dark').addEventListener('click', () => {
+        isDark = true;
+        previewPanel.classList.add('dark-mode');
+        document.getElementById('tab-dark').classList.add('active');
+        document.getElementById('tab-light').classList.remove('active');
+    });
+
+    // ── Reset ──
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        subredditIn.value = ''; usernameIn.value = '';
+        postTypeSel.value = 'text'; timeAgoSel.value = '1 hour ago';
+        postTitleIn.value = ''; postBodyIn.value = '';
+        linkUrlIn.value = ''; flairTextIn.value = '';
+        upvotesIn.value = ''; commentsIn.value = ''; ratioIn.value = '97';
+        tagNSFW.checked = false; tagOC.checked = false; tagSpoiler.checked = false;
+        voteState = 'none'; isDark = false; isPinned = false; currentImg = null;
+        activeAwards.clear(); activeFlair = { text:'', color:'', bg:'' };
+
+        pinnedToggle.classList.remove('on');
+        previewPanel.classList.remove('dark-mode');
+        document.getElementById('tab-light').classList.add('active');
+        document.getElementById('tab-dark').classList.remove('active');
+        pinnedBar.style.display = 'none';
+
+        badgeNSFW.style.display = 'none'; badgeOC.style.display = 'none'; badgeSpoiler.style.display = 'none';
+        prevFlair.style.display = 'none'; prevFlair.textContent = '';
+        document.querySelectorAll('.flair-chip').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.award-chip').forEach(c => c.classList.remove('active'));
+
+        prevSubreddit.textContent   = 'r/AskReddit';
+        prevUsername.textContent    = 'u/yourname';
+        prevTime.textContent        = '1 hour ago';
+        prevTitle.textContent       = 'Your post title will appear here as you type…';
+        prevBody.textContent        = ''; prevBody.classList.remove('visible');
+        prevLinkBar.classList.remove('visible');
+        prevImgArea.classList.remove('visible');
+        prevPoll.style.display      = 'none';
+        prevAwards.style.display    = 'none'; prevAwards.innerHTML = '';
+
+        const old = prevImgArea.querySelector('.rd-uploaded-img');
+        if (old) old.remove();
+        imgPlaceholder.style.display = 'flex';
+        fileNameEl.style.display = 'none';
+
+        titleBar.style.width = '0%'; titleBar.className = 'prog-bar-fill';
+        titleChar.textContent = '0 / 300 characters'; titleChar.className = '';
+        titleHint.style.display = 'none';
+        bodyChar.textContent = '0 / 40,000 characters';
+
+        upvoteBtn.classList.remove('upvoted');
+        downvoteBtn.classList.remove('downvoted');
+        prevUpvotes.className = 'rd-vote-count';
+
+        updateEngagement();
+        updatePostType();
+    });
+
+    // ── Screenshot ──
+    document.getElementById('screenshot-btn').addEventListener('click', () => {
+        const card = document.getElementById('rd-post');
+        html2canvas(card, { useCORS: true, scale: 2, backgroundColor: isDark ? '#272729' : '#ffffff' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'reddit-post-preview.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    // ── Copy title ──
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        const text = postTitleIn.value || 'Your post title will appear here as you type…';
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerHTML = '✓ Title Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Post Title';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+
+    // ── FAQ ──
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    // Init
+    updateEngagement();
+    updatePostType();
+})();
+</script>
+
+</body>
+</html>
