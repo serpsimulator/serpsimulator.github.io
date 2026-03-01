@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Post Preview Tool – Free Feed Simulator & Post Mockup</title>
+    <meta name="description" content="Free LinkedIn Post Preview tool. Simulate your LinkedIn post in a realistic feed mockup before publishing. Preview text, images, hashtags, see more truncation, reactions and more.">
+    <meta name="keywords" content="LinkedIn post preview, LinkedIn post simulator, LinkedIn feed mockup, LinkedIn post checker, social media preview tool, LinkedIn marketing tool, post visualizer, LinkedIn post generator, LinkedIn content tool, LinkedIn feed preview, professional post preview">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "LinkedIn Post Preview Tool",
+  "url": "https://serppreview.github.io/linkedin-post-preview",
+  "description": "A free tool to visualize how your LinkedIn posts will appear in the feed. Preview text truncation, images, hashtags, reactions and engagement metrics before publishing.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Real-time LinkedIn Feed Visualization",
+    "See More truncation preview at 210 characters",
+    "Image Upload Preview",
+    "Hashtag highlighting",
+    "Reaction bar simulation",
+    "Connection degree selector",
+    "Post type selector (text, article, document)",
+    "Character counter",
+    "Screenshot export"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #166fe5;
+            --primary-light: #e7f0fd;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f0f2f5;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+            --success: #057642;
+
+            /* LinkedIn palette */
+            --li-blue: #0A66C2;
+            --li-blue-hover: #004182;
+            --li-blue-light: #EBF4FF;
+            --li-bg: #f3f2ef;
+            --li-card: #ffffff;
+            --li-border: #e0dfdc;
+            --li-text: rgba(0,0,0,.9);
+            --li-sub: rgba(0,0,0,.6);
+            --li-action: rgba(0,0,0,.6);
+            --li-action-hover: rgba(0,0,0,.08);
+            --li-green: #057642;
+            --li-reaction-bg: #f3f2ef;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── Header ── */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; transition: background .2s; font-family: inherit; font-size: 0.9rem; }
+        .btn:hover { background: var(--primary-dark); }
+
+        /* ── Hero ── */
+        .tool-header { padding: 56px 0 36px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border); }
+        .tool-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--dark); }
+        .tool-header h1 span { color: var(--li-blue); }
+        .tool-header p { color: var(--gray); margin-top: 10px; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .badge-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: var(--li-blue-light); color: var(--li-blue); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+        /* ── Main Tool Grid ── */
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; align-items: start; }
+
+        /* ── Input Panel ── */
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); text-align: left; }
+        .panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .panel-title svg { color: var(--li-blue); flex-shrink: 0; }
+
+        .form-group { margin-bottom: 22px; }
+        .form-group label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .form-group label .hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.95rem; font-family: inherit; transition: border-color .2s, box-shadow .2s;
+            background: #fafafa; color: var(--dark);
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none; border-color: var(--li-blue); box-shadow: 0 0 0 3px rgba(10,102,194,.12); background: #fff;
+        }
+        .form-group textarea { min-height: 130px; resize: vertical; line-height: 1.65; }
+        .form-group select { cursor: pointer; }
+
+        /* Char counter bar */
+        .char-bar-wrap { margin-top: 6px; }
+        .char-bar-track { height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+        .char-bar-fill { height: 100%; background: var(--li-blue); border-radius: 2px; transition: width .2s, background .2s; width: 0%; }
+        .char-bar-fill.warn { background: #f59e0b; }
+        .char-bar-fill.over { background: #ef4444; }
+        .char-info { display: flex; justify-content: space-between; font-size: 0.78rem; margin-top: 4px; color: var(--gray); }
+        .char-info .over { color: #ef4444; }
+        .char-info .warn { color: #f59e0b; }
+
+        /* Emoji row */
+        .emoji-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .emoji-btn { background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 1.1rem; cursor: pointer; transition: background .15s; }
+        .emoji-btn:hover { background: var(--li-blue-light); border-color: var(--li-blue); }
+
+        /* Upload */
+        .upload-area { border: 2px dashed var(--border); border-radius: 8px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+        .upload-area:hover, .upload-area.drag-over { border-color: var(--li-blue); background: var(--li-blue-light); }
+        .upload-area input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .upload-area p { font-size: 0.875rem; color: var(--gray); }
+        .file-name { font-size: 0.82rem; color: var(--li-blue); font-weight: 600; margin-top: 4px; display: none; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Toggle */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label-text { font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 11px; position: relative; transition: background .2s; flex-shrink: 0; cursor: pointer; }
+        .toggle-switch.on { background: var(--li-blue); }
+        .toggle-knob { width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .toggle-switch.on .toggle-knob { left: 21px; }
+
+        /* Action row */
+        .action-row { display: flex; gap: 10px; margin-top: 6px; }
+        .btn-outline { padding: 10px 18px; border: 1.5px solid var(--li-blue); color: var(--li-blue); background: transparent; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .2s; font-family: inherit; }
+        .btn-outline:hover { background: var(--li-blue-light); }
+        .btn-li { background: var(--li-blue); }
+        .btn-li:hover { background: var(--li-blue-hover); }
+        .btn-full { flex: 1; }
+
+        /* ── Preview Panel ── */
+        .preview-panel { background: var(--li-bg); padding: 28px 20px; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 90px; height: fit-content; }
+        .preview-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 16px; text-align: center; }
+
+        /* ── LinkedIn Post Card ── */
+        .li-post { background: var(--li-card); border: 1px solid var(--li-border); border-radius: 8px; max-width: 554px; margin: 0 auto; overflow: hidden; font-family: -apple-system, 'Segoe UI', sans-serif; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05); }
+
+        /* Post header */
+        .li-header { padding: 12px 16px 0; display: flex; gap: 8px; align-items: flex-start; }
+        .li-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #0A66C2 0%, #057642 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; font-family: -apple-system, sans-serif; cursor: pointer; }
+        .li-user-col { flex: 1; min-width: 0; }
+        .li-name-row { display: flex; align-items: center; gap: 4px; }
+        .li-name { font-weight: 600; font-size: 14px; color: rgba(0,0,0,.9); line-height: 1.4; }
+        .li-name:hover { color: var(--li-blue); text-decoration: underline; cursor: pointer; }
+        .li-degree { font-size: 11px; color: var(--li-blue); font-weight: 600; }
+        .li-headline { font-size: 12px; color: rgba(0,0,0,.6); line-height: 1.4; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 340px; }
+        .li-meta-row { font-size: 11px; color: rgba(0,0,0,.6); display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+        .li-meta-row svg { width: 12px; height: 12px; flex-shrink: 0; }
+        .li-more { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-top: 2px; }
+        .li-more-btn { background: none; border: none; cursor: pointer; color: rgba(0,0,0,.6); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+        .li-more-btn:hover { background: rgba(0,0,0,.08); }
+        .li-more-btn svg { width: 20px; height: 20px; }
+        .li-follow-btn { background: none; border: none; cursor: pointer; color: var(--li-blue); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 4px; padding: 4px 6px; border-radius: 4px; font-family: inherit; }
+        .li-follow-btn:hover { background: var(--li-blue-light); }
+
+        /* Post type badge */
+        .li-post-type { display: none; background: var(--li-blue-light); color: var(--li-blue); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 4px; width: fit-content; }
+        .li-post-type.visible { display: block; }
+
+        /* Post body */
+        .li-body { padding: 8px 16px 12px; }
+        .li-content { font-size: 14px; line-height: 1.5; color: rgba(0,0,0,.9); white-space: pre-wrap; word-break: break-word; }
+        .li-content .hashtag { color: var(--li-blue); font-weight: 500; cursor: pointer; }
+        .li-content .mention { color: var(--li-blue); font-weight: 500; cursor: pointer; }
+        .see-more-btn { color: rgba(0,0,0,.6); font-size: 14px; font-weight: 600; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; display: inline; }
+        .see-more-btn:hover { text-decoration: underline; }
+
+        /* Image */
+        .li-img-wrap { width: 100%; overflow: hidden; background: #f3f2ef; margin-bottom: 0; }
+        .li-img-wrap img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .li-img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 44px; color: #c0bbb4; }
+        .li-img-placeholder svg { width: 44px; height: 44px; }
+        .li-img-placeholder span { font-size: 13px; }
+
+        /* Document card */
+        .li-doc-card { margin: 0 16px 12px; border: 1px solid var(--li-border); border-radius: 8px; padding: 14px 16px; display: none; align-items: center; gap: 12px; }
+        .li-doc-card.visible { display: flex; }
+        .li-doc-icon { width: 40px; height: 48px; background: #0A66C2; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .li-doc-icon svg { width: 22px; height: 22px; color: white; }
+        .li-doc-info { flex: 1; }
+        .li-doc-title { font-size: 13px; font-weight: 600; color: rgba(0,0,0,.9); }
+        .li-doc-pages { font-size: 11px; color: rgba(0,0,0,.6); margin-top: 2px; }
+
+        /* Reactions summary */
+        .li-reactions-row { padding: 6px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--li-border); }
+        .li-reactions-left { display: flex; align-items: center; gap: 4px; }
+        .li-reaction-icons { display: flex; }
+        .li-reaction-icon { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid white; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-right: -3px; }
+        .li-reactions-count { font-size: 12px; color: rgba(0,0,0,.6); margin-left: 4px; cursor: pointer; }
+        .li-reactions-count:hover { color: var(--li-blue); text-decoration: underline; }
+        .li-reactions-right { font-size: 12px; color: rgba(0,0,0,.6); display: flex; gap: 8px; }
+        .li-reactions-right span { cursor: pointer; }
+        .li-reactions-right span:hover { color: var(--li-blue); text-decoration: underline; }
+
+        /* Actions bar */
+        .li-actions { display: flex; padding: 4px 8px; }
+        .li-action { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 10px 6px; border-radius: 4px; color: rgba(0,0,0,.6); font-size: 13px; font-weight: 600; cursor: pointer; transition: background .15s, color .15s; }
+        .li-action:hover { background: rgba(0,0,0,.08); color: rgba(0,0,0,.9); }
+        .li-action svg { width: 20px; height: 20px; }
+        .li-action.like-btn:hover { color: var(--li-blue); }
+
+        /* Copy button */
+        .copy-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; margin-top: 14px; padding: 10px; background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .2s; font-family: inherit; }
+        .copy-btn:hover { border-color: var(--li-blue); color: var(--li-blue); }
+        .copy-btn.copied { border-color: var(--success); color: var(--success); }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .info-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .info-section p { color: var(--gray); font-size: 0.97rem; line-height: 1.75; max-width: 780px; }
+
+        /* ── Features ── */
+        .features-section { padding: 60px 0; background: var(--light); }
+        .features-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; text-align: center; }
+        .features-section .sub { text-align: center; color: var(--gray); margin-bottom: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; transition: box-shadow .2s, transform .2s; }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--li-blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .feature-icon svg { width: 22px; height: 22px; color: var(--li-blue); }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── Tips ── */
+        .tips-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .tips-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-card { background: var(--light); border-radius: 10px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+        .tip-num { width: 32px; height: 32px; background: var(--li-blue); color: white; border-radius: 50%; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tip-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 60px 0; background: var(--light); border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; font-weight: 600; font-size: 0.97rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background .15s; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-q .arrow { font-size: 1.1rem; transition: transform .3s; color: var(--gray); }
+        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .faq-item.open .faq-a { max-height: 300px; padding: 0 20px 18px; }
+
+        /* ── Footer ── */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
+        .footer-widget p { font-size: 0.875rem; line-height: 1.7; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { font-size: 0.875rem; color: #94a3b8; transition: color .2s; }
+        .footer-links a:hover { color: white; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.875rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } .tips-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .main-tool-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .tool-header h1 { font-size: 1.8rem; }
+            .preview-panel { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="/" class="logo">SERP Preview</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#search-engines">Search Engines</a></li>
+                <li><a href="/#social-media">Social Media</a></li>
+                <li><a href="/#live-preview">Live Tool</a></li>
+            </ul>
+        </nav>
+        <a href="/#live-preview" class="btn">Google Previewing</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="tool-header">
+    <div class="container">
+        <h1>LinkedIn Post <span>Preview Tool</span></h1>
+        <p>See exactly how your LinkedIn post looks in the feed before you publish — text truncation, images, hashtags, reactions and all.</p>
+        <div class="badge-row">
+            <span class="badge">✓ 100% Free</span>
+            <span class="badge">✓ No Sign-up</span>
+            <span class="badge">✓ See More Preview</span>
+            <span class="badge">✓ Image Upload</span>
+            <span class="badge">✓ Hashtag Highlight</span>
+            <span class="badge">✓ Reaction Simulation</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section style="padding:0;">
+    <div class="container">
+        <div class="main-tool-grid">
+
+            <!-- LEFT: Input Panel -->
+            <div class="input-panel">
+                <div class="panel-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    Compose Your LinkedIn Post
+                </div>
+
+                <!-- Profile info -->
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="Jane Smith" maxlength="60">
+                </div>
+                <div class="form-group">
+                    <label for="headline">Headline / Title <span class="hint">Shows below your name</span></label>
+                    <input type="text" id="headline" placeholder="Senior Marketing Manager at Acme Corp" maxlength="120">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="degree-select">Connection Degree</label>
+                        <select id="degree-select">
+                            <option value="1st">1st degree</option>
+                            <option value="2nd">2nd degree</option>
+                            <option value="3rd">3rd degree</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-type-select">Post Type</label>
+                        <select id="post-type-select">
+                            <option value="text">Text only</option>
+                            <option value="image">Image post</option>
+                            <option value="article">Article / Newsletter</option>
+                            <option value="document">Document / PDF</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Post content -->
+                <div class="form-group">
+                    <label for="post-text">
+                        Post Content
+                        <span class="hint">#hashtags &amp; @mentions highlight</span>
+                    </label>
+                    <textarea id="post-text" placeholder="Share an insight, tell a story, or start a conversation…&#10;&#10;Tip: LinkedIn shows only the first ~210 characters before a 'see more' link. Your hook goes here."></textarea>
+                    <div class="char-bar-wrap">
+                        <div class="char-bar-track"><div class="char-bar-fill" id="char-bar"></div></div>
+                        <div class="char-info">
+                            <span id="char-label">0 / 3,000 characters</span>
+                            <span id="see-more-hint" style="color:var(--li-blue);font-weight:600;display:none;">⚠ "See more" will appear</span>
+                        </div>
+                    </div>
+                    <div class="emoji-row" id="emoji-row">
+                        <button class="emoji-btn">💼</button>
+                        <button class="emoji-btn">🚀</button>
+                        <button class="emoji-btn">💡</button>
+                        <button class="emoji-btn">🎯</button>
+                        <button class="emoji-btn">🙌</button>
+                        <button class="emoji-btn">📊</button>
+                        <button class="emoji-btn">✅</button>
+                        <button class="emoji-btn">🔥</button>
+                        <button class="emoji-btn">🌟</button>
+                        <button class="emoji-btn">📌</button>
+                    </div>
+                </div>
+
+                <!-- Document title (shown when document type selected) -->
+                <div class="form-group" id="doc-group" style="display:none;">
+                    <label for="doc-title">Document Title <span class="hint">PDF / Carousel title</span></label>
+                    <input type="text" id="doc-title" placeholder="Q1 2026 Marketing Report" maxlength="80">
+                </div>
+
+                <!-- Image upload -->
+                <div class="form-group" id="img-upload-group">
+                    <label for="image-upload">Upload Image <span class="hint">JPG, PNG, GIF, WebP</span></label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*">
+                        <div class="upload-icon">🖼️</div>
+                        <p>Click to upload or drag &amp; drop an image</p>
+                        <div class="file-name" id="file-name"></div>
+                    </div>
+                </div>
+
+                <!-- Engagement metrics -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reactions-count">Reactions</label>
+                        <input type="number" id="reactions-count" placeholder="e.g. 847" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments-count">Comments</label>
+                        <input type="number" id="comments-count" placeholder="e.g. 94" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reposts-count">Reposts <span class="hint">Optional</span></label>
+                    <input type="number" id="reposts-count" placeholder="e.g. 41" min="0">
+                </div>
+
+                <!-- Toggles -->
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show "Follow" button</span>
+                        <div class="toggle-switch on" id="follow-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show reactions bar</span>
+                        <div class="toggle-switch on" id="reactions-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-outline" id="reset-btn">Reset</button>
+                    <button class="btn btn-li btn-full" id="screenshot-btn">📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview Panel -->
+            <div class="preview-panel">
+                <div class="preview-label">Live Preview · LinkedIn Feed</div>
+
+                <div class="li-post" id="li-post">
+
+                    <!-- Header -->
+                    <div class="li-header">
+                        <div class="li-avatar" id="prev-avatar">J</div>
+                        <div class="li-user-col">
+                            <div class="li-name-row">
+                                <span class="li-name" id="prev-name">Jane Smith</span>
+                                <span class="li-degree" id="prev-degree">• 1st</span>
+                            </div>
+                            <div class="li-headline" id="prev-headline">Senior Marketing Manager at Acme Corp</div>
+                            <div class="li-meta-row">
+                                <span id="prev-time">1h</span>
+                                <span>·</span>
+                                <!-- Globe icon -->
+                                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm5.95 5h-2.33A9.3 9.3 0 0 0 10.5 2.1 6.53 6.53 0 0 1 13.95 5zM8 1.5c.93 0 2.02 1.27 2.65 3.5H5.35C5.98 2.77 7.07 1.5 8 1.5zM1.55 9.5A6.58 6.58 0 0 1 1.5 8c0-.51.06-1.01.16-1.5h2.67A13.6 13.6 0 0 0 4.25 8c0 .51.03 1.01.08 1.5H1.55zm.5 1.5h2.33A9.3 9.3 0 0 0 5.5 13.9 6.53 6.53 0 0 1 2.05 11zm2.33-5.5H1.55A6.53 6.53 0 0 1 5.5 2.1 9.3 9.3 0 0 0 4.38 5.5zM8 14.5c-.93 0-2.02-1.27-2.65-3.5h5.3C9.98 13.23 8.93 14.5 8 14.5zm2.83-5H5.17A11.9 11.9 0 0 1 5.08 8c0-.51.04-1.01.09-1.5h5.66A11.9 11.9 0 0 1 10.91 8c0 .51-.04 1.01-.08 1.5zm.17 4.4A9.3 9.3 0 0 0 12.12 11h2.33a6.53 6.53 0 0 1-3.45 2.9zm1.16-4.4A13.6 13.6 0 0 0 12.25 8c0-.51-.03-1.01-.08-1.5h2.67c.1.49.16.99.16 1.5s-.06 1.01-.16 1.5h-2.67z"/></svg>
+                            </div>
+                            <!-- Post type badge -->
+                            <div class="li-post-type" id="prev-post-type"></div>
+                        </div>
+                        <div class="li-more">
+                            <button class="li-follow-btn" id="prev-follow-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
+                                Follow
+                            </button>
+                            <button class="li-more-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="li-body">
+                        <div class="li-content" id="prev-content-wrap">
+                            <span id="prev-content">Your post content will appear here as you type…</span>
+                            <span id="see-more-btn-wrap" style="display:none;"> <button class="see-more-btn" id="see-more-btn">…more</button></span>
+                        </div>
+                    </div>
+
+                    <!-- Document card -->
+                    <div class="li-doc-card" id="prev-doc-card">
+                        <div class="li-doc-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <div class="li-doc-info">
+                            <div class="li-doc-title" id="prev-doc-title">Q1 2026 Marketing Report</div>
+                            <div class="li-doc-pages">12 pages · PDF</div>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="li-img-wrap" id="prev-img-wrap">
+                        <div class="li-img-placeholder" id="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                            <span>Upload an image to preview</span>
+                        </div>
+                    </div>
+
+                    <!-- Reactions bar -->
+                    <div id="reactions-bar">
+                        <div class="li-reactions-row">
+                            <div class="li-reactions-left">
+                                <div class="li-reaction-icons">
+                                    <div class="li-reaction-icon" style="background:#0A66C2;font-size:10px;">👍</div>
+                                    <div class="li-reaction-icon" style="background:#e44a3f;font-size:10px;">❤️</div>
+                                    <div class="li-reaction-icon" style="background:#f5a623;font-size:10px;">🙌</div>
+                                </div>
+                                <span class="li-reactions-count" id="prev-reactions">847</span>
+                            </div>
+                            <div class="li-reactions-right">
+                                <span id="prev-comments">94 comments</span>
+                                <span id="prev-reposts">41 reposts</span>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="li-actions">
+                            <div class="li-action like-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                                Like
+                            </div>
+                            <div class="li-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                Comment
+                            </div>
+                            <div class="li-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                                Repost
+                            </div>
+                            <div class="li-action">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                Send
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end .li-post -->
+
+                <button class="copy-btn" id="copy-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Post Text
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="info-section">
+    <div class="container">
+        <h2>How to Use the LinkedIn Post Preview Tool</h2>
+        <p>Start by entering your full name and professional headline — these appear directly below your avatar in the feed card, exactly as LinkedIn renders them. Next, select your connection degree and post type (Text, Image, Article or Document), then type or paste your post content into the editor. The live mockup updates with every keystroke, and #hashtags and @mentions are automatically highlighted in LinkedIn blue. Pay close attention to the "See more" indicator: LinkedIn truncates post text at around 210 characters — any content after that is hidden behind a click. Use the bar counter to keep your hook within that window. Upload a photo to see how it fills the post image slot, or enter a document title to preview a PDF card. Fill in custom reaction, comment and repost counts to simulate real engagement, toggle the Follow button and reactions bar on or off, then hit Screenshot to save a pixel-perfect PNG for client reviews, content calendars or approval workflows.</p>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section">
+    <div class="container">
+        <h2>Everything in This LinkedIn Post Preview Tool</h2>
+        <p class="sub">Built for B2B marketers, content creators, recruiters, founders and social media agencies.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Real-time Feed Mockup</h3>
+                <p>Every keystroke instantly updates a pixel-accurate LinkedIn post card — profile name, headline, connection degree, content, image and all action buttons.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <h3>"See More" Truncation Preview</h3>
+                <p>LinkedIn hides post text beyond ~210 characters. This tool shows you exactly where the cut-off falls and displays the "…more" button so you can craft the perfect hook.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <h3>Image Upload Preview</h3>
+                <p>Upload any JPG, PNG or WebP to see how it renders inside the LinkedIn post image area at desktop feed dimensions — no cropping surprises after posting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>Post Type Selector</h3>
+                <p>Switch between Text, Image, Article/Newsletter and Document/PDF post types. Each renders the correct card layout — including a realistic document tile with title and page count.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+                </div>
+                <h3>Hashtag &amp; Mention Highlighting</h3>
+                <p>#Hashtags and @mentions are detected automatically and rendered in LinkedIn blue — just as the real algorithm displays them in the live feed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Engagement Simulation</h3>
+                <p>Enter custom reaction, comment and repost counts to visualize your post with realistic social proof — great for mockups, pitches and client presentations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section">
+    <div class="container">
+        <h2>Tips for Writing High-Performing LinkedIn Posts</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div>
+                    <h4>Win the "See More" Click with a Strong First Line</h4>
+                    <p>LinkedIn shows only about 210 characters before truncating. Your opening sentence must be compelling enough to make connections click "more." Use the preview to verify your hook lands above the cut-off.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div>
+                    <h4>Use Short Paragraphs &amp; Line Breaks</h4>
+                    <p>Dense walls of text kill engagement on LinkedIn. Write one or two sentences per paragraph, hit Enter between ideas, and check the preview to ensure your post is scannable and easy to read in the feed.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div>
+                    <h4>Stick to 3–5 Focused Hashtags</h4>
+                    <p>LinkedIn's algorithm responds well to targeted hashtags. Using 3–5 relevant tags — not 20 — signals topical authority. Verify your hashtags render correctly in the preview before posting.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div>
+                    <h4>Include an Image or Document for More Reach</h4>
+                    <p>Visual posts routinely outperform text-only updates on LinkedIn. Upload your image or select the Document type to preview the PDF card and confirm cropping and layout before publishing.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div>
+                    <h4>Stay Within 3,000 Characters for Organic Reach</h4>
+                    <p>LinkedIn allows up to 3,000 characters per post. The counter in this tool tracks your character usage in real time with a progress bar so you never accidentally over-write or waste space.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">6</div>
+                <div>
+                    <h4>End with a Genuine Question or CTA</h4>
+                    <p>Posts that ask a direct question at the end generate significantly more comments. Confirm in the preview that your call-to-action is visible at the bottom of the expanded post without being buried.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Is this LinkedIn post preview tool free? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes — completely free with no account required, no watermarks and no usage limits. Open the page, compose your post, and preview it live without signing up for anything.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does this tool post to LinkedIn for me? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. This is a simulation and preview tool only. It does not connect to the LinkedIn API. Once your post looks perfect here, copy the text and post it yourself through LinkedIn.com or the LinkedIn mobile app.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Where does LinkedIn cut off the "See More" link? <span class="arrow">▼</span></div>
+            <div class="faq-a">LinkedIn typically truncates post text at around 210 characters on desktop and mobile feeds, hiding the rest behind a "…more" button. This tool shows you exactly where that cut-off falls in real time so you can craft a hook that grabs attention before it.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What is the LinkedIn post character limit? <span class="arrow">▼</span></div>
+            <div class="faq-a">LinkedIn allows up to 3,000 characters per post. The progress bar in this tool tracks your usage continuously. While the full 3,000 characters are allowed, most high-performing posts fall between 600 and 1,500 characters.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What image size is recommended for LinkedIn posts? <span class="arrow">▼</span></div>
+            <div class="faq-a">LinkedIn recommends 1200 × 627 px (1.91:1 ratio) for shared images, or 1080 × 1080 px for square posts. Upload either to the previewer to see how the image fills the post card at desktop resolution before publishing.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my content or image stored anywhere? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. Everything runs entirely inside your browser using the FileReader API and JavaScript. No text, image or personal data is ever sent to any server — your content stays completely private on your own device.</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>SERP Preview</h4>
+                <p>The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#search-engines">Search Tools</a></li>
+                    <li><a href="#social-media">Social Tools</a></li>
+                    <li><a href="/#live-preview">Live Preview</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="cookie">Cookie Policy</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 SERP Simulator. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function () {
+    const SEE_MORE_THRESHOLD = 210;
+    const MAX_CHARS = 3000;
+
+    // Inputs
+    const fullNameIn     = document.getElementById('full-name');
+    const headlineIn     = document.getElementById('headline');
+    const degreeSel      = document.getElementById('degree-select');
+    const postTypeSel    = document.getElementById('post-type-select');
+    const postTextIn     = document.getElementById('post-text');
+    const docTitleIn     = document.getElementById('doc-title');
+    const imgIn          = document.getElementById('image-upload');
+    const reactionsIn    = document.getElementById('reactions-count');
+    const commentsIn     = document.getElementById('comments-count');
+    const repostsIn      = document.getElementById('reposts-count');
+    const followToggle   = document.getElementById('follow-toggle');
+    const reactionsToggle= document.getElementById('reactions-toggle');
+
+    // Preview elements
+    const prevAvatar     = document.getElementById('prev-avatar');
+    const prevName       = document.getElementById('prev-name');
+    const prevDegree     = document.getElementById('prev-degree');
+    const prevHeadline   = document.getElementById('prev-headline');
+    const prevContent    = document.getElementById('prev-content');
+    const seeMoreWrap    = document.getElementById('see-more-btn-wrap');
+    const seeMoreBtn     = document.getElementById('see-more-btn');
+    const prevPostType   = document.getElementById('prev-post-type');
+    const prevDocCard    = document.getElementById('prev-doc-card');
+    const prevDocTitle   = document.getElementById('prev-doc-title');
+    const prevImgWrap    = document.getElementById('prev-img-wrap');
+    const imgPlaceholder = document.getElementById('img-placeholder');
+    const prevReactions  = document.getElementById('prev-reactions');
+    const prevComments   = document.getElementById('prev-comments');
+    const prevReposts    = document.getElementById('prev-reposts');
+    const reactionsBar   = document.getElementById('reactions-bar');
+    const prevFollowBtn  = document.getElementById('prev-follow-btn');
+    const charBar        = document.getElementById('char-bar');
+    const charLabel      = document.getElementById('char-label');
+    const seMoreHint     = document.getElementById('see-more-hint');
+    const uploadArea     = document.getElementById('upload-area');
+    const fileNameEl     = document.getElementById('file-name');
+    const imgUploadGroup = document.getElementById('img-upload-group');
+    const docGroup       = document.getElementById('doc-group');
+
+    let showFollow    = true;
+    let showReactions = true;
+    let isExpanded    = false;
+    let currentImg    = null;
+
+    /* ── Helpers ── */
+    function fmtNum(val) {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) return null;
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 1000)    return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        return n.toLocaleString();
+    }
+
+    function highlightText(text) {
+        return text
+            .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+            .replace(/(#[\w\u00C0-\u024F]+)/g, '<span class="hashtag">$1</span>')
+            .replace(/(@[\w]+)/g, '<span class="mention">$1</span>');
+    }
+
+    /* ── Name ── */
+    fullNameIn.addEventListener('input', () => {
+        const v = fullNameIn.value.trim() || 'Jane Smith';
+        prevName.textContent = v;
+        prevAvatar.textContent = v.charAt(0).toUpperCase();
+    });
+
+    /* ── Headline ── */
+    headlineIn.addEventListener('input', () => {
+        prevHeadline.textContent = headlineIn.value.trim() || 'Senior Marketing Manager at Acme Corp';
+    });
+
+    /* ── Degree ── */
+    degreeSel.addEventListener('change', () => {
+        prevDegree.textContent = '• ' + degreeSel.value;
+    });
+
+    /* ── Post type ── */
+    postTypeSel.addEventListener('change', updatePostType);
+    function updatePostType() {
+        const type = postTypeSel.value;
+        // Badge
+        const labels = { text: '', image: 'Image', article: 'Article', document: 'Document' };
+        prevPostType.textContent = labels[type] || '';
+        prevPostType.classList.toggle('visible', type !== 'text');
+        // Show/hide doc card
+        prevDocCard.classList.toggle('visible', type === 'document');
+        docGroup.style.display = type === 'document' ? 'block' : 'none';
+        // Show/hide image upload
+        imgUploadGroup.style.display = type === 'document' ? 'none' : 'block';
+        // Show/hide img placeholder
+        if (type === 'document') {
+            prevImgWrap.style.display = 'none';
+        } else {
+            prevImgWrap.style.display = 'block';
+        }
+    }
+
+    /* ── Document title ── */
+    docTitleIn.addEventListener('input', () => {
+        prevDocTitle.textContent = docTitleIn.value.trim() || 'Q1 2026 Marketing Report';
+    });
+
+    /* ── Post text ── */
+    postTextIn.addEventListener('input', updateText);
+
+    function updateText() {
+        const val = postTextIn.value;
+        const len = val.length;
+
+        // Progress bar
+        const pct = Math.min((len / MAX_CHARS) * 100, 100);
+        charBar.style.width = pct + '%';
+        charBar.className = 'char-bar-fill' + (len > MAX_CHARS ? ' over' : len > 2700 ? ' warn' : '');
+        charLabel.textContent = len + ' / ' + MAX_CHARS.toLocaleString() + ' characters';
+        charLabel.className = len > MAX_CHARS ? 'over' : len > 2700 ? 'warn' : '';
+        seMoreHint.style.display = (len > SEE_MORE_THRESHOLD) ? 'inline' : 'none';
+
+        if (!val) {
+            prevContent.innerHTML = 'Your post content will appear here as you type…';
+            seeMoreWrap.style.display = 'none';
+            isExpanded = false;
+            return;
+        }
+
+        isExpanded = false;
+        renderContent(val);
+    }
+
+    function renderContent(val) {
+        if (val.length <= SEE_MORE_THRESHOLD || isExpanded) {
+            prevContent.innerHTML = highlightText(val);
+            seeMoreWrap.style.display = 'none';
+        } else {
+            const truncated = val.slice(0, SEE_MORE_THRESHOLD);
+            prevContent.innerHTML = highlightText(truncated);
+            seeMoreWrap.style.display = 'inline';
+            seeMoreBtn.textContent = '…more';
+        }
+    }
+
+    seeMoreBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        renderContent(postTextIn.value);
+        if (isExpanded) seeMoreBtn.textContent = ' show less';
+    });
+
+    /* ── Emoji ── */
+    document.getElementById('emoji-row').addEventListener('click', e => {
+        const btn = e.target.closest('.emoji-btn');
+        if (!btn) return;
+        const pos = postTextIn.selectionStart;
+        const b = postTextIn.value.slice(0, pos);
+        const a = postTextIn.value.slice(pos);
+        postTextIn.value = b + btn.textContent + a;
+        postTextIn.setSelectionRange(pos + btn.textContent.length, pos + btn.textContent.length);
+        postTextIn.focus();
+        updateText();
+    });
+
+    /* ── Image upload ── */
+    imgIn.addEventListener('change', handleImg);
+    function handleImg() {
+        const file = imgIn.files[0];
+        if (!file) return;
+        fileNameEl.textContent = file.name;
+        fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = e => {
+            currentImg = e.target.result;
+            imgPlaceholder.style.display = 'none';
+            const old = prevImgWrap.querySelector('.li-img-uploaded');
+            if (old) old.remove();
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Post image';
+            img.className = 'li-img-uploaded';
+            prevImgWrap.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Drag & drop
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault(); uploadArea.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+            fileNameEl.textContent = file.name; fileNameEl.style.display = 'block';
+            const reader = new FileReader();
+            reader.onload = ev => {
+                currentImg = ev.target.result;
+                imgPlaceholder.style.display = 'none';
+                const old = prevImgWrap.querySelector('.li-img-uploaded');
+                if (old) old.remove();
+                const img = document.createElement('img');
+                img.src = ev.target.result; img.alt = 'Post image'; img.className = 'li-img-uploaded';
+                prevImgWrap.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    /* ── Engagement counts ── */
+    function updateEngagement() {
+        const r = fmtNum(reactionsIn.value);
+        const c = fmtNum(commentsIn.value);
+        const rp = fmtNum(repostsIn.value);
+        prevReactions.textContent = r || '847';
+        prevComments.textContent  = (c || '94') + ' comments';
+        prevReposts.textContent   = (rp || '41') + ' reposts';
+    }
+    [reactionsIn, commentsIn, repostsIn].forEach(el => el.addEventListener('input', updateEngagement));
+
+    /* ── Follow toggle ── */
+    followToggle.addEventListener('click', () => {
+        showFollow = !showFollow;
+        followToggle.classList.toggle('on', showFollow);
+        prevFollowBtn.style.display = showFollow ? 'flex' : 'none';
+    });
+
+    /* ── Reactions toggle ── */
+    reactionsToggle.addEventListener('click', () => {
+        showReactions = !showReactions;
+        reactionsToggle.classList.toggle('on', showReactions);
+        reactionsBar.style.display = showReactions ? 'block' : 'none';
+    });
+
+    /* ── Reset ── */
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        fullNameIn.value = ''; headlineIn.value = '';
+        postTextIn.value = ''; docTitleIn.value = '';
+        reactionsIn.value = ''; commentsIn.value = ''; repostsIn.value = '';
+        degreeSel.value = '1st'; postTypeSel.value = 'text';
+        showFollow = true; showReactions = true; isExpanded = false; currentImg = null;
+        followToggle.classList.add('on'); reactionsToggle.classList.add('on');
+        prevFollowBtn.style.display = 'flex'; reactionsBar.style.display = 'block';
+        prevName.textContent = 'Jane Smith'; prevAvatar.textContent = 'J';
+        prevHeadline.textContent = 'Senior Marketing Manager at Acme Corp';
+        prevDegree.textContent = '• 1st';
+        prevContent.innerHTML = 'Your post content will appear here as you type…';
+        seeMoreWrap.style.display = 'none';
+        prevPostType.classList.remove('visible'); prevDocCard.classList.remove('visible');
+        docGroup.style.display = 'none'; imgUploadGroup.style.display = 'block';
+        prevImgWrap.style.display = 'block';
+        const old = prevImgWrap.querySelector('.li-img-uploaded');
+        if (old) old.remove();
+        imgPlaceholder.style.display = 'flex';
+        fileNameEl.style.display = 'none';
+        charBar.style.width = '0%'; charBar.className = 'char-bar-fill';
+        charLabel.textContent = '0 / 3,000 characters'; charLabel.className = '';
+        seMoreHint.style.display = 'none';
+        prevDocTitle.textContent = 'Q1 2026 Marketing Report';
+        updateEngagement();
+    });
+
+    /* ── Screenshot ── */
+    document.getElementById('screenshot-btn').addEventListener('click', () => {
+        const post = document.getElementById('li-post');
+        html2canvas(post, { useCORS: true, scale: 2, backgroundColor: '#ffffff' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'linkedin-post-preview.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    /* ── Copy text ── */
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        const text = postTextIn.value || 'Your post content will appear here as you type…';
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerHTML = '✓ Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Post Text';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+
+    /* ── FAQ accordion ── */
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+})();
+</script>
+</body>
+</html>
