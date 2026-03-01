@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SERP Preview</title>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SERP simulator",
+      "url": "https://serppreview.github.io",
+      "description": "A collection of free tools to preview how content appears on search engines and social media platforms.",
+      "applicationCategory": "SEO Tool",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 12px;
+        }
+
+        body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); margin: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: var(--white); border-bottom: 1px solid var(--border); }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { font-weight: 500; color: var(--gray); text-decoration: none; }
+
+        /* Contact Card */
+        .contact-section { padding: 80px 0; display: flex; justify-content: center; }
+        .contact-card {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: #eff6ff;
+            border-radius: 50px;
+            transition: transform 0.2s;
+        }
+
+        .email-link:hover { transform: scale(1.05); }
+
+        footer { background: #1e293b; color: #94a3b8; padding: 40px 0; text-align: center; margin-top: 80px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                SERP Preview
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container contact-section">
+        <div class="contact-card">
+            <div style="font-size: 3rem; margin-bottom: 20px;">✉️</div>
+            <h1>Get in Touch</h1>
+            <p>Have a feature request, found a bug, or just want to say hi? We'd love to hear from you. Drop us an email and we'll get back to you as soon as possible.</p>
+            
+            <a href="mailto:nolushac@gmail.com" class="email-link">nolushac@gmail.com</a>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; color: var(--gray);">
+                Typical response time: Within 24-48 hours.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SERP simulator. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
