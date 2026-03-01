@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Post Preview Tool – Free Channel & Group Message Simulator</title>
+    <meta name="description" content="Free Telegram Post Preview tool. Simulate your Telegram channel post or group message exactly as it appears before publishing. Preview text, images, buttons, reactions, views and more.">
+    <meta name="keywords" content="Telegram post preview, Telegram channel preview, Telegram message simulator, Telegram post checker, Telegram channel post mockup, Telegram marketing tool, Telegram bot message preview, Telegram group message preview, Telegram post generator, Telegram content tool, channel post simulator, Telegram dark mode preview">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232AABEE"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Telegram Post Preview Tool",
+  "url": "https://serppreview.github.io/telegram-post-preview",
+  "description": "A free tool to visualize how your Telegram channel posts and group messages will appear before publishing. Preview text formatting, images, inline buttons, reactions, views and subscriber count.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Real-time Telegram Channel Post Visualization",
+    "Text message and channel post preview",
+    "Image and media upload preview",
+    "Inline button simulation",
+    "Reaction bar with emoji counts",
+    "View count display",
+    "Dark and Light mode preview",
+    "Channel and group mode",
+    "Screenshot export"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #166fe5;
+            --primary-light: #e7f0fd;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f0f2f5;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+            --success: #00c851;
+
+            /* Telegram palette */
+            --tg-blue: #2AABEE;
+            --tg-blue-dark: #1a8fc4;
+            --tg-blue-light: #EBF7FD;
+            --tg-blue-deep: #006CBE;
+
+            /* Light mode */
+            --tg-light-bg: #F0F2F5;
+            --tg-light-chat: #FFFFFF;
+            --tg-light-bubble-out: #EEFFDE;
+            --tg-light-bubble-in: #FFFFFF;
+            --tg-light-text: #000000;
+            --tg-light-sub: #8D969C;
+            --tg-light-date: #8D969C;
+            --tg-light-border: #DFE4E8;
+            --tg-light-toolbar: #FFFFFF;
+            --tg-light-channel-name: #006CBE;
+
+            /* Dark mode */
+            --tg-dark-bg: #212121;
+            --tg-dark-chat: #0E1621;
+            --tg-dark-bubble-out: #2B5278;
+            --tg-dark-bubble-in: #182533;
+            --tg-dark-text: #FFFFFF;
+            --tg-dark-sub: #708EA4;
+            --tg-dark-date: #708EA4;
+            --tg-dark-border: #293946;
+            --tg-dark-toolbar: #17212B;
+            --tg-dark-channel-name: #6DBEED;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── Header ── */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; transition: background .2s; font-family: inherit; font-size: 0.9rem; }
+        .btn:hover { background: var(--primary-dark); }
+
+        /* ── Hero ── */
+        .tool-header { padding: 56px 0 36px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border); }
+        .tool-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--dark); }
+        .tool-header h1 span { color: var(--tg-blue); }
+        .tool-header p { color: var(--gray); margin-top: 10px; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .badge-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: var(--tg-blue-light); color: var(--tg-blue-dark); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+        /* ── Main Tool Grid ── */
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; align-items: start; }
+
+        /* ── Input Panel ── */
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); }
+        .panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .tg-logo-icon { width: 22px; height: 22px; background: var(--tg-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tg-logo-icon svg { width: 13px; height: 13px; fill: white; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .form-group label .hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="url"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.95rem; font-family: inherit; transition: border-color .2s, box-shadow .2s;
+            background: #fafafa; color: var(--dark);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--tg-blue); box-shadow: 0 0 0 3px rgba(42,171,238,.12); background: #fff;
+        }
+        .form-group textarea { resize: vertical; line-height: 1.65; min-height: 120px; }
+        .form-group select { cursor: pointer; }
+
+        /* Char counter */
+        .char-row { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.78rem; color: var(--gray); }
+        .char-row .warn { color: #f59e0b; }
+        .char-row .over { color: #ef4444; }
+
+        /* Progress bar */
+        .prog-bar-track { height: 3px; background: #e2e8f0; border-radius: 2px; margin-top: 5px; overflow: hidden; }
+        .prog-bar-fill { height: 100%; background: var(--tg-blue); border-radius: 2px; transition: width .2s, background .2s; width: 0%; }
+        .prog-bar-fill.warn { background: #f59e0b; }
+        .prog-bar-fill.over  { background: #ef4444; }
+
+        /* Formatting toolbar */
+        .fmt-toolbar { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+        .fmt-btn { background: #f1f5f9; border: 1px solid var(--border); border-radius: 5px; padding: 4px 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: background .15s; font-family: inherit; }
+        .fmt-btn:hover { background: var(--tg-blue-light); border-color: var(--tg-blue); color: var(--tg-blue); }
+        .fmt-btn.bold-btn { font-weight: 900; }
+        .fmt-btn.italic-btn { font-style: italic; }
+        .fmt-btn.code-btn { font-family: monospace; }
+
+        /* Emoji row */
+        .emoji-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .emoji-btn { background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 1.1rem; cursor: pointer; transition: background .15s; }
+        .emoji-btn:hover { background: var(--tg-blue-light); border-color: var(--tg-blue); }
+
+        /* Upload */
+        .upload-area { border: 2px dashed var(--border); border-radius: 8px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+        .upload-area:hover, .upload-area.drag-over { border-color: var(--tg-blue); background: var(--tg-blue-light); }
+        .upload-area input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .upload-area p { font-size: 0.875rem; color: var(--gray); }
+        .file-name { font-size: 0.82rem; color: var(--tg-blue); font-weight: 600; margin-top: 4px; display: none; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Inline button builder */
+        .btn-builder { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+        .btn-builder-header { background: #f8fafc; padding: 8px 12px; font-size: 0.8rem; font-weight: 600; color: var(--gray); display: flex; justify-content: space-between; align-items: center; }
+        .btn-builder-add { background: none; border: none; cursor: pointer; color: var(--tg-blue); font-size: 0.8rem; font-weight: 600; font-family: inherit; }
+        .btn-builder-add:hover { text-decoration: underline; }
+        .btn-list { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+        .btn-row-input { display: flex; gap: 6px; align-items: center; }
+        .btn-row-input input { flex: 1; padding: 6px 10px; border: 1px solid var(--border); border-radius: 5px; font-size: 0.85rem; font-family: inherit; }
+        .btn-row-input input:focus { outline: none; border-color: var(--tg-blue); }
+        .btn-row-del { background: none; border: none; cursor: pointer; color: #94a3b8; font-size: 1rem; padding: 2px 6px; border-radius: 4px; transition: background .15s; }
+        .btn-row-del:hover { background: #fee2e2; color: #ef4444; }
+
+        /* Reaction builder */
+        .reaction-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .reaction-pick { background: #f1f5f9; border: 1.5px solid var(--border); border-radius: 20px; padding: 4px 10px; font-size: 0.85rem; cursor: pointer; transition: all .15s; font-family: inherit; }
+        .reaction-pick:hover { border-color: var(--tg-blue); background: var(--tg-blue-light); }
+        .reaction-pick.active { border-color: var(--tg-blue); background: var(--tg-blue-light); }
+
+        /* Toggle */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label-text { font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 11px; position: relative; transition: background .2s; flex-shrink: 0; cursor: pointer; }
+        .toggle-switch.on { background: var(--tg-blue); }
+        .toggle-knob { width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .toggle-switch.on .toggle-knob { left: 21px; }
+
+        /* Action row */
+        .action-row { display: flex; gap: 10px; margin-top: 6px; }
+        .btn-outline { padding: 10px 18px; border: 1.5px solid var(--tg-blue); color: var(--tg-blue); background: transparent; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .2s; font-family: inherit; }
+        .btn-outline:hover { background: var(--tg-blue-light); }
+        .btn-tg { background: var(--tg-blue); }
+        .btn-tg:hover { background: var(--tg-blue-dark); }
+        .btn-full { flex: 1; }
+
+        /* ── Preview Panel ── */
+        .preview-panel { padding: 0; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 90px; height: fit-content; overflow: hidden; transition: border-color .3s; }
+
+        /* Mode tabs above panel */
+        .panel-top-bar { background: var(--white); padding: 14px 16px 12px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+        .preview-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); text-align: center; }
+        .mode-tabs { display: flex; gap: 8px; justify-content: center; }
+        .mode-tab { padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); transition: all .2s; }
+        .mode-tab.active { background: var(--tg-blue); color: white; border-color: var(--tg-blue); }
+
+        /* Telegram chat shell */
+        .tg-chat-shell { display: flex; flex-direction: column; height: 520px; background: var(--tg-light-bg); transition: background .3s; }
+        .tg-chat-shell.dark { background: var(--tg-dark-bg); }
+
+        /* Toolbar */
+        .tg-toolbar { height: 52px; background: var(--tg-light-toolbar); display: flex; align-items: center; padding: 0 14px; gap: 12px; border-bottom: 1px solid var(--tg-light-border); flex-shrink: 0; transition: background .3s, border-color .3s; }
+        .tg-chat-shell.dark .tg-toolbar { background: var(--tg-dark-toolbar); border-color: var(--tg-dark-border); }
+        .tg-toolbar-back { color: var(--tg-blue); display: flex; align-items: center; cursor: pointer; }
+        .tg-toolbar-back svg { width: 20px; height: 20px; }
+        .tg-toolbar-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--tg-blue) 0%, #006CBE 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; cursor: pointer; }
+        .tg-toolbar-info { flex: 1; min-width: 0; }
+        .tg-toolbar-name { font-size: 15px; font-weight: 600; color: var(--tg-light-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+        .tg-chat-shell.dark .tg-toolbar-name { color: var(--tg-dark-text); }
+        .tg-toolbar-sub { font-size: 12px; color: var(--tg-light-sub); }
+        .tg-chat-shell.dark .tg-toolbar-sub { color: var(--tg-dark-sub); }
+        .tg-toolbar-actions { display: flex; gap: 14px; color: var(--tg-light-sub); }
+        .tg-toolbar-actions svg { width: 20px; height: 20px; cursor: pointer; }
+
+        /* Chat area */
+        .tg-chat-area { flex: 1; overflow-y: auto; padding: 12px 10px; display: flex; flex-direction: column; gap: 4px; background: var(--tg-light-bg); transition: background .3s; }
+        .tg-chat-shell.dark .tg-chat-area { background: var(--tg-dark-chat); }
+
+        /* Date separator */
+        .tg-date-sep { text-align: center; margin: 6px 0; }
+        .tg-date-sep span { background: rgba(0,0,0,.35); color: white; font-size: 11px; padding: 3px 10px; border-radius: 12px; }
+        .tg-chat-shell.dark .tg-date-sep span { background: rgba(255,255,255,.12); }
+
+        /* ── Message bubble ── */
+        .tg-message { display: flex; flex-direction: column; max-width: 85%; align-self: flex-end; position: relative; }
+        .tg-message.channel { align-self: stretch; max-width: 100%; }
+
+        /* Channel post bubble */
+        .tg-bubble {
+            background: var(--tg-light-bubble-out);
+            border-radius: 12px 12px 2px 12px;
+            padding: 8px 10px;
+            word-break: break-word;
+            box-shadow: 0 1px 2px rgba(0,0,0,.12);
+            transition: background .3s;
+            position: relative;
+        }
+        .tg-message.channel .tg-bubble {
+            border-radius: 12px;
+            background: var(--tg-light-bubble-in);
+        }
+        .tg-chat-shell.dark .tg-bubble { background: var(--tg-dark-bubble-out); }
+        .tg-chat-shell.dark .tg-message.channel .tg-bubble { background: var(--tg-dark-bubble-in); }
+
+        /* Channel header inside bubble */
+        .tg-channel-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(0,0,0,.06); }
+        .tg-chat-shell.dark .tg-channel-header { border-color: rgba(255,255,255,.06); }
+        .tg-channel-avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--tg-blue) 0%, #006CBE 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 700; }
+        .tg-channel-name { font-size: 13px; font-weight: 700; color: var(--tg-light-channel-name); cursor: pointer; }
+        .tg-chat-shell.dark .tg-channel-name { color: var(--tg-dark-channel-name); }
+        .tg-verified-icon { color: var(--tg-blue); display: none; }
+        .tg-verified-icon.visible { display: inline-flex; }
+        .tg-verified-icon svg { width: 14px; height: 14px; }
+
+        /* Media */
+        .tg-media { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 6px; background: rgba(0,0,0,.06); display: none; }
+        .tg-media.visible { display: block; }
+        .tg-media img { width: 100%; display: block; max-height: 260px; object-fit: cover; }
+        .tg-media-placeholder { height: 140px; display: flex; align-items: center; justify-content: center; }
+        .tg-media-placeholder svg { width: 36px; height: 36px; color: rgba(0,0,0,.2); }
+        .tg-chat-shell.dark .tg-media-placeholder svg { color: rgba(255,255,255,.2); }
+
+        /* Link preview card */
+        .tg-link-preview { display: none; border-left: 3px solid var(--tg-blue); padding: 6px 8px; margin: 4px 0 6px; border-radius: 0 6px 6px 0; background: rgba(42,171,238,.08); }
+        .tg-link-preview.visible { display: block; }
+        .tg-link-preview-title { font-size: 12px; font-weight: 700; color: var(--tg-blue); margin-bottom: 2px; }
+        .tg-link-preview-desc { font-size: 11px; color: var(--tg-light-sub); }
+        .tg-chat-shell.dark .tg-link-preview-desc { color: var(--tg-dark-sub); }
+        .tg-link-preview-url { font-size: 10px; color: var(--tg-blue); margin-top: 2px; }
+
+        /* Post body */
+        .tg-post-text { font-size: 14px; line-height: 1.55; color: var(--tg-light-text); white-space: pre-wrap; word-break: break-word; }
+        .tg-chat-shell.dark .tg-post-text { color: var(--tg-dark-text); }
+        .tg-post-text strong { font-weight: 700; }
+        .tg-post-text em { font-style: italic; }
+        .tg-post-text code { font-family: 'Courier New', monospace; background: rgba(0,0,0,.08); padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+        .tg-chat-shell.dark .tg-post-text code { background: rgba(255,255,255,.1); }
+        .tg-post-text a { color: var(--tg-blue); text-decoration: none; }
+
+        /* Meta row (time + views + forwarded) */
+        .tg-meta { display: flex; align-items: center; gap: 5px; margin-top: 4px; justify-content: flex-end; }
+        .tg-views { display: flex; align-items: center; gap: 3px; font-size: 11px; color: var(--tg-light-date); }
+        .tg-views svg { width: 13px; height: 13px; }
+        .tg-chat-shell.dark .tg-views { color: var(--tg-dark-date); }
+        .tg-time { font-size: 11px; color: var(--tg-light-date); }
+        .tg-chat-shell.dark .tg-time { color: var(--tg-dark-date); }
+        .tg-edited { font-size: 11px; color: var(--tg-light-date); font-style: italic; display: none; }
+        .tg-chat-shell.dark .tg-edited { color: var(--tg-dark-date); }
+        .tg-edited.visible { display: inline; }
+        .tg-read-tick { color: var(--tg-blue); display: flex; align-items: center; }
+        .tg-read-tick svg { width: 14px; height: 14px; }
+
+        /* Inline buttons */
+        .tg-inline-buttons { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+        .tg-btn-row { display: flex; gap: 4px; }
+        .tg-inline-btn {
+            flex: 1; background: rgba(42,171,238,.14); color: var(--tg-blue);
+            border: none; border-radius: 6px; padding: 8px 10px;
+            font-size: 12px; font-weight: 600; text-align: center;
+            cursor: pointer; font-family: inherit; transition: background .15s;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .tg-inline-btn:hover { background: rgba(42,171,238,.24); }
+        .tg-chat-shell.dark .tg-inline-btn { background: rgba(42,171,238,.18); }
+
+        /* Reactions */
+        .tg-reactions { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+        .tg-reaction-pill {
+            display: flex; align-items: center; gap: 3px;
+            background: rgba(42,171,238,.12); border: 1px solid rgba(42,171,238,.25);
+            border-radius: 20px; padding: 3px 8px;
+            font-size: 12px; cursor: pointer; transition: background .15s;
+        }
+        .tg-reaction-pill:hover { background: rgba(42,171,238,.22); }
+        .tg-reaction-pill.chosen { background: rgba(42,171,238,.25); border-color: var(--tg-blue); }
+        .tg-reaction-count { font-weight: 600; color: var(--tg-blue); font-size: 11px; }
+
+        /* Input bar */
+        .tg-input-bar { background: var(--tg-light-toolbar); border-top: 1px solid var(--tg-light-border); padding: 8px 12px; display: flex; align-items: center; gap: 8px; flex-shrink: 0; transition: background .3s, border-color .3s; }
+        .tg-chat-shell.dark .tg-input-bar { background: var(--tg-dark-toolbar); border-color: var(--tg-dark-border); }
+        .tg-input-stub { flex: 1; background: var(--tg-light-bg); border-radius: 20px; padding: 8px 14px; font-size: 13px; color: var(--tg-light-sub); }
+        .tg-chat-shell.dark .tg-input-stub { background: var(--tg-dark-bg); color: var(--tg-dark-sub); }
+        .tg-send-icon { color: var(--tg-blue); }
+        .tg-send-icon svg { width: 24px; height: 24px; }
+
+        /* Copy btn */
+        .copy-btn-wrap { padding: 12px 16px; background: var(--white); border-top: 1px solid var(--border); }
+        .copy-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; padding: 10px; background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .2s; font-family: inherit; }
+        .copy-btn:hover { border-color: var(--tg-blue); color: var(--tg-blue); }
+        .copy-btn.copied { border-color: var(--success); color: var(--success); }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .info-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .info-section p { color: var(--gray); font-size: 0.97rem; line-height: 1.75; max-width: 780px; }
+
+        /* ── Features ── */
+        .features-section { padding: 60px 0; background: var(--light); }
+        .features-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; text-align: center; }
+        .features-section .sub { text-align: center; color: var(--gray); margin-bottom: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; transition: box-shadow .2s, transform .2s; }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--tg-blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .feature-icon svg { width: 22px; height: 22px; color: var(--tg-blue); }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── Tips ── */
+        .tips-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .tips-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-card { background: var(--light); border-radius: 10px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+        .tip-num { width: 32px; height: 32px; background: var(--tg-blue); color: white; border-radius: 50%; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tip-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 60px 0; background: var(--light); border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; font-weight: 600; font-size: 0.97rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background .15s; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-q .arrow { font-size: 1.1rem; transition: transform .3s; color: var(--gray); }
+        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .faq-item.open .faq-a { max-height: 320px; padding: 0 20px 18px; }
+
+        /* ── Footer ── */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
+        .footer-widget p { font-size: 0.875rem; line-height: 1.7; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { font-size: 0.875rem; color: #94a3b8; transition: color .2s; }
+        .footer-links a:hover { color: white; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.875rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } .tips-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .main-tool-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .tool-header h1 { font-size: 1.8rem; }
+            .preview-panel { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="/" class="logo">SERP Preview</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#search-engines">Search Engines</a></li>
+                <li><a href="/#social-media">Social Media</a></li>
+                <li><a href="/#live-preview">Live Tool</a></li>
+            </ul>
+        </nav>
+        <a href="/#live-preview" class="btn">Google Previewing</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="tool-header">
+    <div class="container">
+        <h1>Telegram Post <span>Preview Tool</span></h1>
+        <p>Simulate exactly how your Telegram channel post or group message appears before publishing — text, images, inline buttons, reactions, views and the full chat UI.</p>
+        <div class="badge-row">
+            <span class="badge">✓ 100% Free</span>
+            <span class="badge">✓ No Sign-up</span>
+            <span class="badge">✓ Channel &amp; Group Mode</span>
+            <span class="badge">✓ Inline Buttons</span>
+            <span class="badge">✓ Dark &amp; Light Mode</span>
+            <span class="badge">✓ Screenshot Export</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section style="padding:0;">
+    <div class="container">
+        <div class="main-tool-grid">
+
+            <!-- LEFT: Input Panel -->
+            <div class="input-panel">
+                <div class="panel-title">
+                    <div class="tg-logo-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </div>
+                    Compose Your Telegram Post
+                </div>
+
+                <!-- Channel / Group -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="post-mode">Post Mode</label>
+                        <select id="post-mode">
+                            <option value="channel">📢 Channel Post</option>
+                            <option value="group">👥 Group Message</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="channel-name">Channel / Group Name</label>
+                        <input type="text" id="channel-name" placeholder="My Telegram Channel" maxlength="128">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="subscribers">Subscribers <span class="hint">Channel only</span></label>
+                        <input type="number" id="subscribers" placeholder="e.g. 24,800" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="username-handle">@Username <span class="hint">Optional</span></label>
+                        <input type="text" id="username-handle" placeholder="mychannel" maxlength="32">
+                    </div>
+                </div>
+
+                <!-- Post text -->
+                <div class="form-group">
+                    <label for="post-text">
+                        Message / Post Text
+                        <span class="hint">4,096 char limit</span>
+                    </label>
+                    <textarea id="post-text" placeholder="Write your Telegram message here…&#10;&#10;Supports **bold**, __italic__, `code` and links."></textarea>
+                    <div class="prog-bar-track"><div class="prog-bar-fill" id="text-bar"></div></div>
+                    <div class="char-row">
+                        <span id="text-char">0 / 4,096 characters</span>
+                    </div>
+                    <!-- Formatting shortcuts -->
+                    <div class="fmt-toolbar">
+                        <button class="fmt-btn bold-btn" data-wrap="**">B</button>
+                        <button class="fmt-btn italic-btn" data-wrap="__">I</button>
+                        <button class="fmt-btn code-btn" data-wrap="`">Code</button>
+                        <button class="fmt-btn" data-insert="||spoiler||">Spoiler</button>
+                        <button class="fmt-btn" data-insert="&#10;---&#10;">─ Line</button>
+                    </div>
+                    <div class="emoji-row">
+                        <button class="emoji-btn">🔥</button>
+                        <button class="emoji-btn">✅</button>
+                        <button class="emoji-btn">📢</button>
+                        <button class="emoji-btn">💡</button>
+                        <button class="emoji-btn">🚀</button>
+                        <button class="emoji-btn">⚡</button>
+                        <button class="emoji-btn">📊</button>
+                        <button class="emoji-btn">🎯</button>
+                        <button class="emoji-btn">👇</button>
+                        <button class="emoji-btn">🔔</button>
+                    </div>
+                </div>
+
+                <!-- Media upload -->
+                <div class="form-group">
+                    <label for="image-upload">Photo / Image <span class="hint">JPG, PNG, WebP, GIF</span></label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*">
+                        <div class="upload-icon">📷</div>
+                        <p>Click to upload or drag &amp; drop a photo</p>
+                        <div class="file-name" id="file-name"></div>
+                    </div>
+                </div>
+
+                <!-- Link preview -->
+                <div class="form-group">
+                    <label for="link-url">Link Preview URL <span class="hint">Optional</span></label>
+                    <input type="url" id="link-url" placeholder="https://example.com/article">
+                </div>
+                <div class="form-group" id="link-preview-group" style="display:none;">
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="link-preview-title">Preview Title</label>
+                            <input type="text" id="link-preview-title" placeholder="Article title…" maxlength="80">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label for="link-preview-desc">Preview Description</label>
+                            <input type="text" id="link-preview-desc" placeholder="Brief description…" maxlength="120">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inline buttons -->
+                <div class="form-group">
+                    <label>Inline Buttons <span class="hint">Up to 6 buttons</span></label>
+                    <div class="btn-builder">
+                        <div class="btn-builder-header">
+                            Button labels (one per row = one per row in post)
+                            <button class="btn-builder-add" id="add-btn-row">+ Add button</button>
+                        </div>
+                        <div class="btn-list" id="btn-list">
+                            <div class="btn-row-input">
+                                <input type="text" placeholder="Button label, e.g. 👉 Read More" maxlength="40" class="inline-btn-input">
+                                <button class="btn-row-del" title="Remove">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reactions -->
+                <div class="form-group">
+                    <label>Reactions <span class="hint">Click to toggle</span></label>
+                    <div class="reaction-row" id="reaction-picks">
+                        <button class="reaction-pick" data-emoji="👍" data-count="1.2K">👍 1.2K</button>
+                        <button class="reaction-pick" data-emoji="❤️" data-count="847">❤️ 847</button>
+                        <button class="reaction-pick" data-emoji="🔥" data-count="531">🔥 531</button>
+                        <button class="reaction-pick" data-emoji="🎉" data-count="214">🎉 214</button>
+                        <button class="reaction-pick" data-emoji="😮" data-count="98">😮 98</button>
+                        <button class="reaction-pick" data-emoji="😢" data-count="42">😢 42</button>
+                    </div>
+                </div>
+
+                <!-- Engagement & meta -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="views-count">Views</label>
+                        <input type="number" id="views-count" placeholder="e.g. 18,400" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="post-time">Post Time <span class="hint">Displayed in bubble</span></label>
+                        <input type="text" id="post-time" placeholder="10:42 AM" maxlength="12">
+                    </div>
+                </div>
+
+                <!-- Toggles -->
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Verified Channel Badge</span>
+                        <div class="toggle-switch" id="verified-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show "Edited" label</span>
+                        <div class="toggle-switch" id="edited-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Silent message (no notification)</span>
+                        <div class="toggle-switch" id="silent-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-outline" id="reset-btn">Reset</button>
+                    <button class="btn btn-tg btn-full" id="screenshot-btn">📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview Panel -->
+            <div class="preview-panel" id="preview-panel">
+                <div class="panel-top-bar">
+                    <div class="preview-label">Live Preview · Telegram</div>
+                    <div class="mode-tabs">
+                        <div class="mode-tab active" id="tab-light">☀️ Light</div>
+                        <div class="mode-tab" id="tab-dark">🌙 Dark</div>
+                    </div>
+                </div>
+
+                <!-- Telegram Chat Shell -->
+                <div class="tg-chat-shell" id="tg-chat-shell">
+
+                    <!-- Toolbar -->
+                    <div class="tg-toolbar">
+                        <div class="tg-toolbar-back">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                        </div>
+                        <div class="tg-toolbar-avatar" id="toolbar-avatar">T</div>
+                        <div class="tg-toolbar-info">
+                            <div class="tg-toolbar-name" id="toolbar-name">My Telegram Channel</div>
+                            <div class="tg-toolbar-sub" id="toolbar-sub">24.8K subscribers</div>
+                        </div>
+                        <div class="tg-toolbar-actions">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Chat area -->
+                    <div class="tg-chat-area" id="tg-chat-area">
+
+                        <!-- Date separator -->
+                        <div class="tg-date-sep"><span>Today</span></div>
+
+                        <!-- ── The post message ── -->
+                        <div class="tg-message channel" id="tg-message">
+                            <div class="tg-bubble" id="tg-bubble">
+
+                                <!-- Channel header (channel mode only) -->
+                                <div class="tg-channel-header" id="tg-channel-header">
+                                    <div class="tg-channel-avatar" id="bubble-avatar">T</div>
+                                    <span class="tg-channel-name" id="bubble-channel-name">My Telegram Channel</span>
+                                    <span class="tg-verified-icon" id="verified-icon">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path d="M6 12l4 4 8-8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+
+                                <!-- Media -->
+                                <div class="tg-media" id="tg-media">
+                                    <div class="tg-media-placeholder" id="media-placeholder">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                                    </div>
+                                </div>
+
+                                <!-- Link preview -->
+                                <div class="tg-link-preview" id="tg-link-preview">
+                                    <div class="tg-link-preview-title" id="lp-title">Article Title</div>
+                                    <div class="tg-link-preview-desc" id="lp-desc">Brief description of the linked content…</div>
+                                    <div class="tg-link-preview-url" id="lp-url">example.com</div>
+                                </div>
+
+                                <!-- Post text -->
+                                <div class="tg-post-text" id="tg-post-text">Your message will appear here as you type…</div>
+
+                                <!-- Meta -->
+                                <div class="tg-meta">
+                                    <span class="tg-edited" id="tg-edited">edited</span>
+                                    <div class="tg-views" id="tg-views-wrap">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                        <span id="tg-views-count">18.4K</span>
+                                    </div>
+                                    <span class="tg-time" id="tg-time">10:42 AM</span>
+                                    <div class="tg-read-tick" id="tg-read-tick">
+                                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>
+                                    </div>
+                                </div>
+
+                                <!-- Inline buttons -->
+                                <div class="tg-inline-buttons" id="tg-inline-buttons"></div>
+
+                            </div><!-- end .tg-bubble -->
+
+                            <!-- Reactions (outside bubble) -->
+                            <div class="tg-reactions" id="tg-reactions-display"></div>
+
+                        </div><!-- end .tg-message -->
+
+                    </div><!-- end .tg-chat-area -->
+
+                    <!-- Input bar -->
+                    <div class="tg-input-bar">
+                        <div class="tg-input-stub" id="input-stub-text">Message</div>
+                        <div class="tg-send-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21L23 12 2 3v7l15 2-15 2v7z"/></svg>
+                        </div>
+                    </div>
+
+                </div><!-- end .tg-chat-shell -->
+
+                <!-- Copy button -->
+                <div class="copy-btn-wrap">
+                    <button class="copy-btn" id="copy-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy Message Text
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="info-section">
+    <div class="container">
+        <h2>How to Use the Telegram Post Preview Tool</h2>
+        <p>Start by selecting whether you're previewing a Channel Post or a Group Message — this controls whether the sender header (channel avatar and name) appears inside the bubble. Enter your channel or group name and optional subscriber count; both render in the toolbar at the top of the chat shell, exactly as Telegram shows them. Type or paste your message in the text area — the tool renders Telegram-style text formatting: wrap text in **double asterisks** for bold, __underscores__ for italic, and backticks for inline code. Upload a photo to see it displayed above the message body. Enter a link URL to trigger the link preview card with a title and description you can customise. Build up to six inline buttons by entering labels in the button builder — buttons render as full-width pills inside the bubble below the text. Toggle reactions by clicking the emoji chips; active reactions appear as pill badges below the bubble with counts. Enter a view count and post time to fill the message meta row. Toggle the verified badge, "edited" label and silent notification mode. Switch between Telegram's light and dark chat themes with one click, then hit Screenshot to download the full chat shell as a PNG for content planning, channel audits or team reviews.</p>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section">
+    <div class="container">
+        <h2>Everything in This Telegram Post Preview Tool</h2>
+        <p class="sub">Built for Telegram channel owners, community managers, bot developers, content marketers and social media agencies.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Full Telegram Chat Shell</h3>
+                <p>Renders a complete, accurate Telegram chat interface — toolbar with avatar, channel name and subscriber count, the message bubble with all metadata, and the reply input bar at the bottom.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Channel &amp; Group Mode</h3>
+                <p>Switch between Channel Post (with sender header showing channel avatar and name inside the bubble) and Group Message (anonymous bubble) to preview the exact layout for each post type.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>Text Formatting Preview</h3>
+                <p>Telegram markdown renders in real time — **bold**, __italic__, `inline code` and spoiler tags all display exactly as Telegram clients render them. Use the formatting toolbar for quick insertion.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                </div>
+                <h3>Inline Button Builder</h3>
+                <p>Add up to six inline keyboard buttons by entering labels in the button builder. Each label renders as a full-width teal pill inside the message bubble — exactly how Telegram bot inline keyboards appear.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                </div>
+                <h3>Reactions &amp; View Count</h3>
+                <p>Toggle six reaction emojis (👍❤️🔥🎉😮😢) to see them render as pill badges below the bubble with formatted counts. Set a custom view count and post time for the message meta row.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+                </div>
+                <h3>Dark &amp; Light Mode Preview</h3>
+                <p>Switch between Telegram's white light theme and its signature dark navy theme with one click. Both modes use Telegram's exact colour variables so the preview matches every Telegram client setting.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section">
+    <div class="container">
+        <h2>Tips for Writing High-Performing Telegram Channel Posts</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div>
+                    <h4>Lead with the Most Important Information</h4>
+                    <p>Telegram shows only the first line of a message in the chat list preview. Put your headline, key announcement or value proposition in the very first sentence. Use this preview tool to confirm your opening line is clear and compelling before publishing.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div>
+                    <h4>Use Bold and Italic to Create Visual Hierarchy</h4>
+                    <p>Telegram supports bold, italic and code formatting natively. Use bold for headlines and key terms, italic for emphasis, and code for technical strings. Preview all formatting here to confirm it renders exactly as intended before the post goes live.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div>
+                    <h4>Add One Clear Inline Button per Call to Action</h4>
+                    <p>Inline buttons dramatically increase click-through rates compared to plain links in text. Build your button label in the button builder and preview how it renders inside the bubble before sending — ensure the label is specific and action-oriented.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div>
+                    <h4>Attach a High-Quality Image to Boost Engagement</h4>
+                    <p>Channel posts with photos generate significantly more views and forwards than text-only messages. Upload your image to this preview to see exactly how it fills the media area above the text body at Telegram's actual dimensions.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div>
+                    <h4>Keep Messages Concise and Skimmable</h4>
+                    <p>Channel subscribers scroll quickly. Use short paragraphs with line breaks, bold key phrases, and bullet points (using — or • dashes). Preview the full message in the chat shell to check readability at the actual bubble width before publishing.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">6</div>
+                <div>
+                    <h4>Preview in Dark Mode Before Scheduling</h4>
+                    <p>The majority of Telegram's active users prefer dark mode. Toggle the dark preview here to verify that your text formatting, images and inline buttons remain fully legible against Telegram's dark navy background before the post goes live.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Is this Telegram post preview tool free? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes — completely free with no account required, no watermarks and no usage limits. Open the page, compose your message and preview the full Telegram chat UI live without signing up for anything.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does this tool post to Telegram for me? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. This is a simulation and mockup tool only. It does not connect to the Telegram API or Bot API. Once your preview looks perfect here, copy the message text and publish it directly through Telegram or your bot's sendMessage endpoint.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What text formatting does Telegram support? <span class="arrow">▼</span></div>
+            <div class="faq-a">Telegram supports bold (**text**), italic (__text__), inline code (`text`), strikethrough (~~text~~), underline and spoiler tags natively. This tool renders bold, italic and code in real time so you can verify the formatting before publishing. For full HTML and MarkdownV2 formatting previews, use the formatting toolbar.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What is the Telegram message character limit? <span class="arrow">▼</span></div>
+            <div class="faq-a">Telegram allows up to 4,096 characters per message. The progress bar in this tool tracks your usage in real time. Channel posts can also include a caption of up to 1,024 characters when an image is attached — use the character counter to stay within bounds.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Can I preview inline keyboard buttons? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes. Enter up to six button labels in the inline button builder — each one renders as a full-width teal pill inside the message bubble, exactly as Telegram's Bot API inline keyboards display them. This lets you validate button placement and label wording before deploying your bot message.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my message content or image stored anywhere? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. Everything runs entirely inside your browser using the JavaScript FileReader API. No text, image or personal data is ever transmitted to any server — your content stays completely private on your own device.</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>SERP Preview</h4>
+                <p>The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Tools</a></li>
+                    <li><a href="/#social-media">Social Tools</a></li>
+                    <li><a href="/#live-preview">Live Preview</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="cookie">Cookie Policy</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 SERP Simulator. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function () {
+    const TEXT_MAX = 4096;
+
+    // Inputs
+    const postModeIn      = document.getElementById('post-mode');
+    const channelNameIn   = document.getElementById('channel-name');
+    const subscribersIn   = document.getElementById('subscribers');
+    const usernameIn      = document.getElementById('username-handle');
+    const postTextIn      = document.getElementById('post-text');
+    const imgIn           = document.getElementById('image-upload');
+    const linkUrlIn       = document.getElementById('link-url');
+    const linkTitleIn     = document.getElementById('link-preview-title');
+    const linkDescIn      = document.getElementById('link-preview-desc');
+    const viewsIn         = document.getElementById('views-count');
+    const postTimeIn      = document.getElementById('post-time');
+    const verifiedToggle  = document.getElementById('verified-toggle');
+    const editedToggle    = document.getElementById('edited-toggle');
+    const silentToggle    = document.getElementById('silent-toggle');
+
+    // Preview elements
+    const toolbarAvatar     = document.getElementById('toolbar-avatar');
+    const toolbarName       = document.getElementById('toolbar-name');
+    const toolbarSub        = document.getElementById('toolbar-sub');
+    const bubbleAvatar      = document.getElementById('bubble-avatar');
+    const bubbleChannelName = document.getElementById('bubble-channel-name');
+    const tgChannelHeader   = document.getElementById('tg-channel-header');
+    const verifiedIcon      = document.getElementById('verified-icon');
+    const tgMedia           = document.getElementById('tg-media');
+    const mediaPlaceholder  = document.getElementById('media-placeholder');
+    const tgLinkPreview     = document.getElementById('tg-link-preview');
+    const lpTitle           = document.getElementById('lp-title');
+    const lpDesc            = document.getElementById('lp-desc');
+    const lpUrl             = document.getElementById('lp-url');
+    const tgPostText        = document.getElementById('tg-post-text');
+    const tgEdited          = document.getElementById('tg-edited');
+    const tgViewsWrap       = document.getElementById('tg-views-wrap');
+    const tgViewsCount      = document.getElementById('tg-views-count');
+    const tgTime            = document.getElementById('tg-time');
+    const tgReadTick        = document.getElementById('tg-read-tick');
+    const tgInlineButtons   = document.getElementById('tg-inline-buttons');
+    const tgReactionsDisplay= document.getElementById('tg-reactions-display');
+    const tgChatShell       = document.getElementById('tg-chat-shell');
+    const inputStubText     = document.getElementById('input-stub-text');
+    const textBar           = document.getElementById('text-bar');
+    const textChar          = document.getElementById('text-char');
+    const uploadArea        = document.getElementById('upload-area');
+    const fileNameEl        = document.getElementById('file-name');
+
+    let isDark          = false;
+    let isVerified      = false;
+    let isEdited        = false;
+    let isSilent        = false;
+    let currentImg      = null;
+    let activeReactions = new Set();
+
+    // ── Helpers ──
+    function fmtNum(val) {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) return null;
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 10000)   return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        if (n >= 1000)    return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        return String(n);
+    }
+
+    function getDomain(url) {
+        try {
+            const u = new URL(url.startsWith('http') ? url : 'https://' + url);
+            return u.hostname.replace('www.', '');
+        } catch (_) {
+            return url.replace(/^https?:\/\//,'').split('/')[0];
+        }
+    }
+
+    // Convert basic markdown to HTML for preview
+    function renderMarkdown(text) {
+        if (!text) return '';
+        return text
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/__(.+?)__/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\|\|(.+?)\|\|/g, '<span style="background:rgba(0,0,0,.4);color:transparent;border-radius:3px;cursor:pointer;" title="Spoiler">$1</span>')
+            .replace(/\[(.+?)\]\((https?:\/\/.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
+            .replace(/\n/g, '<br>');
+    }
+
+    // ── Post mode ──
+    postModeIn.addEventListener('change', updateMode);
+    function updateMode() {
+        const isChannel = postModeIn.value === 'channel';
+        tgChannelHeader.style.display = isChannel ? 'flex' : 'none';
+        tgReadTick.style.display      = isChannel ? 'none' : 'flex';
+        inputStubText.textContent     = isChannel ? 'Share to channel…' : 'Message';
+        updateSubscribers();
+    }
+
+    // ── Channel name ──
+    channelNameIn.addEventListener('input', () => {
+        const v = channelNameIn.value.trim() || 'My Telegram Channel';
+        toolbarName.textContent    = v;
+        bubbleChannelName.textContent = v;
+        toolbarAvatar.textContent  = v.charAt(0).toUpperCase();
+        bubbleAvatar.textContent   = v.charAt(0).toUpperCase();
+    });
+
+    // ── Subscribers ──
+    subscribersIn.addEventListener('input', updateSubscribers);
+    usernameIn.addEventListener('input', updateSubscribers);
+    function updateSubscribers() {
+        const s = fmtNum(subscribersIn.value);
+        const u = usernameIn.value.trim();
+        const isChannel = postModeIn.value === 'channel';
+        if (isChannel) {
+            toolbarSub.textContent = (s ? s + ' subscribers' : '24.8K subscribers') + (u ? ' · @' + u.replace('@','') : '');
+        } else {
+            toolbarSub.textContent = s ? s + ' members' : 'group';
+        }
+    }
+
+    // ── Post text ──
+    postTextIn.addEventListener('input', updateText);
+    function updateText() {
+        const val = postTextIn.value;
+        const len = val.length;
+        const pct = Math.min((len / TEXT_MAX) * 100, 100);
+        textBar.style.width = pct + '%';
+        textBar.className   = 'prog-bar-fill' + (len > TEXT_MAX ? ' over' : len > 3500 ? ' warn' : '');
+        textChar.textContent = len.toLocaleString() + ' / 4,096 characters';
+        textChar.className   = len > TEXT_MAX ? 'over' : '';
+
+        if (val.trim()) {
+            tgPostText.innerHTML = renderMarkdown(val);
+        } else {
+            tgPostText.innerHTML = 'Your message will appear here as you type…';
+        }
+    }
+
+    // ── Formatting toolbar ──
+    document.querySelectorAll('.fmt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const wrap   = btn.dataset.wrap;
+            const insert = btn.dataset.insert;
+            const start  = postTextIn.selectionStart;
+            const end    = postTextIn.selectionEnd;
+            const val    = postTextIn.value;
+
+            if (wrap) {
+                const selected = val.slice(start, end);
+                const newText  = val.slice(0, start) + wrap + (selected || 'text') + wrap + val.slice(end);
+                postTextIn.value = newText;
+                postTextIn.setSelectionRange(start + wrap.length, start + wrap.length + (selected || 'text').length);
+            } else if (insert) {
+                postTextIn.value = val.slice(0, start) + insert + val.slice(end);
+                postTextIn.setSelectionRange(start + insert.length, start + insert.length);
+            }
+            postTextIn.focus();
+            updateText();
+        });
+    });
+
+    // ── Emoji ──
+    document.querySelectorAll('.emoji-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const pos = postTextIn.selectionStart;
+            postTextIn.value = postTextIn.value.slice(0, pos) + btn.textContent + postTextIn.value.slice(pos);
+            postTextIn.setSelectionRange(pos + btn.textContent.length, pos + btn.textContent.length);
+            postTextIn.focus();
+            updateText();
+        });
+    });
+
+    // ── Image upload ──
+    imgIn.addEventListener('change', handleImg);
+    function handleImg() {
+        const file = imgIn.files[0];
+        if (!file) return;
+        fileNameEl.textContent = file.name;
+        fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = e => {
+            currentImg = e.target.result;
+            mediaPlaceholder.style.display = 'none';
+            const old = tgMedia.querySelector('.tg-uploaded-img');
+            if (old) old.remove();
+            const img = document.createElement('img');
+            img.src = e.target.result; img.alt = 'Media'; img.className = 'tg-uploaded-img';
+            tgMedia.appendChild(img);
+            tgMedia.classList.add('visible');
+        };
+        reader.readAsDataURL(file);
+    }
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault(); uploadArea.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        fileNameEl.textContent = file.name; fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = ev => {
+            currentImg = ev.target.result;
+            mediaPlaceholder.style.display = 'none';
+            const old = tgMedia.querySelector('.tg-uploaded-img');
+            if (old) old.remove();
+            const img = document.createElement('img');
+            img.src = ev.target.result; img.alt = 'Media'; img.className = 'tg-uploaded-img';
+            tgMedia.appendChild(img);
+            tgMedia.classList.add('visible');
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // ── Link preview ──
+    linkUrlIn.addEventListener('input', () => {
+        const v = linkUrlIn.value.trim();
+        if (v) {
+            document.getElementById('link-preview-group').style.display = 'block';
+            tgLinkPreview.classList.add('visible');
+            lpUrl.textContent = getDomain(v);
+            if (!linkTitleIn.value) lpTitle.textContent = 'Article Title';
+            if (!linkDescIn.value)  lpDesc.textContent  = 'Brief description of the linked content…';
+        } else {
+            document.getElementById('link-preview-group').style.display = 'none';
+            tgLinkPreview.classList.remove('visible');
+        }
+    });
+    linkTitleIn.addEventListener('input', () => { lpTitle.textContent = linkTitleIn.value || 'Article Title'; });
+    linkDescIn.addEventListener('input',  () => { lpDesc.textContent  = linkDescIn.value  || 'Brief description…'; });
+
+    // ── Inline buttons ──
+    document.getElementById('add-btn-row').addEventListener('click', () => {
+        const list = document.getElementById('btn-list');
+        if (list.children.length >= 6) return;
+        const row = document.createElement('div');
+        row.className = 'btn-row-input';
+        row.innerHTML = `<input type="text" placeholder="Button label…" maxlength="40" class="inline-btn-input"><button class="btn-row-del" title="Remove">✕</button>`;
+        list.appendChild(row);
+        bindBtnRow(row);
+        renderButtons();
+    });
+
+    function bindBtnRow(row) {
+        row.querySelector('.inline-btn-input').addEventListener('input', renderButtons);
+        row.querySelector('.btn-row-del').addEventListener('click', () => { row.remove(); renderButtons(); });
+    }
+
+    // Bind existing row
+    document.querySelectorAll('.btn-row-input').forEach(r => bindBtnRow(r));
+
+    function renderButtons() {
+        const labels = [...document.querySelectorAll('.inline-btn-input')]
+            .map(i => i.value.trim()).filter(Boolean);
+        tgInlineButtons.innerHTML = '';
+        labels.forEach(label => {
+            const row = document.createElement('div');
+            row.className = 'tg-btn-row';
+            const btn = document.createElement('button');
+            btn.className = 'tg-inline-btn';
+            btn.textContent = label;
+            row.appendChild(btn);
+            tgInlineButtons.appendChild(row);
+        });
+    }
+    document.querySelector('.inline-btn-input').addEventListener('input', renderButtons);
+
+    // ── Reactions ──
+    document.querySelectorAll('.reaction-pick').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const emoji = btn.dataset.emoji;
+            if (activeReactions.has(emoji)) {
+                activeReactions.delete(emoji);
+                btn.classList.remove('active');
+            } else {
+                activeReactions.add(emoji);
+                btn.classList.add('active');
+            }
+            renderReactions();
+        });
+    });
+
+    function renderReactions() {
+        tgReactionsDisplay.innerHTML = '';
+        document.querySelectorAll('.reaction-pick').forEach(btn => {
+            if (!activeReactions.has(btn.dataset.emoji)) return;
+            const pill = document.createElement('div');
+            pill.className = 'tg-reaction-pill';
+            pill.innerHTML = `${btn.dataset.emoji} <span class="tg-reaction-count">${btn.dataset.count}</span>`;
+            tgReactionsDisplay.appendChild(pill);
+        });
+    }
+
+    // ── Views ──
+    viewsIn.addEventListener('input', () => {
+        const v = fmtNum(viewsIn.value);
+        tgViewsCount.textContent = v || '18.4K';
+    });
+
+    // ── Time ──
+    postTimeIn.addEventListener('input', () => {
+        tgTime.textContent = postTimeIn.value.trim() || '10:42 AM';
+    });
+
+    // ── Verified ──
+    verifiedToggle.addEventListener('click', () => {
+        isVerified = !isVerified;
+        verifiedToggle.classList.toggle('on', isVerified);
+        verifiedIcon.classList.toggle('visible', isVerified);
+    });
+
+    // ── Edited ──
+    editedToggle.addEventListener('click', () => {
+        isEdited = !isEdited;
+        editedToggle.classList.toggle('on', isEdited);
+        tgEdited.classList.toggle('visible', isEdited);
+    });
+
+    // ── Silent ──
+    silentToggle.addEventListener('click', () => {
+        isSilent = !isSilent;
+        silentToggle.classList.toggle('on', isSilent);
+    });
+
+    // ── Dark / Light ──
+    document.getElementById('tab-light').addEventListener('click', () => {
+        isDark = false;
+        tgChatShell.classList.remove('dark');
+        document.getElementById('tab-light').classList.add('active');
+        document.getElementById('tab-dark').classList.remove('active');
+    });
+    document.getElementById('tab-dark').addEventListener('click', () => {
+        isDark = true;
+        tgChatShell.classList.add('dark');
+        document.getElementById('tab-dark').classList.add('active');
+        document.getElementById('tab-light').classList.remove('active');
+    });
+
+    // ── Reset ──
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        postModeIn.value = 'channel';
+        channelNameIn.value = ''; subscribersIn.value = ''; usernameIn.value = '';
+        postTextIn.value = ''; linkUrlIn.value = ''; linkTitleIn.value = ''; linkDescIn.value = '';
+        viewsIn.value = ''; postTimeIn.value = '';
+        isVerified = false; isEdited = false; isSilent = false; isDark = false; currentImg = null;
+        activeReactions.clear();
+
+        verifiedToggle.classList.remove('on'); editedToggle.classList.remove('on'); silentToggle.classList.remove('on');
+        verifiedIcon.classList.remove('visible'); tgEdited.classList.remove('visible');
+        tgChatShell.classList.remove('dark');
+        document.getElementById('tab-light').classList.add('active');
+        document.getElementById('tab-dark').classList.remove('active');
+
+        toolbarName.textContent = 'My Telegram Channel';
+        toolbarSub.textContent  = '24.8K subscribers';
+        toolbarAvatar.textContent = 'T';
+        bubbleChannelName.textContent = 'My Telegram Channel';
+        bubbleAvatar.textContent = 'T';
+        tgPostText.innerHTML = 'Your message will appear here as you type…';
+        tgViewsCount.textContent = '18.4K';
+        tgTime.textContent = '10:42 AM';
+
+        textBar.style.width = '0%'; textBar.className = 'prog-bar-fill';
+        textChar.textContent = '0 / 4,096 characters'; textChar.className = '';
+
+        tgMedia.classList.remove('visible');
+        const oldImg = tgMedia.querySelector('.tg-uploaded-img');
+        if (oldImg) oldImg.remove();
+        mediaPlaceholder.style.display = 'flex';
+        fileNameEl.style.display = 'none';
+
+        tgLinkPreview.classList.remove('visible');
+        document.getElementById('link-preview-group').style.display = 'none';
+
+        tgInlineButtons.innerHTML = '';
+        const btnList = document.getElementById('btn-list');
+        btnList.innerHTML = '<div class="btn-row-input"><input type="text" placeholder="Button label, e.g. 👉 Read More" maxlength="40" class="inline-btn-input"><button class="btn-row-del" title="Remove">✕</button></div>';
+        btnList.querySelectorAll('.btn-row-input').forEach(r => bindBtnRow(r));
+        btnList.querySelector('.inline-btn-input').addEventListener('input', renderButtons);
+
+        document.querySelectorAll('.reaction-pick').forEach(b => b.classList.remove('active'));
+        tgReactionsDisplay.innerHTML = '';
+        tgChannelHeader.style.display = 'flex';
+        inputStubText.textContent = 'Share to channel…';
+    });
+
+    // ── Screenshot ──
+    document.getElementById('screenshot-btn').addEventListener('click', () => {
+        const shell = document.getElementById('tg-chat-shell');
+        html2canvas(shell, { useCORS: true, scale: 2, backgroundColor: isDark ? '#0E1621' : '#F0F2F5' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'telegram-post-preview.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    // ── Copy ──
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        const text = postTextIn.value || 'Your message will appear here as you type…';
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerHTML = '✓ Message Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Message Text';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+
+    // ── FAQ ──
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    // Init
+    updateMode();
+    renderButtons();
+    renderReactions();
+})();
+</script>
+
+</body>
+</html>
