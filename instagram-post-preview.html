@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Post Preview Tool – Free IG Feed Simulator & Caption Mockup</title>
+    <meta name="description" content="Free Instagram Post Preview tool. Simulate your Instagram post in a realistic feed mockup before publishing. Preview captions, hashtags, images, reels, stories, likes and more.">
+    <meta name="keywords" content="Instagram post preview, Instagram post simulator, IG feed mockup, Instagram caption preview, Instagram post checker, social media preview tool, Instagram marketing tool, Instagram post generator, IG feed preview, Instagram caption tool, Instagram hashtag preview, Instagram reel preview, Instagram story preview">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Instagram Post Preview Tool",
+  "url": "https://serppreview.github.io/instagram-post-preview",
+  "description": "A free tool to visualize how your Instagram posts will appear in the feed. Preview captions, hashtag truncation, images, reels thumbnails and engagement metrics before publishing.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Real-time Instagram Feed Visualization",
+    "Caption truncation preview at 125 characters",
+    "Image / Reel thumbnail upload",
+    "Hashtag highlighting",
+    "Post type selector (Feed, Reel, Carousel, Story)",
+    "Like and comment count simulation",
+    "Verified badge toggle",
+    "Dark / Light mode preview",
+    "Screenshot export"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #166fe5;
+            --primary-light: #e7f0fd;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f0f2f5;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+            --success: #00c851;
+
+            /* Instagram palette */
+            --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --ig-gradient-full: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
+            --ig-blue: #0095f6;
+            --ig-blue-hover: #1877f2;
+            --ig-red: #ed4956;
+            --ig-text: #262626;
+            --ig-sub: #8e8e8e;
+            --ig-border: #dbdbdb;
+            --ig-bg: #fafafa;
+            --ig-dark-bg: #000000;
+            --ig-dark-card: #121212;
+            --ig-dark-border: #262626;
+            --ig-dark-text: #f5f5f5;
+            --ig-dark-sub: #a8a8a8;
+            --ig-story-ring: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── Header ── */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; transition: background .2s; font-family: inherit; font-size: 0.9rem; }
+        .btn:hover { background: var(--primary-dark); }
+
+        /* ── Hero ── */
+        .tool-header { padding: 56px 0 36px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border); }
+        .tool-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--dark); }
+        .tool-header h1 span {
+            background: var(--ig-gradient-full);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tool-header p { color: var(--gray); margin-top: 10px; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .badge-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: #fdf0f5; color: #c13584; border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+        /* ── Main Tool Grid ── */
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; align-items: start; }
+
+        /* ── Input Panel ── */
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); text-align: left; }
+        .panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .panel-title .ig-icon { width: 22px; height: 22px; background: var(--ig-gradient); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .panel-title .ig-icon svg { width: 14px; height: 14px; color: white; }
+
+        .form-group { margin-bottom: 22px; }
+        .form-group label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .form-group label .hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.95rem; font-family: inherit; transition: border-color .2s, box-shadow .2s;
+            background: #fafafa; color: var(--dark);
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none; border-color: #c13584; box-shadow: 0 0 0 3px rgba(193,53,132,.1); background: #fff;
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; line-height: 1.65; }
+        .form-group select { cursor: pointer; }
+
+        /* Caption counter */
+        .caption-counter-row { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; }
+        .caption-counter-row .truncate-hint { font-size: 0.78rem; color: #c13584; font-weight: 600; display: none; }
+        .caption-counter-row .char-num { font-size: 0.78rem; color: var(--gray); }
+        .caption-counter-row .char-num.over { color: #ef4444; }
+
+        /* Emoji row */
+        .emoji-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .emoji-btn { background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 1.1rem; cursor: pointer; transition: background .15s; }
+        .emoji-btn:hover { background: #fdf0f5; border-color: #c13584; }
+
+        /* Upload */
+        .upload-area { border: 2px dashed var(--border); border-radius: 8px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+        .upload-area:hover, .upload-area.drag-over { border-color: #c13584; background: #fdf0f5; }
+        .upload-area input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .upload-area p { font-size: 0.875rem; color: var(--gray); }
+        .file-name { font-size: 0.82rem; color: #c13584; font-weight: 600; margin-top: 4px; display: none; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Toggle */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label-text { font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 11px; position: relative; transition: background .2s; flex-shrink: 0; cursor: pointer; }
+        .toggle-switch.on { background: #c13584; }
+        .toggle-knob { width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .toggle-switch.on .toggle-knob { left: 21px; }
+
+        /* Action row */
+        .action-row { display: flex; gap: 10px; margin-top: 6px; }
+        .btn-outline { padding: 10px 18px; border: 1.5px solid #c13584; color: #c13584; background: transparent; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .2s; font-family: inherit; }
+        .btn-outline:hover { background: #fdf0f5; }
+        .btn-ig { background: var(--ig-gradient); }
+        .btn-ig:hover { opacity: 0.9; }
+        .btn-full { flex: 1; }
+
+        /* ── Preview Panel ── */
+        .preview-panel { background: var(--ig-bg); padding: 28px 20px; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 90px; height: fit-content; transition: background .3s; }
+        .preview-panel.dark-preview { background: #000; }
+        .preview-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 12px; text-align: center; }
+
+        /* Mode tabs */
+        .mode-tabs { display: flex; gap: 8px; margin-bottom: 16px; justify-content: center; }
+        .mode-tab { padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); transition: all .2s; }
+        .mode-tab.active { background: var(--ig-gradient); color: white; border-color: transparent; }
+
+        /* Post type tabs */
+        .type-tabs { display: flex; gap: 6px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+        .type-tab { padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); transition: all .2s; }
+        .type-tab.active { background: #fdf0f5; color: #c13584; border-color: #c13584; }
+
+        /* ── Instagram Post Card ── */
+        .ig-post { background: #fff; border: 1px solid var(--ig-border); border-radius: 3px; max-width: 468px; margin: 0 auto; font-family: -apple-system, 'Segoe UI', sans-serif; overflow: hidden; transition: background .3s, border-color .3s; }
+        .ig-post.dark { background: var(--ig-dark-card); border-color: var(--ig-dark-border); }
+
+        /* Header */
+        .ig-header { padding: 10px 12px; display: flex; align-items: center; gap: 10px; }
+        .ig-avatar-ring { width: 42px; height: 42px; border-radius: 50%; padding: 2px; background: var(--ig-gradient); flex-shrink: 0; cursor: pointer; }
+        .ig-avatar-ring.no-story { background: #dbdbdb; }
+        .ig-avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 15px; }
+        .ig-post.dark .ig-avatar-inner { border-color: var(--ig-dark-card); }
+        .ig-username-col { flex: 1; min-width: 0; }
+        .ig-username-row { display: flex; align-items: center; gap: 4px; }
+        .ig-username { font-weight: 600; font-size: 14px; color: #262626; cursor: pointer; }
+        .ig-username:hover { text-decoration: none; }
+        .ig-post.dark .ig-username { color: var(--ig-dark-text); }
+        .ig-verified { width: 14px; height: 14px; flex-shrink: 0; }
+        .ig-location { font-size: 12px; color: #262626; display: none; }
+        .ig-post.dark .ig-location { color: var(--ig-dark-text); }
+        .ig-location.visible { display: block; }
+        /* Sponsored tag */
+        .ig-sponsored { font-size: 11px; color: var(--ig-sub); display: none; }
+        .ig-sponsored.visible { display: block; }
+        .ig-follow-btn { font-size: 14px; color: var(--ig-blue); font-weight: 600; background: none; border: none; cursor: pointer; padding: 0 4px; font-family: inherit; }
+        .ig-post.dark .ig-follow-btn { color: #0095f6; }
+        .ig-more-btn { background: none; border: none; cursor: pointer; color: #262626; padding: 4px; display: flex; align-items: center; }
+        .ig-post.dark .ig-more-btn { color: var(--ig-dark-text); }
+        .ig-more-btn svg { width: 24px; height: 24px; }
+
+        /* Post type indicator */
+        .ig-post-type-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,.5); color: white; border-radius: 4px; padding: 3px 8px; font-size: 11px; font-weight: 700; letter-spacing: .05em; backdrop-filter: blur(4px); display: none; }
+        .ig-post-type-badge.visible { display: block; }
+        .ig-media-wrap { position: relative; background: #000; }
+
+        /* Reel play overlay */
+        .ig-reel-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; padding: 12px; gap: 18px; pointer-events: none; display: none; }
+        .ig-reel-overlay.visible { display: flex; }
+        .ig-reel-side { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+        .ig-reel-action { display: flex; flex-direction: column; align-items: center; gap: 2px; color: white; font-size: 11px; font-weight: 600; }
+        .ig-reel-action svg { width: 26px; height: 26px; filter: drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
+
+        /* Carousel dots */
+        .ig-carousel-dots { display: none; justify-content: center; gap: 5px; padding: 6px 0 2px; }
+        .ig-carousel-dots.visible { display: flex; }
+        .ig-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ig-border); transition: background .2s; }
+        .ig-dot.active { background: var(--ig-blue); }
+
+        /* Image area */
+        .ig-image-area { width: 100%; background: #f5f5f5; min-height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .ig-post.dark .ig-image-area { background: #1a1a1a; }
+        .ig-image-area img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .ig-img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #dbdbdb; padding: 48px; }
+        .ig-post.dark .ig-img-placeholder { color: #333; }
+        .ig-img-placeholder svg { width: 48px; height: 48px; }
+        .ig-img-placeholder span { font-size: 13px; }
+
+        /* Story ring preview indicator */
+        .ig-story-preview { text-align: center; font-size: 11px; color: #c13584; font-weight: 600; padding: 6px 0 0; display: none; }
+        .ig-story-preview.visible { display: block; }
+
+        /* Actions bar */
+        .ig-actions { padding: 8px 12px 4px; display: flex; align-items: center; gap: 4px; }
+        .ig-action { background: none; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; transition: transform .15s; }
+        .ig-action:hover { transform: scale(1.1); }
+        .ig-action svg { width: 24px; height: 24px; color: #262626; }
+        .ig-post.dark .ig-action svg { color: var(--ig-dark-text); }
+        .ig-action.liked svg { color: var(--ig-red); fill: var(--ig-red); }
+        .ig-spacer { flex: 1; }
+        .ig-save-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; transition: transform .15s; }
+        .ig-save-btn:hover { transform: scale(1.1); }
+        .ig-save-btn svg { width: 24px; height: 24px; color: #262626; }
+        .ig-post.dark .ig-save-btn svg { color: var(--ig-dark-text); }
+
+        /* Likes */
+        .ig-likes { padding: 0 12px 4px; font-size: 14px; font-weight: 600; color: #262626; cursor: pointer; }
+        .ig-post.dark .ig-likes { color: var(--ig-dark-text); }
+
+        /* Caption */
+        .ig-caption-wrap { padding: 0 12px 6px; font-size: 14px; color: #262626; line-height: 1.5; }
+        .ig-post.dark .ig-caption-wrap { color: var(--ig-dark-text); }
+        .ig-caption-username { font-weight: 700; margin-right: 4px; cursor: pointer; }
+        .ig-caption-username:hover { text-decoration: underline; }
+        .ig-caption-text .hashtag { color: var(--ig-blue); cursor: pointer; }
+        .ig-caption-text .mention { color: var(--ig-blue); cursor: pointer; }
+        .ig-caption-more { color: var(--ig-sub); cursor: pointer; font-size: 14px; }
+        .ig-caption-more:hover { text-decoration: none; }
+
+        /* Comments */
+        .ig-view-comments { padding: 0 12px 4px; font-size: 14px; color: var(--ig-sub); cursor: pointer; display: block; }
+        .ig-view-comments:hover { text-decoration: none; }
+
+        /* Timestamp */
+        .ig-timestamp { padding: 2px 12px 10px; font-size: 10px; color: var(--ig-sub); text-transform: uppercase; letter-spacing: .03em; }
+
+        /* Comment input */
+        .ig-comment-row { padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--ig-border); }
+        .ig-post.dark .ig-comment-row { border-color: var(--ig-dark-border); }
+        .ig-comment-avatar { width: 28px; height: 28px; border-radius: 50%; background: #dbdbdb; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #8e8e8e; }
+        .ig-comment-input { flex: 1; font-size: 14px; color: var(--ig-sub); font-family: inherit; background: none; }
+        .ig-comment-post { font-size: 14px; color: var(--ig-blue); font-weight: 600; cursor: pointer; background: none; border: none; font-family: inherit; padding: 0; opacity: 0.5; }
+
+        /* Copy btn */
+        .copy-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; margin-top: 14px; padding: 10px; background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .2s; font-family: inherit; }
+        .copy-btn:hover { border-color: #c13584; color: #c13584; }
+        .copy-btn.copied { border-color: var(--success); color: var(--success); }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .info-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .info-section p { color: var(--gray); font-size: 0.97rem; line-height: 1.75; max-width: 780px; }
+
+        /* ── Features ── */
+        .features-section { padding: 60px 0; background: var(--light); }
+        .features-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; text-align: center; }
+        .features-section .sub { text-align: center; color: var(--gray); margin-bottom: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; transition: box-shadow .2s, transform .2s; }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: #fdf0f5; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .feature-icon svg { width: 22px; height: 22px; color: #c13584; }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── Tips ── */
+        .tips-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .tips-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-card { background: var(--light); border-radius: 10px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+        .tip-num { width: 32px; height: 32px; background: var(--ig-gradient); color: white; border-radius: 50%; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tip-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 60px 0; background: var(--light); border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; font-weight: 600; font-size: 0.97rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background .15s; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-q .arrow { font-size: 1.1rem; transition: transform .3s; color: var(--gray); }
+        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .faq-item.open .faq-a { max-height: 320px; padding: 0 20px 18px; }
+
+        /* ── Footer ── */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
+        .footer-widget p { font-size: 0.875rem; line-height: 1.7; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { font-size: 0.875rem; color: #94a3b8; transition: color .2s; }
+        .footer-links a:hover { color: white; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.875rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } .tips-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .main-tool-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .tool-header h1 { font-size: 1.8rem; }
+            .preview-panel { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="/" class="logo">SERP Preview</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#search-engines">Search Engines</a></li>
+                <li><a href="/#social-media">Social Media</a></li>
+                <li><a href="/#live-preview">Live Tool</a></li>
+            </ul>
+        </nav>
+        <a href="/#live-preview" class="btn">Google Previewing</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="tool-header">
+    <div class="container">
+        <h1>Instagram Post <span>Preview Tool</span></h1>
+        <p>Simulate exactly how your Instagram post looks in the feed before you publish — caption truncation, hashtags, images, Reels, carousels and more.</p>
+        <div class="badge-row">
+            <span class="badge">✓ 100% Free</span>
+            <span class="badge">✓ No Sign-up</span>
+            <span class="badge">✓ Caption Truncation</span>
+            <span class="badge">✓ Feed / Reel / Story</span>
+            <span class="badge">✓ Dark Mode Preview</span>
+            <span class="badge">✓ Hashtag Highlight</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section style="padding:0;">
+    <div class="container">
+        <div class="main-tool-grid">
+
+            <!-- LEFT: Input Panel -->
+            <div class="input-panel">
+                <div class="panel-title">
+                    <div class="ig-icon">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                    </div>
+                    Compose Your Instagram Post
+                </div>
+
+                <!-- Profile -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="yourbrand" maxlength="30">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location Tag <span class="hint">Optional</span></label>
+                        <input type="text" id="location" placeholder="New York, USA" maxlength="50">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="post-type-select">Post Type</label>
+                        <select id="post-type-select">
+                            <option value="feed">Feed Post</option>
+                            <option value="reel">Reel</option>
+                            <option value="carousel">Carousel</option>
+                            <option value="story">Story</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="carousel-count">Carousel Slides <span class="hint">2–10</span></label>
+                        <input type="number" id="carousel-count" placeholder="3" min="2" max="10" value="3">
+                    </div>
+                </div>
+
+                <!-- Caption -->
+                <div class="form-group">
+                    <label for="caption-text">
+                        Caption
+                        <span class="hint">#hashtags &amp; @mentions highlight</span>
+                    </label>
+                    <textarea id="caption-text" placeholder="Write your caption here…&#10;&#10;Tip: Instagram shows only the first ~125 characters before 'more'. Hook your audience in the first line!"></textarea>
+                    <div class="caption-counter-row">
+                        <span class="truncate-hint" id="truncate-hint">⚠ Caption will be truncated</span>
+                        <span class="char-num" id="char-num">0 / 2,200</span>
+                    </div>
+                    <div class="emoji-row" id="emoji-row">
+                        <button class="emoji-btn">❤️</button>
+                        <button class="emoji-btn">🔥</button>
+                        <button class="emoji-btn">✨</button>
+                        <button class="emoji-btn">📸</button>
+                        <button class="emoji-btn">🌟</button>
+                        <button class="emoji-btn">💫</button>
+                        <button class="emoji-btn">🙌</button>
+                        <button class="emoji-btn">👇</button>
+                        <button class="emoji-btn">💬</button>
+                        <button class="emoji-btn">🎯</button>
+                    </div>
+                </div>
+
+                <!-- Media upload -->
+                <div class="form-group">
+                    <label for="image-upload">Upload Image / Thumbnail <span class="hint">JPG, PNG, WebP</span></label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*">
+                        <div class="upload-icon">📷</div>
+                        <p>Click to upload or drag &amp; drop</p>
+                        <div class="file-name" id="file-name"></div>
+                    </div>
+                </div>
+
+                <!-- Engagement -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="likes-count">Likes</label>
+                        <input type="number" id="likes-count" placeholder="e.g. 4,821" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments-count">Comments</label>
+                        <input type="number" id="comments-count" placeholder="e.g. 312" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="views-count">Views <span class="hint">For Reels</span></label>
+                    <input type="number" id="views-count" placeholder="e.g. 128,400" min="0">
+                </div>
+
+                <!-- Toggles -->
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Verified Badge</span>
+                        <div class="toggle-switch" id="verified-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Active Story Ring</span>
+                        <div class="toggle-switch on" id="story-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show "Follow" Button</span>
+                        <div class="toggle-switch on" id="follow-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Sponsored / Paid Partnership</span>
+                        <div class="toggle-switch" id="sponsored-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-outline" id="reset-btn">Reset</button>
+                    <button class="btn btn-ig btn-full" id="screenshot-btn">📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview Panel -->
+            <div class="preview-panel" id="preview-panel">
+                <div class="preview-label">Live Preview · Instagram Feed</div>
+
+                <!-- Light / Dark tabs -->
+                <div class="mode-tabs">
+                    <div class="mode-tab active" id="tab-light">☀️ Light</div>
+                    <div class="mode-tab" id="tab-dark">🌙 Dark</div>
+                </div>
+
+                <div class="ig-post" id="ig-post">
+
+                    <!-- Header -->
+                    <div class="ig-header">
+                        <div class="ig-avatar-ring" id="prev-avatar-ring">
+                            <div class="ig-avatar-inner" id="prev-avatar">y</div>
+                        </div>
+                        <div class="ig-username-col">
+                            <div class="ig-username-row">
+                                <span class="ig-username" id="prev-username">yourbrand</span>
+                                <svg class="ig-verified" id="verified-svg" viewBox="0 0 40 40" style="display:none;">
+                                    <circle cx="20" cy="20" r="20" fill="#0095f6"/>
+                                    <path d="M10 20l7 7 13-14" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <button class="ig-follow-btn" id="prev-follow-btn">Follow</button>
+                            </div>
+                            <div class="ig-location" id="prev-location"></div>
+                            <div class="ig-sponsored" id="prev-sponsored">Sponsored</div>
+                        </div>
+                        <button class="ig-more-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Media area -->
+                    <div class="ig-media-wrap">
+                        <div class="ig-image-area" id="ig-image-area">
+                            <div class="ig-img-placeholder" id="img-placeholder">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                                <span>Upload image to preview</span>
+                            </div>
+                        </div>
+                        <!-- Post type badge -->
+                        <div class="ig-post-type-badge" id="post-type-badge"></div>
+                        <!-- Reel overlay actions -->
+                        <div class="ig-reel-overlay" id="reel-overlay">
+                            <div class="ig-reel-side">
+                                <div class="ig-reel-action">
+                                    <svg viewBox="0 0 24 24" fill="white"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                    <span id="reel-likes-count">4,821</span>
+                                </div>
+                                <div class="ig-reel-action">
+                                    <svg viewBox="0 0 24 24" fill="white"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span id="reel-comments-count">312</span>
+                                </div>
+                                <div class="ig-reel-action">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                    <span>Share</span>
+                                </div>
+                                <div class="ig-reel-action">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                                    <span>More</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel dots -->
+                    <div class="ig-carousel-dots" id="carousel-dots">
+                        <div class="ig-dot active"></div>
+                        <div class="ig-dot"></div>
+                        <div class="ig-dot"></div>
+                    </div>
+
+                    <!-- Story label -->
+                    <div class="ig-story-preview" id="story-preview-label">⬆ Story — full-screen vertical format (1080×1920px)</div>
+
+                    <!-- Actions -->
+                    <div class="ig-actions" id="ig-actions-bar">
+                        <button class="ig-action" id="like-btn" title="Like">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="ig-action" title="Comment">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </button>
+                        <button class="ig-action" title="Share">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                        <div class="ig-spacer"></div>
+                        <button class="ig-save-btn" title="Save">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Likes -->
+                    <div class="ig-likes" id="prev-likes">4,821 likes</div>
+
+                    <!-- Caption -->
+                    <div class="ig-caption-wrap">
+                        <span class="ig-caption-username" id="prev-caption-username">yourbrand</span>
+                        <span class="ig-caption-text" id="prev-caption">Your caption will appear here as you type…</span>
+                        <span id="caption-more-wrap" style="display:none;"> <button class="ig-caption-more" id="caption-more-btn">more</button></span>
+                    </div>
+
+                    <!-- Comments -->
+                    <a class="ig-view-comments" id="prev-view-comments">View all 312 comments</a>
+
+                    <!-- Timestamp -->
+                    <div class="ig-timestamp" id="prev-timestamp">1 hour ago</div>
+
+                    <!-- Comment input -->
+                    <div class="ig-comment-row">
+                        <div class="ig-comment-avatar">Y</div>
+                        <span class="ig-comment-input">Add a comment…</span>
+                        <button class="ig-comment-post">Post</button>
+                    </div>
+
+                </div><!-- end .ig-post -->
+
+                <button class="copy-btn" id="copy-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Caption
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="info-section">
+    <div class="container">
+        <h2>How to Use the Instagram Post Preview Tool</h2>
+        <p>Start by entering your Instagram username and an optional location tag — both appear in the post header exactly as Instagram renders them. Select your post type (Feed, Reel, Carousel or Story) from the dropdown to switch the card layout accordingly: Reels show a vertical overlay with action buttons on the right side, Carousels display dot indicators below the image, and Stories show a full-screen aspect-ratio note. Type or paste your caption into the text area — #hashtags and @mentions are automatically highlighted in Instagram blue, and the tool shows you precisely where Instagram's ~125-character truncation kicks in with a "more" button. Upload your photo or Reel thumbnail to see how it fills the media slot. Fill in custom like, comment and view counts to simulate social proof. Toggle the verified badge, active story ring, Follow button and Sponsored label on or off, then switch to dark mode to preview how your post appears on devices with dark theme enabled. When the mockup looks perfect, hit Screenshot to download a shareable PNG for content planning, client reviews or team approvals.</p>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section">
+    <div class="container">
+        <h2>Everything in This Instagram Post Preview Tool</h2>
+        <p class="sub">Built for influencers, brand managers, social media agencies, content creators and e-commerce teams.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Real-time Feed Mockup</h3>
+                <p>Every keystroke instantly updates a pixel-accurate Instagram post card — complete with avatar ring, username, verified badge, media, caption, action bar and comment row.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <h3>Caption Truncation at ~125 Characters</h3>
+                <p>Instagram hides captions beyond ~125 characters behind a "more" tap. This tool shows exactly where that cut-off lands so you can craft a hook that stops the scroll before the break.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3>Feed, Reel, Carousel &amp; Story Modes</h3>
+                <p>Switch between all four Instagram post types. Reels render with a side action overlay, Carousels show interactive dot indicators, and Stories display a full-screen aspect-ratio note.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <h3>Image &amp; Thumbnail Upload</h3>
+                <p>Upload any JPG, PNG or WebP to preview how it fills the Instagram square, portrait or landscape media slot — no cropping surprises when you go live.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+                </div>
+                <h3>Hashtag &amp; Mention Highlighting</h3>
+                <p>#Hashtags and @mentions are detected and rendered in Instagram blue automatically — so you can verify readability and placement before the post goes live.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="21" cy="12" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="12" cy="21" r="1"/><circle cx="12" cy="3" r="1"/><path d="M12 3v18M3 12h18"/></svg>
+                </div>
+                <h3>Dark Mode &amp; Engagement Simulation</h3>
+                <p>Toggle between light and dark Instagram themes with one click. Set custom like, comment and view counts to visualize social proof — perfect for client pitches and content calendars.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section">
+    <div class="container">
+        <h2>Tips for Writing High-Performing Instagram Captions</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div>
+                    <h4>Lead with Your Hook Before the "More" Break</h4>
+                    <p>Instagram truncates captions at around 125 characters. Use this preview to ensure your most compelling sentence — your question, your bold claim, your offer — lands above that cut-off and earns the tap.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div>
+                    <h4>Place Hashtags at the End or in the First Comment</h4>
+                    <p>Leading with hashtags pushes your actual message below the fold. Keep your caption copy clean and move hashtags to the end of the text or the first comment. Preview both layouts here before deciding.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div>
+                    <h4>Use 3–10 Targeted Hashtags for Optimal Reach</h4>
+                    <p>Instagram's internal data suggests 3–10 focused hashtags outperform large tag dumps. Mix niche, mid-tier and broad tags. Verify all hashtags highlight correctly in the preview before posting.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div>
+                    <h4>Square or Portrait Images Win More Feed Real Estate</h4>
+                    <p>A 4:5 portrait image (1080×1350 px) takes up more vertical space than a square. Upload your creative to this tool and check how the crop affects visual impact across the different aspect ratios.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div>
+                    <h4>Check Readability in Dark Mode</h4>
+                    <p>A large portion of Instagram users operate in dark mode on iOS and Android. Toggle the dark preview here to confirm your text overlays, caption and any graphic elements remain fully legible.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">6</div>
+                <div>
+                    <h4>End Captions with a Clear Call to Action</h4>
+                    <p>Save, share, tag a friend, answer a question, click the link in bio — tell followers exactly what to do. Verify in the preview that your CTA is visible below the fold after expanding the full caption.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Is this Instagram post preview tool free? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes — completely free with no account, no sign-up, no watermarks and no usage limits. Open the page, compose your post and preview it live in seconds.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does this tool post to Instagram for me? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. This is a simulation and mockup tool only. It does not connect to the Instagram API. Once your post looks perfect here, copy your caption and upload your image directly through the Instagram app or Meta Business Suite.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Where does Instagram cut off the caption with "more"? <span class="arrow">▼</span></div>
+            <div class="faq-a">Instagram typically truncates captions at around 125 characters in the feed on both desktop and mobile, hiding the remaining text behind a "more" tap. This tool highlights that cut-off point in real time so you can place your hook before it.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What is the Instagram caption character limit? <span class="arrow">▼</span></div>
+            <div class="faq-a">Instagram allows up to 2,200 characters per caption. The counter in this tool tracks your usage continuously. While 2,200 characters are permitted, captions between 138 and 150 characters tend to earn the highest engagement because they show the full text without requiring a "more" tap.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What image sizes work best for Instagram posts? <span class="arrow">▼</span></div>
+            <div class="faq-a">For a square feed post use 1080×1080 px. For portrait (recommended for more feed real estate) use 1080×1350 px at a 4:5 ratio. For landscape use 1080×566 px. For Reels and Stories use 1080×1920 px (9:16). Upload any of these to the previewer to see how they render.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my caption text or uploaded image stored anywhere? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. Everything runs entirely inside your browser. Images are processed locally via the FileReader API and rendered directly in the DOM — no text or image data is ever transmitted to any server. Your content stays completely private on your own device.</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>SERP Preview</h4>
+                <p>The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Tools</a></li>
+                    <li><a href="/#social-media">Social Tools</a></li>
+                    <li><a href="/#live-preview">Live Preview</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="cookie">Cookie Policy</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 SERP Simulator. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function () {
+    const CAPTION_TRUNCATE = 125;
+    const MAX_CAPTION = 2200;
+
+    // Inputs
+    const usernameIn      = document.getElementById('username');
+    const locationIn      = document.getElementById('location');
+    const postTypeSel     = document.getElementById('post-type-select');
+    const carouselCountIn = document.getElementById('carousel-count');
+    const captionIn       = document.getElementById('caption-text');
+    const imgIn           = document.getElementById('image-upload');
+    const likesIn         = document.getElementById('likes-count');
+    const commentsIn      = document.getElementById('comments-count');
+    const viewsIn         = document.getElementById('views-count');
+    const verifiedToggle  = document.getElementById('verified-toggle');
+    const storyToggle     = document.getElementById('story-toggle');
+    const followToggle    = document.getElementById('follow-toggle');
+    const sponsoredToggle = document.getElementById('sponsored-toggle');
+
+    // Preview
+    const prevAvatarRing      = document.getElementById('prev-avatar-ring');
+    const prevAvatar          = document.getElementById('prev-avatar');
+    const prevUsername        = document.getElementById('prev-username');
+    const prevCaptionUsername = document.getElementById('prev-caption-username');
+    const prevLocation        = document.getElementById('prev-location');
+    const prevSponsored       = document.getElementById('prev-sponsored');
+    const prevFollowBtn       = document.getElementById('prev-follow-btn');
+    const verifiedSvg         = document.getElementById('verified-svg');
+    const igPost              = document.getElementById('ig-post');
+    const igImageArea         = document.getElementById('ig-image-area');
+    const imgPlaceholder      = document.getElementById('img-placeholder');
+    const postTypeBadge       = document.getElementById('post-type-badge');
+    const reelOverlay         = document.getElementById('reel-overlay');
+    const carouselDots        = document.getElementById('carousel-dots');
+    const storyPreviewLabel   = document.getElementById('story-preview-label');
+    const igActionsBar        = document.getElementById('ig-actions-bar');
+    const prevLikes           = document.getElementById('prev-likes');
+    const prevCaption         = document.getElementById('prev-caption');
+    const captionMoreWrap     = document.getElementById('caption-more-wrap');
+    const captionMoreBtn      = document.getElementById('caption-more-btn');
+    const prevViewComments    = document.getElementById('prev-view-comments');
+    const charNum             = document.getElementById('char-num');
+    const truncateHint        = document.getElementById('truncate-hint');
+    const uploadArea          = document.getElementById('upload-area');
+    const fileNameEl          = document.getElementById('file-name');
+    const reelLikesCount      = document.getElementById('reel-likes-count');
+    const reelCommentsCount   = document.getElementById('reel-comments-count');
+    const previewPanel        = document.getElementById('preview-panel');
+    const likeBtn             = document.getElementById('like-btn');
+
+    let isVerified   = false;
+    let hasStory     = true;
+    let showFollow   = true;
+    let isSponsored  = false;
+    let isExpanded   = false;
+    let currentImg   = null;
+    let isDark       = false;
+    let isLiked      = false;
+
+    // ── helpers ──
+    function fmtNum(val) {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) return null;
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 10000)   return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        if (n >= 1000)    return n.toLocaleString();
+        return String(n);
+    }
+
+    function highlightCaption(text) {
+        return text
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/(#[\w\u00C0-\u024F]+)/g, '<span class="hashtag">$1</span>')
+            .replace(/(@[\w.]+)/g, '<span class="mention">$1</span>');
+    }
+
+    // ── Username ──
+    usernameIn.addEventListener('input', () => {
+        const v = usernameIn.value.trim() || 'yourbrand';
+        prevUsername.textContent = v;
+        prevCaptionUsername.textContent = v;
+        prevAvatar.textContent = v.charAt(0).toLowerCase();
+    });
+
+    // ── Location ──
+    locationIn.addEventListener('input', () => {
+        const v = locationIn.value.trim();
+        prevLocation.textContent = v;
+        prevLocation.classList.toggle('visible', !!v);
+    });
+
+    // ── Post type ──
+    postTypeSel.addEventListener('change', updatePostType);
+    carouselCountIn.addEventListener('input', updateCarouselDots);
+
+    function updatePostType() {
+        const type = postTypeSel.value;
+
+        // Reset all type-specific UI
+        postTypeBadge.classList.remove('visible');
+        reelOverlay.classList.remove('visible');
+        carouselDots.classList.remove('visible');
+        storyPreviewLabel.classList.remove('visible');
+        igActionsBar.style.display = 'flex';
+        prevLikes.style.display = 'block';
+
+        if (type === 'reel') {
+            postTypeBadge.textContent = '▶ REEL';
+            postTypeBadge.classList.add('visible');
+            reelOverlay.classList.add('visible');
+            igActionsBar.style.display = 'none';
+            prevLikes.style.display = 'none';
+        } else if (type === 'carousel') {
+            postTypeBadge.textContent = '⧉ CAROUSEL';
+            postTypeBadge.classList.add('visible');
+            carouselDots.classList.add('visible');
+            updateCarouselDots();
+        } else if (type === 'story') {
+            storyPreviewLabel.classList.add('visible');
+            igActionsBar.style.display = 'none';
+        }
+    }
+
+    function updateCarouselDots() {
+        const count = Math.max(2, Math.min(10, parseInt(carouselCountIn.value, 10) || 3));
+        carouselDots.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            const d = document.createElement('div');
+            d.className = 'ig-dot' + (i === 0 ? ' active' : '');
+            carouselDots.appendChild(d);
+        }
+    }
+
+    // ── Caption ──
+    captionIn.addEventListener('input', updateCaption);
+
+    function updateCaption() {
+        const val = captionIn.value;
+        const len = val.length;
+        charNum.textContent = len.toLocaleString() + ' / 2,200';
+        charNum.className = 'char-num' + (len > MAX_CAPTION ? ' over' : '');
+        truncateHint.style.display = len > CAPTION_TRUNCATE ? 'inline' : 'none';
+
+        if (!val) {
+            prevCaption.innerHTML = 'Your caption will appear here as you type…';
+            captionMoreWrap.style.display = 'none';
+            isExpanded = false;
+            return;
+        }
+        isExpanded = false;
+        renderCaption(val);
+    }
+
+    function renderCaption(val) {
+        if (val.length <= CAPTION_TRUNCATE || isExpanded) {
+            prevCaption.innerHTML = highlightCaption(val);
+            captionMoreWrap.style.display = 'none';
+        } else {
+            prevCaption.innerHTML = highlightCaption(val.slice(0, CAPTION_TRUNCATE));
+            captionMoreWrap.style.display = 'inline';
+        }
+    }
+
+    captionMoreBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        renderCaption(captionIn.value);
+    });
+
+    // ── Emoji ──
+    document.getElementById('emoji-row').addEventListener('click', e => {
+        const btn = e.target.closest('.emoji-btn');
+        if (!btn) return;
+        const pos = captionIn.selectionStart;
+        captionIn.value = captionIn.value.slice(0, pos) + btn.textContent + captionIn.value.slice(pos);
+        captionIn.setSelectionRange(pos + btn.textContent.length, pos + btn.textContent.length);
+        captionIn.focus();
+        updateCaption();
+    });
+
+    // ── Image ──
+    imgIn.addEventListener('change', handleImg);
+    function handleImg() {
+        const file = imgIn.files[0];
+        if (!file) return;
+        fileNameEl.textContent = file.name;
+        fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = e => {
+            currentImg = e.target.result;
+            imgPlaceholder.style.display = 'none';
+            let existing = igImageArea.querySelector('.ig-uploaded-img');
+            if (existing) existing.remove();
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Post image';
+            img.className = 'ig-uploaded-img';
+            igImageArea.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Drag & drop
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault(); uploadArea.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        fileNameEl.textContent = file.name; fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = ev => {
+            currentImg = ev.target.result;
+            imgPlaceholder.style.display = 'none';
+            let ex = igImageArea.querySelector('.ig-uploaded-img');
+            if (ex) ex.remove();
+            const img = document.createElement('img');
+            img.src = ev.target.result; img.alt = 'Post image'; img.className = 'ig-uploaded-img';
+            igImageArea.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // ── Engagement ──
+    function updateEngagement() {
+        const l  = fmtNum(likesIn.value);
+        const c  = fmtNum(commentsIn.value);
+        const v  = fmtNum(viewsIn.value);
+        const lv = l || '4,821';
+        const cv = c || '312';
+        prevLikes.textContent = lv + ' likes';
+        prevViewComments.textContent = 'View all ' + cv + ' comments';
+        reelLikesCount.textContent = lv;
+        reelCommentsCount.textContent = cv;
+    }
+    [likesIn, commentsIn, viewsIn].forEach(el => el.addEventListener('input', updateEngagement));
+
+    // ── Like button interaction ──
+    likeBtn.addEventListener('click', () => {
+        isLiked = !isLiked;
+        likeBtn.classList.toggle('liked', isLiked);
+    });
+
+    // ── Verified ──
+    verifiedToggle.addEventListener('click', () => {
+        isVerified = !isVerified;
+        verifiedToggle.classList.toggle('on', isVerified);
+        verifiedSvg.style.display = isVerified ? 'inline-block' : 'none';
+    });
+
+    // ── Story ring ──
+    storyToggle.addEventListener('click', () => {
+        hasStory = !hasStory;
+        storyToggle.classList.toggle('on', hasStory);
+        prevAvatarRing.classList.toggle('no-story', !hasStory);
+    });
+
+    // ── Follow ──
+    followToggle.addEventListener('click', () => {
+        showFollow = !showFollow;
+        followToggle.classList.toggle('on', showFollow);
+        prevFollowBtn.style.display = showFollow ? 'inline-block' : 'none';
+    });
+
+    // ── Sponsored ──
+    sponsoredToggle.addEventListener('click', () => {
+        isSponsored = !isSponsored;
+        sponsoredToggle.classList.toggle('on', isSponsored);
+        prevSponsored.classList.toggle('visible', isSponsored);
+    });
+
+    // ── Dark / Light ──
+    document.getElementById('tab-light').addEventListener('click', () => {
+        isDark = false;
+        igPost.classList.remove('dark');
+        previewPanel.classList.remove('dark-preview');
+        document.getElementById('tab-light').classList.add('active');
+        document.getElementById('tab-dark').classList.remove('active');
+    });
+    document.getElementById('tab-dark').addEventListener('click', () => {
+        isDark = true;
+        igPost.classList.add('dark');
+        previewPanel.classList.add('dark-preview');
+        document.getElementById('tab-dark').classList.add('active');
+        document.getElementById('tab-light').classList.remove('active');
+    });
+
+    // ── Reset ──
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        usernameIn.value = ''; locationIn.value = '';
+        captionIn.value = '';
+        likesIn.value = ''; commentsIn.value = ''; viewsIn.value = '';
+        postTypeSel.value = 'feed'; carouselCountIn.value = '3';
+        isVerified = false; hasStory = true; showFollow = true;
+        isSponsored = false; isExpanded = false; isLiked = false; isDark = false;
+        currentImg = null;
+
+        verifiedToggle.classList.remove('on');
+        storyToggle.classList.add('on');
+        followToggle.classList.add('on');
+        sponsoredToggle.classList.remove('on');
+
+        verifiedSvg.style.display = 'none';
+        prevAvatarRing.classList.remove('no-story');
+        prevFollowBtn.style.display = 'inline-block';
+        prevSponsored.classList.remove('visible');
+        prevLocation.classList.remove('visible');
+        prevLocation.textContent = '';
+        likeBtn.classList.remove('liked');
+
+        igPost.classList.remove('dark');
+        previewPanel.classList.remove('dark-preview');
+        document.getElementById('tab-light').classList.add('active');
+        document.getElementById('tab-dark').classList.remove('active');
+
+        prevUsername.textContent = 'yourbrand';
+        prevCaptionUsername.textContent = 'yourbrand';
+        prevAvatar.textContent = 'y';
+        prevCaption.innerHTML = 'Your caption will appear here as you type…';
+        captionMoreWrap.style.display = 'none';
+        charNum.textContent = '0 / 2,200'; charNum.className = 'char-num';
+        truncateHint.style.display = 'none';
+
+        // Remove uploaded image
+        const ex = igImageArea.querySelector('.ig-uploaded-img');
+        if (ex) ex.remove();
+        imgPlaceholder.style.display = 'flex';
+        fileNameEl.style.display = 'none';
+
+        // Reset post type UI
+        postTypeBadge.classList.remove('visible');
+        reelOverlay.classList.remove('visible');
+        carouselDots.classList.remove('visible');
+        storyPreviewLabel.classList.remove('visible');
+        igActionsBar.style.display = 'flex';
+        prevLikes.style.display = 'block';
+
+        updateEngagement();
+    });
+
+    // ── Screenshot ──
+    document.getElementById('screenshot-btn').addEventListener('click', () => {
+        html2canvas(igPost, { useCORS: true, scale: 2, backgroundColor: isDark ? '#121212' : '#ffffff' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'instagram-post-preview.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    // ── Copy caption ──
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        const text = captionIn.value || 'Your caption will appear here as you type…';
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerHTML = '✓ Caption Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Caption';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    // Init
+    updatePostType();
+    updateEngagement();
+})();
+</script>
+</body>
+</html>
