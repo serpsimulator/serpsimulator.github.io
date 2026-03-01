@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Post Preview Tool – Free TikTok Video Caption & Feed Simulator</title>
+    <meta name="description" content="Free TikTok Post Preview tool. Simulate your TikTok video exactly as it appears in the For You feed before publishing. Preview captions, hashtags, sounds, likes, comments, and more.">
+    <meta name="keywords" content="TikTok post preview, TikTok video simulator, TikTok caption preview, TikTok feed mockup, TikTok post checker, TikTok marketing tool, TikTok caption generator, TikTok hashtag preview, TikTok For You page preview, TikTok content tool, TikTok video preview, FYP simulator">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23010101"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/></svg>'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TikTok Post Preview Tool",
+  "url": "https://serppreview.github.io/tiktok-post-preview",
+  "description": "A free tool to visualize how your TikTok videos will appear in the For You feed. Preview captions, hashtags, sounds, engagement counts and more before publishing.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Real-time TikTok For You Feed Visualization",
+    "Caption and hashtag preview with truncation",
+    "Thumbnail / cover image upload",
+    "Sound and music display",
+    "Like, comment, share and save count simulation",
+    "Verified badge toggle",
+    "Duet / Stitch / Branded content tags",
+    "Screenshot export"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #166fe5;
+            --primary-light: #e7f0fd;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f0f2f5;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+            --success: #00c851;
+
+            /* TikTok palette */
+            --tt-black: #010101;
+            --tt-red: #FE2C55;
+            --tt-teal: #25F4EE;
+            --tt-gradient: linear-gradient(135deg, #FE2C55 0%, #010101 50%, #25F4EE 100%);
+            --tt-bg: #000000;
+            --tt-card: #121212;
+            --tt-surface: #1a1a1a;
+            --tt-border: #2a2a2a;
+            --tt-text: #ffffff;
+            --tt-sub: #a0a0a0;
+            --tt-like: #FE2C55;
+            --tt-accent: #25F4EE;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── Header ── */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; transition: background .2s; font-family: inherit; font-size: 0.9rem; }
+        .btn:hover { background: var(--primary-dark); }
+
+        /* ── Hero ── */
+        .tool-header { padding: 56px 0 36px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border); }
+        .tool-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--dark); }
+        .tool-header h1 .tt-gradient-text {
+            background: var(--tt-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tool-header p { color: var(--gray); margin-top: 10px; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .badge-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: #fff0f2; color: var(--tt-red); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+        /* ── Main Tool Grid ── */
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; align-items: start; }
+
+        /* ── Input Panel ── */
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); }
+        .panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .tt-logo-icon { width: 22px; height: 22px; background: var(--tt-black); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; }
+        .tt-logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 10px; height: 12px;
+            background: var(--tt-teal);
+            border-radius: 0 6px 6px 0;
+            left: 5px; top: 5px;
+            transform: translateX(2px);
+            filter: blur(1px);
+            opacity: .7;
+        }
+        .tt-logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 10px; height: 12px;
+            background: var(--tt-red);
+            border-radius: 0 6px 6px 0;
+            left: 5px; top: 5px;
+            transform: translateX(-2px);
+            filter: blur(1px);
+            opacity: .7;
+        }
+        .tt-logo-icon svg { position: relative; z-index: 1; width: 13px; height: 13px; fill: white; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .form-group label .hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.95rem; font-family: inherit; transition: border-color .2s, box-shadow .2s;
+            background: #fafafa; color: var(--dark);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--tt-red); box-shadow: 0 0 0 3px rgba(254,44,85,.1); background: #fff;
+        }
+        .form-group textarea { resize: vertical; line-height: 1.6; min-height: 100px; }
+        .form-group select { cursor: pointer; }
+
+        /* Char counter */
+        .char-row { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.78rem; color: var(--gray); }
+        .char-row .warn { color: #f59e0b; }
+        .char-row .over { color: #ef4444; }
+        .char-row .truncate-hint { color: var(--tt-red); font-weight: 600; display: none; }
+
+        /* Progress bar */
+        .prog-bar-track { height: 3px; background: #e2e8f0; border-radius: 2px; margin-top: 5px; overflow: hidden; }
+        .prog-bar-fill { height: 100%; background: var(--tt-red); border-radius: 2px; transition: width .2s, background .2s; width: 0%; }
+        .prog-bar-fill.warn { background: #f59e0b; }
+        .prog-bar-fill.over  { background: #ef4444; }
+
+        /* Emoji row */
+        .emoji-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .emoji-btn { background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 1.1rem; cursor: pointer; transition: background .15s; }
+        .emoji-btn:hover { background: #fff0f2; border-color: var(--tt-red); }
+
+        /* Upload */
+        .upload-area { border: 2px dashed var(--border); border-radius: 8px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+        .upload-area:hover, .upload-area.drag-over { border-color: var(--tt-red); background: #fff0f2; }
+        .upload-area input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .upload-area p { font-size: 0.875rem; color: var(--gray); }
+        .file-name { font-size: 0.82rem; color: var(--tt-red); font-weight: 600; margin-top: 4px; display: none; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Tag chips */
+        .chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+        .chip { padding: 4px 10px; border: 1.5px solid var(--border); border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: #f8f8f8; color: var(--gray); transition: all .15s; font-family: inherit; }
+        .chip:hover { border-color: var(--tt-red); color: var(--tt-red); }
+        .chip.active { background: #fff0f2; border-color: var(--tt-red); color: var(--tt-red); }
+
+        /* Toggle */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label-text { font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 11px; position: relative; transition: background .2s; flex-shrink: 0; cursor: pointer; }
+        .toggle-switch.on { background: var(--tt-red); }
+        .toggle-knob { width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .toggle-switch.on .toggle-knob { left: 21px; }
+
+        /* Action row */
+        .action-row { display: flex; gap: 10px; margin-top: 6px; }
+        .btn-outline { padding: 10px 18px; border: 1.5px solid var(--tt-red); color: var(--tt-red); background: transparent; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .2s; font-family: inherit; }
+        .btn-outline:hover { background: #fff0f2; }
+        .btn-tt { background: var(--tt-red); }
+        .btn-tt:hover { background: #d4184a; }
+        .btn-full { flex: 1; }
+
+        /* ── Preview Panel ── */
+        .preview-panel { background: #0a0a0a; padding: 20px 16px; border-radius: 12px; border: 1px solid #222; position: sticky; top: 90px; height: fit-content; }
+        .preview-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 14px; text-align: center; }
+
+        /* Phone shell */
+        .tt-phone {
+            width: 280px; margin: 0 auto;
+            background: var(--tt-black);
+            border-radius: 36px;
+            border: 3px solid #2a2a2a;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.06);
+        }
+
+        /* Status bar */
+        .tt-status-bar { height: 32px; background: var(--tt-black); display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+        .tt-status-time { font-size: 11px; font-weight: 700; color: white; font-family: -apple-system, sans-serif; }
+        .tt-status-icons { display: flex; align-items: center; gap: 5px; }
+        .tt-status-icons svg { width: 13px; height: 13px; color: white; }
+
+        /* TikTok nav bar at top */
+        .tt-nav-bar { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 8px 0 6px; background: transparent; position: absolute; top: 32px; left: 0; right: 0; z-index: 10; }
+        .tt-nav-item { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.55); cursor: pointer; }
+        .tt-nav-item.active { color: white; border-bottom: 2px solid white; padding-bottom: 2px; }
+        .tt-nav-search { position: absolute; right: 12px; }
+        .tt-nav-search svg { width: 20px; height: 20px; color: white; }
+
+        /* Video area (the core) */
+        .tt-video-area {
+            position: relative;
+            width: 100%;
+            padding-top: 177.78%; /* 9:16 */
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+        .tt-video-inner { position: absolute; inset: 0; }
+
+        /* Thumbnail */
+        .tt-thumbnail { width: 100%; height: 100%; object-fit: cover; display: none; }
+        .tt-thumbnail.visible { display: block; }
+
+        /* Placeholder gradient */
+        .tt-video-placeholder {
+            position: absolute; inset: 0;
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+        }
+        .tt-video-placeholder svg { width: 40px; height: 40px; color: rgba(255,255,255,.2); }
+        .tt-video-placeholder span { font-size: 11px; color: rgba(255,255,255,.35); font-weight: 500; text-align: center; padding: 0 20px; }
+        .tt-video-placeholder.hidden { display: none; }
+
+        /* Decorative particle layer */
+        .tt-particles {
+            position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+        }
+        .tt-particle {
+            position: absolute; border-radius: 50%;
+            animation: tt-float 4s ease-in-out infinite;
+            opacity: 0;
+        }
+        @keyframes tt-float {
+            0%   { opacity: 0; transform: translateY(0) scale(1); }
+            20%  { opacity: .6; }
+            80%  { opacity: .3; }
+            100% { opacity: 0; transform: translateY(-80px) scale(.5); }
+        }
+
+        /* Play button overlay */
+        .tt-play-overlay {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            pointer-events: none;
+        }
+        .tt-play-circle {
+            width: 52px; height: 52px; background: rgba(255,255,255,.15);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.2);
+            transition: opacity .2s;
+        }
+        .tt-play-circle svg { width: 22px; height: 22px; fill: white; margin-left: 3px; }
+
+        /* Top gradient fade */
+        .tt-top-fade {
+            position: absolute; top: 0; left: 0; right: 0; height: 80px;
+            background: linear-gradient(to bottom, rgba(0,0,0,.6) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Bottom gradient + UI */
+        .tt-bottom-ui {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.5) 50%, transparent 100%);
+            padding: 0 10px 10px;
+        }
+
+        /* Right side actions */
+        .tt-right-actions {
+            position: absolute; right: 8px; bottom: 70px;
+            display: flex; flex-direction: column; align-items: center; gap: 14px;
+        }
+        .tt-action-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .tt-action-icon {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background .15s;
+        }
+        .tt-action-icon:hover { background: rgba(255,255,255,.25); }
+        .tt-action-icon svg { width: 20px; height: 20px; color: white; }
+        .tt-action-icon.liked svg { fill: var(--tt-red); color: var(--tt-red); }
+        .tt-action-count { font-size: 10px; color: white; font-weight: 600; font-family: -apple-system, sans-serif; }
+
+        /* Avatar in right column with follow + */
+        .tt-avatar-wrap { position: relative; margin-bottom: 4px; }
+        .tt-right-avatar {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--tt-red) 0%, #ff8c00 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 800; font-size: 14px;
+            border: 1.5px solid white; cursor: pointer;
+        }
+        .tt-follow-plus {
+            position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+            width: 16px; height: 16px; background: var(--tt-red);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: 1.5px solid white; font-size: 10px; color: white; font-weight: 900;
+        }
+
+        /* Spinning disc */
+        .tt-disc-wrap { position: relative; }
+        .tt-disc {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a1a 50%, #2a2a2a 100%);
+            border: 4px solid #333; display: flex; align-items: center; justify-content: center;
+            animation: tt-spin 3s linear infinite;
+            box-shadow: 0 0 0 2px rgba(255,255,255,.1);
+        }
+        .tt-disc::before {
+            content: '';
+            position: absolute;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #111; border: 2px solid #444;
+        }
+        @keyframes tt-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Bottom left: user info + caption */
+        .tt-bottom-info { padding-right: 52px; }
+        .tt-username-row { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+        .tt-username { font-size: 13px; font-weight: 700; color: white; font-family: -apple-system, sans-serif; }
+        .tt-verified { display: none; }
+        .tt-verified.visible { display: inline-flex; }
+        .tt-verified svg { width: 14px; height: 14px; }
+        .tt-desc-line {
+            font-size: 11px; color: rgba(255,255,255,.9);
+            font-family: -apple-system, sans-serif;
+            line-height: 1.4; margin-bottom: 6px;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+            overflow: hidden; word-break: break-word;
+        }
+        .tt-desc-line.expanded { display: block; -webkit-line-clamp: unset; }
+        .tt-more-btn { color: rgba(255,255,255,.6); font-size: 11px; cursor: pointer; background: none; border: none; font-family: -apple-system, sans-serif; padding: 0; }
+
+        /* Hashtags */
+        .tt-hashtag-line { font-size: 11px; color: white; font-family: -apple-system, sans-serif; margin-bottom: 6px; }
+        .tt-hashtag-line .ht { font-weight: 700; cursor: pointer; }
+
+        /* Sound row */
+        .tt-sound-row { display: flex; align-items: center; gap: 5px; }
+        .tt-sound-icon { width: 14px; height: 14px; flex-shrink: 0; color: white; }
+        .tt-sound-text { font-size: 10px; color: rgba(255,255,255,.85); font-family: -apple-system, sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
+
+        /* Tag chips on video */
+        .tt-video-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 5px; }
+        .tt-video-tag { background: rgba(255,255,255,.15); backdrop-filter: blur(4px); border-radius: 12px; padding: 2px 8px; font-size: 9px; font-weight: 700; color: white; border: 1px solid rgba(255,255,255,.2); }
+
+        /* Bottom navigation */
+        .tt-bottom-nav {
+            display: flex; align-items: center; justify-content: space-around;
+            padding: 8px 0 10px; background: var(--tt-black); border-top: 1px solid #1a1a1a;
+        }
+        .tt-nav-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; }
+        .tt-nav-btn svg { width: 22px; height: 22px; color: rgba(255,255,255,.5); }
+        .tt-nav-btn.active svg { color: white; }
+        .tt-nav-btn span { font-size: 9px; color: rgba(255,255,255,.5); font-family: -apple-system, sans-serif; }
+        .tt-nav-btn.active span { color: white; }
+        /* Plus button */
+        .tt-add-btn { width: 40px; height: 26px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .tt-add-inner { width: 36px; height: 26px; background: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .tt-add-inner::before { content: ''; position: absolute; width: 40px; height: 26px; background: var(--tt-teal); border-radius: 6px; right: -2px; z-index: -1; }
+        .tt-add-inner::after  { content: ''; position: absolute; width: 40px; height: 26px; background: var(--tt-red);  border-radius: 6px; left:  -2px; z-index: -1; }
+        .tt-add-inner svg { width: 16px; height: 16px; color: var(--tt-black); position: relative; z-index: 1; }
+
+        /* Copy btn */
+        .copy-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; margin-top: 14px; padding: 10px; background: #1a1a1a; border: 1.5px solid #333; border-radius: 8px; font-size: 0.875rem; font-weight: 600; color: #888; cursor: pointer; transition: all .2s; font-family: inherit; }
+        .copy-btn:hover { border-color: var(--tt-red); color: var(--tt-red); }
+        .copy-btn.copied { border-color: var(--success); color: var(--success); }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .info-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .info-section p { color: var(--gray); font-size: 0.97rem; line-height: 1.75; max-width: 780px; }
+
+        /* ── Features ── */
+        .features-section { padding: 60px 0; background: var(--light); }
+        .features-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; text-align: center; }
+        .features-section .sub { text-align: center; color: var(--gray); margin-bottom: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; transition: box-shadow .2s, transform .2s; }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: #fff0f2; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .feature-icon svg { width: 22px; height: 22px; color: var(--tt-red); }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── Tips ── */
+        .tips-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .tips-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-card { background: var(--light); border-radius: 10px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+        .tip-num { width: 32px; height: 32px; background: var(--tt-red); color: white; border-radius: 50%; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tip-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 60px 0; background: var(--light); border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; font-weight: 600; font-size: 0.97rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background .15s; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-q .arrow { font-size: 1.1rem; transition: transform .3s; color: var(--gray); }
+        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .faq-item.open .faq-a { max-height: 320px; padding: 0 20px 18px; }
+
+        /* ── Footer ── */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
+        .footer-widget p { font-size: 0.875rem; line-height: 1.7; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { font-size: 0.875rem; color: #94a3b8; transition: color .2s; }
+        .footer-links a:hover { color: white; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.875rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } .tips-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .main-tool-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .tool-header h1 { font-size: 1.8rem; }
+            .preview-panel { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="/" class="logo">SERP Preview</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#search-engines">Search Engines</a></li>
+                <li><a href="/#social-media">Social Media</a></li>
+                <li><a href="/#live-preview">Live Tool</a></li>
+            </ul>
+        </nav>
+        <a href="/#live-preview" class="btn">Google Previewing</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="tool-header">
+    <div class="container">
+        <h1>TikTok Post <span class="tt-gradient-text">Preview Tool</span></h1>
+        <p>Simulate exactly how your TikTok video looks in the For You feed before you publish — caption, hashtags, sounds, likes, comments and the full phone UI.</p>
+        <div class="badge-row">
+            <span class="badge">✓ 100% Free</span>
+            <span class="badge">✓ No Sign-up</span>
+            <span class="badge">✓ FYP Phone UI</span>
+            <span class="badge">✓ Caption Truncation</span>
+            <span class="badge">✓ Hashtag Highlight</span>
+            <span class="badge">✓ Screenshot Export</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section style="padding:0;">
+    <div class="container">
+        <div class="main-tool-grid">
+
+            <!-- LEFT: Input Panel -->
+            <div class="input-panel">
+                <div class="panel-title">
+                    <div class="tt-logo-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/></svg>
+                    </div>
+                    Compose Your TikTok Post
+                </div>
+
+                <!-- Profile -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="yourcreatorname" maxlength="24">
+                    </div>
+                    <div class="form-group">
+                        <label for="display-name">Display Name <span class="hint">Optional</span></label>
+                        <input type="text" id="display-name" placeholder="Your Creator Name" maxlength="30">
+                    </div>
+                </div>
+
+                <!-- Caption -->
+                <div class="form-group">
+                    <label for="caption-text">
+                        Caption
+                        <span class="hint">#hashtags auto-highlight</span>
+                    </label>
+                    <textarea id="caption-text" placeholder="Write your TikTok caption here…&#10;&#10;Tip: TikTok shows ~2 lines before 'more'. Lead with your strongest hook or call to action!"></textarea>
+                    <div class="prog-bar-track"><div class="prog-bar-fill" id="cap-bar"></div></div>
+                    <div class="char-row">
+                        <span id="cap-char">0 / 2,200 characters</span>
+                        <span class="truncate-hint" id="cap-hint">⚠ Will be truncated in feed</span>
+                    </div>
+                    <div class="emoji-row" id="emoji-row">
+                        <button class="emoji-btn">🔥</button>
+                        <button class="emoji-btn">✨</button>
+                        <button class="emoji-btn">💀</button>
+                        <button class="emoji-btn">😭</button>
+                        <button class="emoji-btn">🫶</button>
+                        <button class="emoji-btn">👀</button>
+                        <button class="emoji-btn">💯</button>
+                        <button class="emoji-btn">🚀</button>
+                        <button class="emoji-btn">🎯</button>
+                        <button class="emoji-btn">📱</button>
+                    </div>
+                </div>
+
+                <!-- Sound -->
+                <div class="form-group">
+                    <label for="sound-text">Sound / Music <span class="hint">Appears at bottom</span></label>
+                    <input type="text" id="sound-text" placeholder="Original sound – yourcreatorname" maxlength="80">
+                </div>
+
+                <!-- Video thumbnail -->
+                <div class="form-group">
+                    <label for="image-upload">Video Thumbnail / Cover <span class="hint">JPG, PNG, WebP</span></label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*">
+                        <div class="upload-icon">🎬</div>
+                        <p>Click to upload or drag &amp; drop your video thumbnail</p>
+                        <div class="file-name" id="file-name"></div>
+                    </div>
+                </div>
+
+                <!-- Video type / tags -->
+                <div class="form-group">
+                    <label>Content Tags <span class="hint">Select all that apply</span></label>
+                    <div class="chip-row" id="tag-chips">
+                        <button class="chip" data-tag="duet">Duet</button>
+                        <button class="chip" data-tag="stitch">Stitch</button>
+                        <button class="chip" data-tag="branded">Branded</button>
+                        <button class="chip" data-tag="live">Live</button>
+                        <button class="chip" data-tag="ad">Ad</button>
+                    </div>
+                </div>
+
+                <!-- Engagement -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="likes-count">Likes</label>
+                        <input type="number" id="likes-count" placeholder="e.g. 142.3K" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments-count">Comments</label>
+                        <input type="number" id="comments-count" placeholder="e.g. 8,412" min="0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="shares-count">Shares</label>
+                        <input type="number" id="shares-count" placeholder="e.g. 3,291" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="saves-count">Saves / Bookmarks</label>
+                        <input type="number" id="saves-count" placeholder="e.g. 12,400" min="0">
+                    </div>
+                </div>
+
+                <!-- Toggles -->
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Verified Badge</span>
+                        <div class="toggle-switch" id="verified-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show spinning disc animation</span>
+                        <div class="toggle-switch on" id="disc-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-outline" id="reset-btn">Reset</button>
+                    <button class="btn btn-tt btn-full" id="screenshot-btn">📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview Panel -->
+            <div class="preview-panel" id="preview-panel">
+                <div class="preview-label">Live Preview · TikTok For You Feed</div>
+
+                <div class="tt-phone" id="tt-phone">
+
+                    <!-- Status bar -->
+                    <div class="tt-status-bar">
+                        <span class="tt-status-time">9:41</span>
+                        <div class="tt-status-icons">
+                            <!-- Signal -->
+                            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="15" width="3" height="9" rx="1"/><rect x="6" y="11" width="3" height="13" rx="1"/><rect x="11" y="7" width="3" height="17" rx="1"/><rect x="16" y="3" width="3" height="21" rx="1" opacity=".4"/></svg>
+                            <!-- Wifi -->
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0" opacity=".4"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+                            <!-- Battery -->
+                            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="7" width="18" height="10" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M23 11v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="2.5" y="8.5" width="14" height="7" rx="1" fill="currentColor"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- TikTok top nav -->
+                    <div class="tt-nav-bar">
+                        <span class="tt-nav-item">Following</span>
+                        <span class="tt-nav-item active">For You</span>
+                        <div class="tt-nav-search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Video area -->
+                    <div class="tt-video-area" id="tt-video-area">
+                        <div class="tt-video-inner">
+
+                            <!-- Placeholder -->
+                            <div class="tt-video-placeholder" id="tt-placeholder">
+                                <div class="tt-particles" id="tt-particles"></div>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 10l4.553-2.069A1 1 0 0121 8.871v6.258a1 1 0 01-1.447.894L15 14v-4zM3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                                <span>Upload a thumbnail to preview your video cover</span>
+                            </div>
+
+                            <!-- Uploaded thumbnail -->
+                            <img class="tt-thumbnail" id="tt-thumbnail" src="" alt="Video thumbnail">
+
+                            <!-- Top fade -->
+                            <div class="tt-top-fade"></div>
+
+                            <!-- Play overlay -->
+                            <div class="tt-play-overlay">
+                                <div class="tt-play-circle">
+                                    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                </div>
+                            </div>
+
+                            <!-- Bottom gradient UI -->
+                            <div class="tt-bottom-ui">
+
+                                <!-- Content tags (Duet, Stitch etc.) -->
+                                <div class="tt-video-tags" id="tt-video-tags"></div>
+
+                                <!-- Bottom info left -->
+                                <div class="tt-bottom-info">
+                                    <div class="tt-username-row">
+                                        <span class="tt-username" id="prev-username">@yourcreatorname</span>
+                                        <span class="tt-verified" id="verified-badge">
+                                            <svg viewBox="0 0 22 22" width="14" height="14"><circle cx="11" cy="11" r="11" fill="#20d5ec"/><path d="M6 11l4 4 6-7" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </span>
+                                    </div>
+
+                                    <!-- Caption -->
+                                    <div class="tt-desc-line" id="prev-caption">Your caption will appear here…</div>
+                                    <button class="tt-more-btn" id="tt-more-btn" style="display:none;">more</button>
+
+                                    <!-- Sound -->
+                                    <div class="tt-sound-row">
+                                        <svg class="tt-sound-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                        <span class="tt-sound-text" id="prev-sound">Original sound – yourcreatorname</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right side actions -->
+                            <div class="tt-right-actions">
+                                <!-- Avatar -->
+                                <div class="tt-avatar-wrap">
+                                    <div class="tt-right-avatar" id="prev-right-avatar">Y</div>
+                                    <div class="tt-follow-plus">+</div>
+                                </div>
+
+                                <!-- Like -->
+                                <div class="tt-action-item">
+                                    <div class="tt-action-icon" id="like-btn">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                    </div>
+                                    <span class="tt-action-count" id="prev-likes">142.3K</span>
+                                </div>
+
+                                <!-- Comment -->
+                                <div class="tt-action-item">
+                                    <div class="tt-action-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <span class="tt-action-count" id="prev-comments">8,412</span>
+                                </div>
+
+                                <!-- Bookmark -->
+                                <div class="tt-action-item">
+                                    <div class="tt-action-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <span class="tt-action-count" id="prev-saves">12.4K</span>
+                                </div>
+
+                                <!-- Share -->
+                                <div class="tt-action-item">
+                                    <div class="tt-action-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    </div>
+                                    <span class="tt-action-count" id="prev-shares">3,291</span>
+                                </div>
+
+                                <!-- Spinning disc -->
+                                <div class="tt-disc-wrap" id="disc-wrap">
+                                    <div class="tt-disc"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- end .tt-video-area -->
+
+                    <!-- Bottom nav -->
+                    <div class="tt-bottom-nav">
+                        <div class="tt-nav-btn active">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            <span>Home</span>
+                        </div>
+                        <div class="tt-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <span>Discover</span>
+                        </div>
+                        <div class="tt-nav-btn">
+                            <div class="tt-add-btn">
+                                <div class="tt-add-inner">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tt-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span>Inbox</span>
+                        </div>
+                        <div class="tt-nav-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span>Profile</span>
+                        </div>
+                    </div>
+
+                </div><!-- end .tt-phone -->
+
+                <button class="copy-btn" id="copy-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Caption
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="info-section">
+    <div class="container">
+        <h2>How to Use the TikTok Post Preview Tool</h2>
+        <p>Enter your TikTok username and optional display name — both appear in the post overlay exactly as TikTok renders them in the For You feed. Type or paste your caption into the text field: #hashtags are automatically detected and bolded, and the tool tells you in real time when your caption will be truncated behind a "more" tap at approximately 2 lines of visible text. Add the name of the sound or song that will play on your video — it appears in the scrolling music row at the bottom of the phone. Upload your video thumbnail or cover image to fill the 9:16 frame, then choose any applicable content tags (Duet, Stitch, Branded, Live, Ad) to see how they render as overlaid chips on the video. Fill in custom like, comment, save and share counts to simulate engagement and social proof. Toggle the verified badge and spinning music disc on or off, then hit Screenshot to capture the full phone mockup as a PNG — ideal for content planning, client approvals, pitch decks and team reviews.</p>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section">
+    <div class="container">
+        <h2>Everything in This TikTok Post Preview Tool</h2>
+        <p class="sub">Built for TikTok creators, brand managers, content agencies, influencer marketers and social media strategists.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <h3>Full Phone UI Mockup</h3>
+                <p>Renders a complete TikTok For You feed inside a realistic phone shell — status bar, top navigation, video area with right-side actions, and bottom navigation bar — exactly as viewers see it.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <h3>Caption Truncation Preview</h3>
+                <p>TikTok shows roughly 2 lines of caption before hiding the rest behind a "more" tap. This tool warns you when your caption exceeds the visible threshold so you can nail the hook first.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3>Video Thumbnail Upload</h3>
+                <p>Upload any image as your video cover to see how it fills the full 9:16 TikTok frame. Check text overlays, crop and visual impact before setting the cover inside the TikTok app.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                </div>
+                <h3>Sound &amp; Music Display</h3>
+                <p>Enter the name of your original sound or licensed track — it renders in the scrolling music strip at the bottom of the video, complete with the musical note icon, just like the real TikTok UI.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+                </div>
+                <h3>Hashtag Highlighting &amp; Content Tags</h3>
+                <p>#Hashtags bold automatically in the caption preview. Toggle Duet, Stitch, Branded Content, Live and Ad tags to see them render as overlay chips on the video — no surprises after publishing.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <h3>Full Engagement Simulation</h3>
+                <p>Set custom like, comment, save and share counts across all four action buttons. Numbers auto-format to K and M abbreviations — ideal for client mockups, pitch decks and content previews.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section">
+    <div class="container">
+        <h2>Tips for Creating High-Performing TikTok Videos</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div>
+                    <h4>Hook Viewers in the First 1–2 Seconds</h4>
+                    <p>TikTok's algorithm measures completion rate above almost everything else. Your thumbnail and opening frame need to stop the scroll instantly. Upload your cover image here and confirm it grabs attention at the 9:16 frame size before going live.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div>
+                    <h4>Write Your Hook in the Visible Caption Lines</h4>
+                    <p>TikTok collapses captions after roughly 2 lines. Use the truncation preview in this tool to ensure your most compelling sentence — the question, the bold claim, the call to watch — lands before the "more" button cuts it off.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div>
+                    <h4>Use 3–5 Highly Relevant Hashtags</h4>
+                    <p>TikTok uses hashtags to classify your content and surface it to relevant For You feeds. Mix one broad trend tag, one niche community tag, and one or two topic-specific tags. Preview the combination here before your video goes live.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div>
+                    <h4>Leverage Trending Sounds for Organic Reach</h4>
+                    <p>Using a trending sound dramatically increases the likelihood of appearing on the For You page. Enter your chosen track name in the sound field to verify how it displays in the music strip at the bottom of the feed card.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div>
+                    <h4>Use Duet or Stitch Tags to Ride Existing Virality</h4>
+                    <p>Duets and Stitches inherit audience from the source video. Toggle the Duet or Stitch content tag in the previewer to see how the label appears on your video and confirms the format to viewers before the algorithm distributes it.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">6</div>
+                <div>
+                    <h4>End with a Strong Call to Action for Comments</h4>
+                    <p>Comments are one of TikTok's strongest engagement signals. Ask a direct question at the end of your caption or in the last second of your video. Use the caption preview to confirm the CTA is visible in the two-line feed snippet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Is this TikTok post preview tool free? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes — completely free with no account required, no watermarks and no usage limits. Open the page, compose your TikTok caption and preview the full phone UI live without signing up for anything.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does this tool post to TikTok for me? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. This is a simulation and mockup tool only. It does not connect to the TikTok API. Once your preview looks perfect here, upload your video and caption directly through the TikTok app or TikTok for Business.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How many characters does TikTok show before truncating the caption? <span class="arrow">▼</span></div>
+            <div class="faq-a">TikTok typically shows around 2 lines of caption text — roughly 80–100 visible characters depending on the device and font size — before hiding the rest behind a "more" tap. This tool warns you when your caption exceeds the visible threshold so you can keep your hook in the first two lines.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What is the TikTok caption character limit? <span class="arrow">▼</span></div>
+            <div class="faq-a">TikTok allows captions up to 2,200 characters. The progress bar in this tool tracks usage continuously. While 2,200 characters are permitted, captions of 100–150 characters — placing the hook in the first two lines — consistently drive higher engagement because the key message is immediately visible without a tap.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What video dimensions does TikTok recommend? <span class="arrow">▼</span></div>
+            <div class="faq-a">TikTok recommends 1080×1920 px at a 9:16 aspect ratio for the best full-screen vertical experience. The phone mockup in this tool renders at the correct 9:16 ratio so you can upload your thumbnail and see exactly how it fills the frame before publishing.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my caption text or thumbnail stored anywhere? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. Everything runs entirely inside your browser. Images are processed locally via the FileReader API and rendered directly in the DOM — no text or image data is ever transmitted to any server. Your content stays completely private on your own device.</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>SERP Preview</h4>
+                <p>The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Tools</a></li>
+                    <li><a href="/#social-media">Social Tools</a></li>
+                    <li><a href="/#live-preview">Live Preview</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="cookie">Cookie Policy</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 SERP Simulator. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function () {
+    const CAP_MAX = 2200;
+    const CAP_TRUNCATE_APPROX = 100;
+
+    // Inputs
+    const usernameIn    = document.getElementById('username');
+    const displayNameIn = document.getElementById('display-name');
+    const captionIn     = document.getElementById('caption-text');
+    const soundIn       = document.getElementById('sound-text');
+    const imgIn         = document.getElementById('image-upload');
+    const likesIn       = document.getElementById('likes-count');
+    const commentsIn    = document.getElementById('comments-count');
+    const sharesIn      = document.getElementById('shares-count');
+    const savesIn       = document.getElementById('saves-count');
+    const verifiedToggle = document.getElementById('verified-toggle');
+    const discToggle     = document.getElementById('disc-toggle');
+
+    // Preview
+    const prevUsername    = document.getElementById('prev-username');
+    const prevRightAvatar = document.getElementById('prev-right-avatar');
+    const prevCaption     = document.getElementById('prev-caption');
+    const ttMoreBtn       = document.getElementById('tt-more-btn');
+    const prevSound       = document.getElementById('prev-sound');
+    const prevLikes       = document.getElementById('prev-likes');
+    const prevComments    = document.getElementById('prev-comments');
+    const prevShares      = document.getElementById('prev-shares');
+    const prevSaves       = document.getElementById('prev-saves');
+    const verifiedBadge   = document.getElementById('verified-badge');
+    const discWrap        = document.getElementById('disc-wrap');
+    const likeBtn         = document.getElementById('like-btn');
+    const ttPlaceholder   = document.getElementById('tt-placeholder');
+    const ttThumbnail     = document.getElementById('tt-thumbnail');
+    const uploadArea      = document.getElementById('upload-area');
+    const fileNameEl      = document.getElementById('file-name');
+    const capBar          = document.getElementById('cap-bar');
+    const capChar         = document.getElementById('cap-char');
+    const capHint         = document.getElementById('cap-hint');
+    const ttVideoTags     = document.getElementById('tt-video-tags');
+
+    let isExpanded   = false;
+    let isLiked      = false;
+    let isVerified   = false;
+    let showDisc     = true;
+    let activeTags   = new Set();
+    let currentImg   = null;
+
+    // ── Helpers ──
+    function fmtNum(val) {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) return null;
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 10000)   return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        if (n >= 1000)    return n.toLocaleString();
+        return String(n);
+    }
+
+    function boldHashtags(text) {
+        if (!text) return '';
+        return text
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/(#[\w\u00C0-\u024F]+)/g, '<strong>$1</strong>');
+    }
+
+    // ── Username ──
+    usernameIn.addEventListener('input', () => {
+        const raw = usernameIn.value.trim();
+        const v = raw ? '@' + raw.replace(/^@/, '') : '@yourcreatorname';
+        prevUsername.textContent = v;
+        prevRightAvatar.textContent = (raw || 'y').charAt(0).toUpperCase();
+        // Update default sound placeholder
+        if (!soundIn.value.trim()) {
+            prevSound.textContent = 'Original sound – ' + (raw || 'yourcreatorname');
+        }
+    });
+
+    // ── Display name (not shown in feed preview directly, used for sound fallback) ──
+    displayNameIn.addEventListener('input', () => {});
+
+    // ── Caption ──
+    captionIn.addEventListener('input', updateCaption);
+    function updateCaption() {
+        const val = captionIn.value;
+        const len = val.length;
+        const pct = Math.min((len / CAP_MAX) * 100, 100);
+        capBar.style.width = pct + '%';
+        capBar.className = 'prog-bar-fill' + (len > CAP_MAX ? ' over' : len > 1800 ? ' warn' : '');
+        capChar.textContent = len.toLocaleString() + ' / 2,200 characters';
+        capChar.className   = len > CAP_MAX ? 'over' : len > 1800 ? 'warn' : '';
+        capHint.style.display = len > CAP_TRUNCATE_APPROX ? 'inline' : 'none';
+
+        if (!val) {
+            prevCaption.innerHTML = 'Your caption will appear here…';
+            prevCaption.classList.remove('expanded');
+            ttMoreBtn.style.display = 'none';
+            isExpanded = false;
+            return;
+        }
+        isExpanded = false;
+        renderCaption(val);
+    }
+
+    function renderCaption(val) {
+        if (val.length <= CAP_TRUNCATE_APPROX || isExpanded) {
+            prevCaption.innerHTML = boldHashtags(val);
+            prevCaption.classList.toggle('expanded', isExpanded);
+            ttMoreBtn.style.display = 'none';
+        } else {
+            prevCaption.innerHTML = boldHashtags(val.slice(0, CAP_TRUNCATE_APPROX));
+            prevCaption.classList.remove('expanded');
+            ttMoreBtn.style.display = 'block';
+        }
+    }
+
+    ttMoreBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        renderCaption(captionIn.value);
+        ttMoreBtn.textContent = isExpanded ? 'less' : 'more';
+    });
+
+    // ── Emoji ──
+    document.getElementById('emoji-row').addEventListener('click', e => {
+        const btn = e.target.closest('.emoji-btn');
+        if (!btn) return;
+        const pos = captionIn.selectionStart;
+        captionIn.value = captionIn.value.slice(0, pos) + btn.textContent + captionIn.value.slice(pos);
+        captionIn.setSelectionRange(pos + btn.textContent.length, pos + btn.textContent.length);
+        captionIn.focus();
+        updateCaption();
+    });
+
+    // ── Sound ──
+    soundIn.addEventListener('input', () => {
+        const v = soundIn.value.trim();
+        prevSound.textContent = v || 'Original sound – ' + (usernameIn.value.trim() || 'yourcreatorname');
+    });
+
+    // ── Image upload ──
+    imgIn.addEventListener('change', handleImg);
+    function handleImg() {
+        const file = imgIn.files[0];
+        if (!file) return;
+        fileNameEl.textContent = file.name;
+        fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = e => {
+            currentImg = e.target.result;
+            ttThumbnail.src = e.target.result;
+            ttThumbnail.classList.add('visible');
+            ttPlaceholder.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault(); uploadArea.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        fileNameEl.textContent = file.name; fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = ev => {
+            currentImg = ev.target.result;
+            ttThumbnail.src = ev.target.result;
+            ttThumbnail.classList.add('visible');
+            ttPlaceholder.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // ── Engagement ──
+    function updateEngagement() {
+        const l  = fmtNum(likesIn.value);
+        const c  = fmtNum(commentsIn.value);
+        const sh = fmtNum(sharesIn.value);
+        const sv = fmtNum(savesIn.value);
+        prevLikes.textContent    = l  || '142.3K';
+        prevComments.textContent = c  || '8,412';
+        prevShares.textContent   = sh || '3,291';
+        prevSaves.textContent    = sv || '12.4K';
+    }
+    [likesIn, commentsIn, sharesIn, savesIn].forEach(el => el.addEventListener('input', updateEngagement));
+
+    // ── Like button ──
+    likeBtn.addEventListener('click', () => {
+        isLiked = !isLiked;
+        likeBtn.classList.toggle('liked', isLiked);
+    });
+
+    // ── Verified toggle ──
+    verifiedToggle.addEventListener('click', () => {
+        isVerified = !isVerified;
+        verifiedToggle.classList.toggle('on', isVerified);
+        verifiedBadge.classList.toggle('visible', isVerified);
+    });
+
+    // ── Disc toggle ──
+    discToggle.addEventListener('click', () => {
+        showDisc = !showDisc;
+        discToggle.classList.toggle('on', showDisc);
+        discWrap.style.display = showDisc ? 'block' : 'none';
+    });
+
+    // ── Content tags ──
+    document.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            const tag = chip.dataset.tag;
+            if (activeTags.has(tag)) {
+                activeTags.delete(tag);
+                chip.classList.remove('active');
+            } else {
+                activeTags.add(tag);
+                chip.classList.add('active');
+            }
+            renderTags();
+        });
+    });
+
+    const TAG_LABELS = {
+        duet: '🎭 Duet', stitch: '✂️ Stitch', branded: '🤝 Branded Content',
+        live: '🔴 LIVE', ad: '📢 Ad'
+    };
+
+    function renderTags() {
+        ttVideoTags.innerHTML = '';
+        activeTags.forEach(tag => {
+            const div = document.createElement('div');
+            div.className = 'tt-video-tag';
+            div.textContent = TAG_LABELS[tag] || tag;
+            ttVideoTags.appendChild(div);
+        });
+    }
+
+    // ── Particles ──
+    function spawnParticles() {
+        const container = document.getElementById('tt-particles');
+        if (!container) return;
+        const colors = ['#FE2C55','#25F4EE','#ffffff','#ff8c00'];
+        for (let i = 0; i < 8; i++) {
+            const el = document.createElement('div');
+            el.className = 'tt-particle';
+            const size = Math.random() * 4 + 2;
+            el.style.cssText = `
+                width:${size}px; height:${size}px;
+                background:${colors[Math.floor(Math.random()*colors.length)]};
+                left:${Math.random()*100}%;
+                bottom:${Math.random()*40}%;
+                animation-delay:${Math.random()*4}s;
+                animation-duration:${3+Math.random()*2}s;
+            `;
+            container.appendChild(el);
+        }
+    }
+    spawnParticles();
+
+    // ── Reset ──
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        usernameIn.value = ''; displayNameIn.value = '';
+        captionIn.value = ''; soundIn.value = '';
+        likesIn.value = ''; commentsIn.value = ''; sharesIn.value = ''; savesIn.value = '';
+        isExpanded = false; isLiked = false; isVerified = false; showDisc = true; currentImg = null;
+        activeTags.clear();
+
+        verifiedToggle.classList.remove('on'); discToggle.classList.add('on');
+        verifiedBadge.classList.remove('visible');
+        discWrap.style.display = 'block';
+        likeBtn.classList.remove('liked');
+
+        prevUsername.textContent = '@yourcreatorname';
+        prevRightAvatar.textContent = 'Y';
+        prevCaption.innerHTML = 'Your caption will appear here…';
+        prevCaption.classList.remove('expanded');
+        ttMoreBtn.style.display = 'none';
+        prevSound.textContent = 'Original sound – yourcreatorname';
+
+        ttThumbnail.classList.remove('visible');
+        ttThumbnail.src = '';
+        ttPlaceholder.classList.remove('hidden');
+        fileNameEl.style.display = 'none';
+
+        capBar.style.width = '0%'; capBar.className = 'prog-bar-fill';
+        capChar.textContent = '0 / 2,200 characters'; capChar.className = '';
+        capHint.style.display = 'none';
+
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        ttVideoTags.innerHTML = '';
+
+        updateEngagement();
+    });
+
+    // ── Screenshot ──
+    document.getElementById('screenshot-btn').addEventListener('click', () => {
+        const phone = document.getElementById('tt-phone');
+        html2canvas(phone, { useCORS: true, scale: 2, backgroundColor: '#000000' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'tiktok-post-preview.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    // ── Copy caption ──
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        const text = captionIn.value || 'Your caption will appear here…';
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerHTML = '✓ Caption Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Caption';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+
+    // ── FAQ ──
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    // Init
+    updateEngagement();
+})();
+</script>
+
+</body>
+</html>
