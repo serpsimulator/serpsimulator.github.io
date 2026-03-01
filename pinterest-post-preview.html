@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J66R5YDSE3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J66R5YDSE3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Pin Preview Tool – Free Pin Simulator & Board Mockup</title>
+    <meta name="description" content="Free Pinterest Pin Preview tool. Simulate your Pinterest pin exactly as it appears in the feed and on boards before publishing. Preview pin title, description, images, link and save counts.">
+    <meta name="keywords" content="Pinterest pin preview, Pinterest pin simulator, Pinterest board mockup, pin checker, Pinterest post preview, Pinterest marketing tool, pin title preview, Pinterest SEO tool, Pinterest description preview, pin image preview, Pinterest feed mockup, rich pin preview">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23E60023"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pinterest Pin Preview Tool",
+  "url": "https://serppreview.github.io/pinterest-pin-preview",
+  "description": "A free tool to visualize how your Pinterest pins will appear in the feed and on boards. Preview pin title, description, images and engagement before publishing.",
+  "applicationCategory": "Social Media Tool",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Real-time Pinterest Pin Feed Visualization",
+    "Pin title and description preview",
+    "Image upload with aspect ratio preview",
+    "Board and profile display",
+    "Save count and reaction simulation",
+    "Pin type selector (Standard, Video, Idea, Shopping)",
+    "Hover overlay with Save button",
+    "Board grid view mockup",
+    "Screenshot export"
+  ]
+}
+    </script>
+
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-dark: #166fe5;
+            --primary-light: #e7f0fd;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f0f2f5;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 8px;
+            --success: #00c851;
+
+            /* Pinterest palette */
+            --pt-red: #E60023;
+            --pt-red-dark: #ad081b;
+            --pt-red-light: #fdf0f0;
+            --pt-black: #111111;
+            --pt-text: #111111;
+            --pt-sub: #767676;
+            --pt-border: #e0e0e0;
+            --pt-bg: #f8f8f8;
+            --pt-card: #ffffff;
+            --pt-hover-overlay: rgba(0,0,0,0.04);
+            --pt-save-btn: #E60023;
+            --pt-save-btn-hover: #ad081b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── Header ── */
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--gray); transition: color .2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { display: inline-block; padding: 10px 20px; background: var(--primary); color: var(--white); border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; transition: background .2s; font-family: inherit; font-size: 0.9rem; }
+        .btn:hover { background: var(--primary-dark); }
+
+        /* ── Hero ── */
+        .tool-header { padding: 56px 0 36px; text-align: center; background: var(--white); border-bottom: 1px solid var(--border); }
+        .tool-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--dark); }
+        .tool-header h1 span { color: var(--pt-red); }
+        .tool-header p { color: var(--gray); margin-top: 10px; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .badge-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .badge { background: var(--pt-red-light); color: var(--pt-red); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+        /* ── Main Tool Grid ── */
+        .main-tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; margin-bottom: 60px; align-items: start; }
+
+        /* ── Input Panel ── */
+        .input-panel { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); }
+        .panel-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+        .panel-title .pt-icon { width: 22px; height: 22px; background: var(--pt-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .panel-title .pt-icon svg { width: 13px; height: 13px; fill: white; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .form-group label .hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="url"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.95rem; font-family: inherit; transition: border-color .2s, box-shadow .2s;
+            background: #fafafa; color: var(--dark);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--pt-red); box-shadow: 0 0 0 3px rgba(230,0,35,.1); background: #fff;
+        }
+        .form-group textarea { resize: vertical; line-height: 1.6; min-height: 90px; }
+        .form-group select { cursor: pointer; }
+
+        /* Char count */
+        .char-info-row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 0.78rem; color: var(--gray); }
+        .char-info-row .over { color: #ef4444; }
+        .char-info-row .warn { color: #f59e0b; }
+
+        /* Upload */
+        .upload-area { border: 2px dashed var(--border); border-radius: 8px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+        .upload-area:hover, .upload-area.drag-over { border-color: var(--pt-red); background: var(--pt-red-light); }
+        .upload-area input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 1.8rem; margin-bottom: 6px; }
+        .upload-area p { font-size: 0.875rem; color: var(--gray); }
+        .file-name { font-size: 0.82rem; color: var(--pt-red); font-weight: 600; margin-top: 4px; display: none; }
+
+        /* Aspect ratio selector */
+        .ratio-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+        .ratio-btn { padding: 5px 12px; border: 1.5px solid var(--border); border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; background: #f8f8f8; color: var(--gray); transition: all .15s; font-family: inherit; }
+        .ratio-btn:hover { border-color: var(--pt-red); color: var(--pt-red); }
+        .ratio-btn.active { background: var(--pt-red-light); border-color: var(--pt-red); color: var(--pt-red); }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        /* Toggle */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label-text { font-weight: 600; font-size: 0.875rem; color: #374151; }
+        .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 11px; position: relative; transition: background .2s; flex-shrink: 0; cursor: pointer; }
+        .toggle-switch.on { background: var(--pt-red); }
+        .toggle-knob { width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+        .toggle-switch.on .toggle-knob { left: 21px; }
+
+        /* Action row */
+        .action-row { display: flex; gap: 10px; margin-top: 6px; }
+        .btn-outline { padding: 10px 18px; border: 1.5px solid var(--pt-red); color: var(--pt-red); background: transparent; border-radius: var(--radius); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background .2s; font-family: inherit; }
+        .btn-outline:hover { background: var(--pt-red-light); }
+        .btn-pt { background: var(--pt-red); }
+        .btn-pt:hover { background: var(--pt-red-dark); }
+        .btn-full { flex: 1; }
+
+        /* ── Preview Panel ── */
+        .preview-panel { background: var(--pt-bg); padding: 28px 20px; border-radius: 12px; border: 1px solid var(--border); position: sticky; top: 90px; height: fit-content; }
+        .preview-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 12px; text-align: center; }
+
+        /* View tabs */
+        .mode-tabs { display: flex; gap: 8px; margin-bottom: 16px; justify-content: center; }
+        .mode-tab { padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); transition: all .2s; }
+        .mode-tab.active { background: var(--pt-red); color: white; border-color: var(--pt-red); }
+
+        /* ── Pinterest Pin Card ── */
+        .pt-pin-card {
+            background: var(--pt-card);
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 320px;
+            margin: 0 auto;
+            box-shadow: 0 1px 4px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.06);
+            font-family: -apple-system, 'Segoe UI', sans-serif;
+            position: relative;
+            cursor: zoom-in;
+            transition: box-shadow .2s, transform .2s;
+        }
+        .pt-pin-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.18), 0 8px 32px rgba(0,0,0,.1); transform: scale(1.01); }
+        .pt-pin-card:hover .pt-pin-overlay { opacity: 1; }
+        .pt-pin-card:hover .pt-save-btn { opacity: 1; transform: none; }
+
+        /* Image area */
+        .pt-img-wrap { position: relative; background: #efefef; min-height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .pt-img-wrap img { width: 100%; display: block; object-fit: cover; }
+        .pt-img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #ccc; padding: 48px 32px; }
+        .pt-img-placeholder svg { width: 48px; height: 48px; }
+        .pt-img-placeholder span { font-size: 13px; }
+
+        /* Hover overlay */
+        .pt-pin-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.18); opacity: 0; transition: opacity .2s; border-radius: 16px 16px 0 0; pointer-events: none; }
+
+        /* Save button */
+        .pt-save-btn {
+            position: absolute; top: 12px; right: 12px;
+            background: var(--pt-red); color: white;
+            border: none; border-radius: 24px;
+            padding: 8px 16px; font-size: 14px; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+            opacity: 0; transform: translateY(-4px);
+            transition: opacity .2s, transform .2s, background .15s;
+            z-index: 2;
+        }
+        .pt-save-btn:hover { background: var(--pt-red-dark); }
+
+        /* Board save selector (top left on hover) */
+        .pt-board-select {
+            position: absolute; top: 12px; left: 12px;
+            background: rgba(0,0,0,.7); color: white;
+            border: none; border-radius: 8px;
+            padding: 6px 10px; font-size: 12px; font-weight: 600;
+            cursor: pointer; font-family: inherit;
+            opacity: 0; transform: translateY(-4px);
+            transition: opacity .2s, transform .2s;
+            backdrop-filter: blur(4px);
+            display: flex; align-items: center; gap: 6px;
+            z-index: 2; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .pt-pin-card:hover .pt-board-select { opacity: 1; transform: none; }
+
+        /* Pin type badge */
+        .pt-type-badge {
+            position: absolute; bottom: 12px; left: 12px;
+            background: rgba(0,0,0,.65); color: white;
+            border-radius: 6px; padding: 3px 8px; font-size: 11px; font-weight: 700;
+            backdrop-filter: blur(4px); display: none;
+        }
+        .pt-type-badge.visible { display: block; }
+
+        /* Video play btn */
+        .pt-play-btn {
+            position: absolute; inset: 0; display: none;
+            align-items: center; justify-content: center; pointer-events: none;
+        }
+        .pt-play-btn.visible { display: flex; }
+        .pt-play-circle { width: 52px; height: 52px; background: rgba(255,255,255,.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .pt-play-circle svg { width: 22px; height: 22px; color: var(--pt-black); margin-left: 3px; }
+
+        /* Pin info (below image) */
+        .pt-pin-info { padding: 10px 14px 14px; }
+        .pt-link-row { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+        .pt-link-favicon { width: 16px; height: 16px; border-radius: 50%; background: #efefef; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .pt-link-favicon svg { width: 10px; height: 10px; color: var(--gray); }
+        .pt-link-domain { font-size: 12px; color: var(--pt-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pt-pin-title { font-size: 15px; font-weight: 700; color: var(--pt-text); line-height: 1.35; margin-bottom: 4px; word-break: break-word; }
+        .pt-pin-desc { font-size: 12px; color: var(--pt-sub); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .pt-pin-desc.expanded { display: block; }
+
+        /* Profile row */
+        .pt-profile-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px solid #f0f0f0; }
+        .pt-profile-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #E60023 0%, #ff8c00 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 12px; }
+        .pt-profile-name { font-size: 12px; font-weight: 600; color: var(--pt-text); flex: 1; }
+        .pt-follow-btn { font-size: 12px; font-weight: 700; color: var(--pt-text); background: none; border: none; cursor: pointer; padding: 4px 8px; border-radius: 20px; transition: background .15s; font-family: inherit; }
+        .pt-follow-btn:hover { background: #efefef; }
+
+        /* Save count row */
+        .pt-reactions-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+        .pt-reaction { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--pt-sub); cursor: pointer; }
+        .pt-reaction svg { width: 16px; height: 16px; }
+        .pt-reaction:hover { color: var(--pt-text); }
+
+        /* ── Board Grid View ── */
+        .pt-board-view { display: none; }
+        .pt-board-view.visible { display: block; }
+        .pt-feed-view { display: block; }
+        .pt-feed-view.hidden { display: none; }
+
+        .pt-board-header { background: white; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+        .pt-board-title { font-size: 16px; font-weight: 800; color: var(--pt-text); margin-bottom: 2px; }
+        .pt-board-meta { font-size: 12px; color: var(--pt-sub); }
+        .pt-masonry { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .pt-mini-pin { border-radius: 10px; overflow: hidden; background: #efefef; cursor: pointer; position: relative; }
+        .pt-mini-pin img { width: 100%; display: block; object-fit: cover; }
+        .pt-mini-pin.tall { grid-row: span 2; }
+        .pt-mini-placeholder { height: 120px; display: flex; align-items: center; justify-content: center; }
+        .pt-mini-placeholder svg { width: 28px; height: 28px; color: #ccc; }
+        .pt-mini-highlighted { box-shadow: 0 0 0 3px var(--pt-red); }
+
+        /* Copy btn */
+        .copy-btn { display: flex; align-items: center; justify-content: center; gap: 7px; width: 100%; margin-top: 14px; padding: 10px; background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.875rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .2s; font-family: inherit; }
+        .copy-btn:hover { border-color: var(--pt-red); color: var(--pt-red); }
+        .copy-btn.copied { border-color: var(--success); color: var(--success); }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .info-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .info-section p { color: var(--gray); font-size: 0.97rem; line-height: 1.75; max-width: 780px; }
+
+        /* ── Features ── */
+        .features-section { padding: 60px 0; background: var(--light); }
+        .features-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; text-align: center; }
+        .features-section .sub { text-align: center; color: var(--gray); margin-bottom: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; transition: box-shadow .2s, transform .2s; }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); transform: translateY(-2px); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--pt-red-light); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .feature-icon svg { width: 22px; height: 22px; color: var(--pt-red); }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── Tips ── */
+        .tips-section { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); }
+        .tips-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tip-card { background: var(--light); border-radius: 10px; padding: 22px; display: flex; gap: 14px; align-items: flex-start; }
+        .tip-num { width: 32px; height: 32px; background: var(--pt-red); color: white; border-radius: 50%; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .tip-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .tip-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 60px 0; background: var(--light); border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 30px; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; font-weight: 600; font-size: 0.97rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background .15s; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-q .arrow { font-size: 1.1rem; transition: transform .3s; color: var(--gray); }
+        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+        .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+        .faq-item.open .faq-a { max-height: 320px; padding: 0 20px 18px; }
+
+        /* ── Footer ── */
+        footer { background: #1e293b; color: #94a3b8; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-widget h4 { color: white; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; }
+        .footer-widget p { font-size: 0.875rem; line-height: 1.7; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { font-size: 0.875rem; color: #94a3b8; transition: color .2s; }
+        .footer-links a:hover { color: white; }
+        .copyright { border-top: 1px solid #334155; padding-top: 30px; text-align: center; font-size: 0.875rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr 1fr; } .tips-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .main-tool-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .tool-header h1 { font-size: 1.8rem; }
+            .preview-panel { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="container nav-wrapper">
+        <a href="/" class="logo">SERP Preview</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#search-engines">Search Engines</a></li>
+                <li><a href="/#social-media">Social Media</a></li>
+                <li><a href="/#live-preview">Live Tool</a></li>
+            </ul>
+        </nav>
+        <a href="/#live-preview" class="btn">Google Previewing</a>
+    </div>
+</header>
+
+<main>
+
+<!-- ── HERO ── -->
+<section class="tool-header">
+    <div class="container">
+        <h1>Pinterest Pin <span>Preview Tool</span></h1>
+        <p>See exactly how your Pinterest pin looks in the feed and on boards before publishing — title, description, image, link and save count, all in a live mockup.</p>
+        <div class="badge-row">
+            <span class="badge">✓ 100% Free</span>
+            <span class="badge">✓ No Sign-up</span>
+            <span class="badge">✓ Feed &amp; Board View</span>
+            <span class="badge">✓ Image Upload</span>
+            <span class="badge">✓ Pin Type Selector</span>
+            <span class="badge">✓ Screenshot Export</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section style="padding:0;">
+    <div class="container">
+        <div class="main-tool-grid">
+
+            <!-- LEFT: Input Panel -->
+            <div class="input-panel">
+                <div class="panel-title">
+                    <div class="pt-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                    </div>
+                    Compose Your Pinterest Pin
+                </div>
+
+                <!-- Profile -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profile-name">Profile Name</label>
+                        <input type="text" id="profile-name" placeholder="Your Brand" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="board-name">Board Name</label>
+                        <input type="text" id="board-name" placeholder="My Inspiration Board" maxlength="50">
+                    </div>
+                </div>
+
+                <!-- Pin type -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pin-type-select">Pin Type</label>
+                        <select id="pin-type-select">
+                            <option value="standard">Standard Pin</option>
+                            <option value="video">Video Pin</option>
+                            <option value="idea">Idea Pin</option>
+                            <option value="shopping">Shopping Pin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price-input">Price <span class="hint">Shopping pins only</span></label>
+                        <input type="text" id="price-input" placeholder="e.g. $49.99" maxlength="20">
+                    </div>
+                </div>
+
+                <!-- Pin title -->
+                <div class="form-group">
+                    <label for="pin-title">
+                        Pin Title
+                        <span class="hint">Up to 100 characters</span>
+                    </label>
+                    <input type="text" id="pin-title" placeholder="Stunning title that gets clicks…" maxlength="100">
+                    <div class="char-info-row">
+                        <span id="title-char">0 / 100 characters</span>
+                        <span id="title-warn" style="display:none;" class="warn">⚠ Titles over 40 chars may be cut off in feed</span>
+                    </div>
+                </div>
+
+                <!-- Pin description -->
+                <div class="form-group">
+                    <label for="pin-desc">
+                        Description
+                        <span class="hint">Up to 500 characters</span>
+                    </label>
+                    <textarea id="pin-desc" placeholder="Describe your pin with keywords to improve discoverability in Pinterest search…" maxlength="500"></textarea>
+                    <div class="char-info-row">
+                        <span id="desc-char">0 / 500 characters</span>
+                    </div>
+                </div>
+
+                <!-- Destination link -->
+                <div class="form-group">
+                    <label for="dest-link">Destination Link <span class="hint">Optional</span></label>
+                    <input type="url" id="dest-link" placeholder="https://yourwebsite.com/page">
+                </div>
+
+                <!-- Image upload -->
+                <div class="form-group">
+                    <label for="image-upload">Pin Image <span class="hint">JPG, PNG, WebP</span></label>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*">
+                        <div class="upload-icon">📌</div>
+                        <p>Click to upload or drag &amp; drop your pin image</p>
+                        <div class="file-name" id="file-name"></div>
+                    </div>
+                    <!-- Aspect ratio picker -->
+                    <div class="ratio-row">
+                        <button class="ratio-btn" data-ratio="1:1">1:1 Square</button>
+                        <button class="ratio-btn active" data-ratio="2:3">2:3 Portrait ✓</button>
+                        <button class="ratio-btn" data-ratio="4:5">4:5</button>
+                        <button class="ratio-btn" data-ratio="9:16">9:16 Tall</button>
+                    </div>
+                </div>
+
+                <!-- Engagement -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="saves-count">Saves</label>
+                        <input type="number" id="saves-count" placeholder="e.g. 2,841" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments-count">Comments</label>
+                        <input type="number" id="comments-count" placeholder="e.g. 47" min="0">
+                    </div>
+                </div>
+
+                <!-- Toggles -->
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show "Follow" Button</span>
+                        <div class="toggle-switch on" id="follow-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show Save Count</span>
+                        <div class="toggle-switch on" id="saves-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="toggle-row">
+                        <span class="toggle-label-text">Show Link Preview</span>
+                        <div class="toggle-switch on" id="link-toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-outline" id="reset-btn">Reset</button>
+                    <button class="btn btn-pt btn-full" id="screenshot-btn">📸 Screenshot</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview Panel -->
+            <div class="preview-panel">
+                <div class="preview-label">Live Preview · Pinterest</div>
+
+                <!-- View tabs -->
+                <div class="mode-tabs">
+                    <div class="mode-tab active" id="tab-feed">📌 Pin View</div>
+                    <div class="mode-tab" id="tab-board">🗂 Board View</div>
+                </div>
+
+                <!-- ── Feed / Pin View ── -->
+                <div class="pt-feed-view" id="feed-view">
+                    <div class="pt-pin-card" id="pt-pin-card">
+
+                        <!-- Hover overlay -->
+                        <div class="pt-pin-overlay"></div>
+
+                        <!-- Save button (on hover) -->
+                        <button class="pt-save-btn" id="prev-save-btn">Save</button>
+
+                        <!-- Board selector (on hover) -->
+                        <div class="pt-board-select" id="prev-board-select">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M3 3h7v7H3zm11 0h7v7h-7zm0 11h7v7h-7zM3 14h7v7H3z"/></svg>
+                            <span id="prev-board-name-badge">My Inspiration Board</span>
+                        </div>
+
+                        <!-- Image -->
+                        <div class="pt-img-wrap" id="pt-img-wrap">
+                            <div class="pt-img-placeholder" id="img-placeholder">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                                <span>Upload image to preview</span>
+                            </div>
+                            <!-- Video play overlay -->
+                            <div class="pt-play-btn" id="play-btn">
+                                <div class="pt-play-circle">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                </div>
+                            </div>
+                            <!-- Pin type badge -->
+                            <div class="pt-type-badge" id="pt-type-badge"></div>
+                        </div>
+
+                        <!-- Pin info -->
+                        <div class="pt-pin-info">
+                            <!-- Link row -->
+                            <div class="pt-link-row" id="prev-link-row" style="display:none;">
+                                <div class="pt-link-favicon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                </div>
+                                <span class="pt-link-domain" id="prev-link-domain">yourwebsite.com</span>
+                            </div>
+
+                            <!-- Title -->
+                            <div class="pt-pin-title" id="prev-title">Your pin title will appear here</div>
+
+                            <!-- Description -->
+                            <div class="pt-pin-desc" id="prev-desc" style="display:none;"></div>
+
+                            <!-- Price (shopping) -->
+                            <div id="prev-price-wrap" style="display:none; margin-top:5px;">
+                                <span style="font-size:14px; font-weight:700; color:var(--pt-red);" id="prev-price">$49.99</span>
+                            </div>
+
+                            <!-- Saves row -->
+                            <div class="pt-reactions-row" id="prev-saves-row">
+                                <div class="pt-reaction">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                                    <span id="prev-saves">2,841 saves</span>
+                                </div>
+                                <div class="pt-reaction">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span id="prev-comments">47 comments</span>
+                                </div>
+                            </div>
+
+                            <!-- Profile row -->
+                            <div class="pt-profile-row">
+                                <div class="pt-profile-avatar" id="prev-profile-avatar">Y</div>
+                                <span class="pt-profile-name" id="prev-profile-name">Your Brand</span>
+                                <button class="pt-follow-btn" id="prev-follow-btn">Follow</button>
+                            </div>
+                        </div>
+
+                    </div><!-- end .pt-pin-card -->
+                </div><!-- end .pt-feed-view -->
+
+                <!-- ── Board View ── -->
+                <div class="pt-board-view" id="board-view">
+                    <div class="pt-board-header">
+                        <div class="pt-board-title" id="board-title-header">My Inspiration Board</div>
+                        <div class="pt-board-meta" id="board-meta">By <strong id="board-profile-name">Your Brand</strong> · 4 pins</div>
+                    </div>
+                    <div class="pt-masonry" id="pt-masonry">
+                        <!-- highlighted pin -->
+                        <div class="pt-mini-pin tall pt-mini-highlighted" id="mini-pin-main">
+                            <div class="pt-mini-placeholder" id="mini-placeholder">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                            </div>
+                        </div>
+                        <!-- placeholder pins -->
+                        <div class="pt-mini-pin" style="background:#f0e6e6;height:100px;"></div>
+                        <div class="pt-mini-pin" style="background:#e6f0e6;height:100px;"></div>
+                        <div class="pt-mini-pin" style="background:#e6e6f0;height:100px;"></div>
+                        <div class="pt-mini-pin" style="background:#f0f0e6;height:90px;"></div>
+                        <div class="pt-mini-pin" style="background:#f0e6f0;height:90px;"></div>
+                    </div>
+                </div>
+
+                <button class="copy-btn" id="copy-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Pin Description
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="info-section">
+    <div class="container">
+        <h2>How to Use the Pinterest Pin Preview Tool</h2>
+        <p>Start by entering your profile name and board name — both appear in the pin card exactly as Pinterest renders them in the feed. Select the pin type (Standard, Video, Idea or Shopping) to switch the overlay and badge accordingly. Write a compelling pin title in the title field — the counter alerts you when you've exceeded 40 characters, the approximate point at which Pinterest may truncate titles in search results. Add a keyword-rich description to improve discoverability, and optionally enter a destination URL to see the link domain preview row beneath the image. Upload your pin image and choose an aspect ratio (1:1, 2:3, 4:5 or 9:16) to see how the crop affects the pin's visual presence. Fill in custom save and comment counts to simulate social proof, toggle the Follow button and saves row on or off, then switch to Board View to see how the pin looks as a highlighted card inside a two-column masonry board grid. When the preview looks perfect, hit Screenshot to download a PNG for content approvals, client presentations or team reviews.</p>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section">
+    <div class="container">
+        <h2>Everything in This Pinterest Pin Preview Tool</h2>
+        <p class="sub">Built for Pinterest marketers, bloggers, e-commerce brands, content creators and social media agencies.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Real-time Pin Feed Mockup</h3>
+                <p>Every field update instantly reflects in a pixel-accurate Pinterest pin card, including the hover overlay Save button, board selector, profile row and link domain — exactly as they appear on Pinterest.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <h3>Aspect Ratio Selector</h3>
+                <p>Switch between 1:1 square, 2:3 portrait, 4:5 and 9:16 tall formats to preview how your image fills each Pinterest canvas size — and choose the ratio that grabs the most feed real estate.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>Pin Type Selector</h3>
+                <p>Choose Standard, Video (renders a play button overlay), Idea Pin or Shopping Pin (renders a price tag). Each type applies the correct badge and UI treatment to the card.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h3>Board Grid View</h3>
+                <p>Switch to Board View to preview your pin as the highlighted card inside a two-column masonry board — ideal for checking how the pin stands out among other content on the board page.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </div>
+                <h3>Title &amp; Description Counters</h3>
+                <p>Live character counters for both the pin title (100-char limit, 40-char feed warning) and description (500-char limit) so you know precisely when text will be truncated in search results.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Save Count &amp; Engagement Simulation</h3>
+                <p>Enter custom save and comment counts to simulate real social proof. Toggle the saves row on or off and add a destination link to preview the domain row — great for client pitches and mockups.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section">
+    <div class="container">
+        <h2>Tips for Creating High-Performing Pinterest Pins</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div>
+                    <h4>Use a 2:3 Portrait Ratio for Maximum Feed Presence</h4>
+                    <p>Pinterest recommends a 1000×1500 px (2:3) image as the optimal pin size. Taller images take up significantly more vertical feed space. Use the aspect ratio selector to compare formats before uploading to Pinterest.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div>
+                    <h4>Front-load Keywords in Your Pin Title</h4>
+                    <p>Pinterest functions as a visual search engine. Your pin title is a primary ranking signal — put the most important keyword first. Keep titles under 40 characters so they display in full in the feed without truncation.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div>
+                    <h4>Write a Keyword-rich Description (100–200 chars)</h4>
+                    <p>The description helps Pinterest understand and distribute your pin to the right audiences. Write 2–3 natural sentences packed with relevant search terms. Confirm the full description renders correctly in the preview.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div>
+                    <h4>Always Add a Destination Link</h4>
+                    <p>Pins with destination links earn more outbound clicks and are more likely to be shown to users with high purchase intent. Enter your URL in the preview to verify the domain name displays cleanly in the link row.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div>
+                    <h4>Use Overlaid Text on Images for Context</h4>
+                    <p>Pins with clear, readable text overlaid on the image consistently outperform text-free visuals on Pinterest. Upload your final design to the previewer and check legibility at the card dimensions before going live.</p>
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">6</div>
+                <div>
+                    <h4>Check the Board View Before Publishing</h4>
+                    <p>How your pin looks in isolation is only half the picture. Switch to Board View here to confirm your pin stands out visually in a two-column masonry grid among other content on the same board.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Is this Pinterest pin preview tool free? <span class="arrow">▼</span></div>
+            <div class="faq-a">Yes — completely free with no account required, no watermarks and no usage limits. Open the page, compose your pin and preview it live without signing up for anything.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Does this tool post to Pinterest for me? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. This is a simulation and mockup tool only. It does not connect to the Pinterest API. Once your pin looks perfect here, upload the image and copy the title and description directly through Pinterest.com or the Pinterest mobile app.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What is the best image size for Pinterest pins? <span class="arrow">▼</span></div>
+            <div class="faq-a">Pinterest recommends 1000×1500 px at a 2:3 aspect ratio for standard pins. This portrait format takes up the most vertical space in the feed. For square pins use 1000×1000 px. For tall idea pins use 1080×1920 px (9:16). Use the ratio selector in this tool to preview all four formats.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How long can a Pinterest pin title be? <span class="arrow">▼</span></div>
+            <div class="faq-a">Pinterest allows pin titles up to 100 characters. However, titles longer than approximately 40 characters may be truncated in the feed card view. The title counter in this tool warns you when you exceed 40 characters so you can keep your most important keyword within the visible window.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How long should a Pinterest pin description be? <span class="arrow">▼</span></div>
+            <div class="faq-a">Pinterest allows descriptions up to 500 characters. The most effective descriptions are typically 100–200 characters — long enough to include 2–3 keyword phrases, but concise enough to be read at a glance. The description counter in this tool tracks your usage in real time.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is my pin content or image stored anywhere? <span class="arrow">▼</span></div>
+            <div class="faq-a">No. Everything runs entirely inside your browser using the JavaScript FileReader API. No text, image or personal data is ever sent to any server — your content stays completely private on your own device.</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>SERP Preview</h4>
+                <p>The most comprehensive tool for checking how your content appears on search engines and social media platforms. Optimize your digital presence today.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#search-engines">Search Tools</a></li>
+                    <li><a href="/#social-media">Social Tools</a></li>
+                    <li><a href="/#live-preview">Live Preview</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><a href="terms">Terms of Service</a></li>
+                    <li><a href="cookie">Cookie Policy</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="about">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 SERP Simulator. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function () {
+    // Inputs
+    const profileNameIn  = document.getElementById('profile-name');
+    const boardNameIn    = document.getElementById('board-name');
+    const pinTypeSel     = document.getElementById('pin-type-select');
+    const priceIn        = document.getElementById('price-input');
+    const pinTitleIn     = document.getElementById('pin-title');
+    const pinDescIn      = document.getElementById('pin-desc');
+    const destLinkIn     = document.getElementById('dest-link');
+    const imgIn          = document.getElementById('image-upload');
+    const savesIn        = document.getElementById('saves-count');
+    const commentsIn     = document.getElementById('comments-count');
+    const followToggle   = document.getElementById('follow-toggle');
+    const savesToggle    = document.getElementById('saves-toggle');
+    const linkToggle     = document.getElementById('link-toggle');
+
+    // Preview
+    const prevProfileAvatar    = document.getElementById('prev-profile-avatar');
+    const prevProfileName      = document.getElementById('prev-profile-name');
+    const prevFollowBtn        = document.getElementById('prev-follow-btn');
+    const prevBoardNameBadge   = document.getElementById('prev-board-name-badge');
+    const ptImgWrap            = document.getElementById('pt-img-wrap');
+    const imgPlaceholder       = document.getElementById('img-placeholder');
+    const ptTypeBadge          = document.getElementById('pt-type-badge');
+    const playBtn              = document.getElementById('play-btn');
+    const prevLinkRow          = document.getElementById('prev-link-row');
+    const prevLinkDomain       = document.getElementById('prev-link-domain');
+    const prevTitle            = document.getElementById('prev-title');
+    const prevDesc             = document.getElementById('prev-desc');
+    const prevPriceWrap        = document.getElementById('prev-price-wrap');
+    const prevPrice            = document.getElementById('prev-price');
+    const prevSavesRow         = document.getElementById('prev-saves-row');
+    const prevSaves            = document.getElementById('prev-saves');
+    const prevComments         = document.getElementById('prev-comments');
+    const titleChar            = document.getElementById('title-char');
+    const titleWarn            = document.getElementById('title-warn');
+    const descChar             = document.getElementById('desc-char');
+    const uploadArea           = document.getElementById('upload-area');
+    const fileNameEl           = document.getElementById('file-name');
+    const boardTitleHeader     = document.getElementById('board-title-header');
+    const boardProfileName     = document.getElementById('board-profile-name');
+    const miniPinMain          = document.getElementById('mini-pin-main');
+    const miniPlaceholder      = document.getElementById('mini-placeholder');
+
+    let showFollow  = true;
+    let showSaves   = true;
+    let showLink    = true;
+    let currentImg  = null;
+    let activeRatio = '2:3';
+
+    // ── Helpers ──
+    function fmtNum(val) {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) return null;
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 1000)    return n.toLocaleString();
+        return String(n);
+    }
+
+    function getDomain(url) {
+        try {
+            const u = new URL(url.startsWith('http') ? url : 'https://' + url);
+            return u.hostname.replace('www.', '');
+        } catch (_) { return url.replace(/^https?:\/\//,'').split('/')[0].replace('www.',''); }
+    }
+
+    function applyAspectRatio(imgEl) {
+        const ratios = { '1:1': '100%', '2:3': '150%', '4:5': '125%', '9:16': '177.78%' };
+        ptImgWrap.style.paddingBottom = currentImg ? '0' : ratios[activeRatio] || '150%';
+        ptImgWrap.style.minHeight = currentImg ? 'unset' : '0';
+    }
+
+    // ── Profile name ──
+    profileNameIn.addEventListener('input', () => {
+        const v = profileNameIn.value.trim() || 'Your Brand';
+        prevProfileName.textContent = v;
+        prevProfileAvatar.textContent = v.charAt(0).toUpperCase();
+        boardProfileName.textContent = v;
+    });
+
+    // ── Board name ──
+    boardNameIn.addEventListener('input', () => {
+        const v = boardNameIn.value.trim() || 'My Inspiration Board';
+        prevBoardNameBadge.textContent = v;
+        boardTitleHeader.textContent = v;
+    });
+
+    // ── Pin type ──
+    pinTypeSel.addEventListener('change', updatePinType);
+    function updatePinType() {
+        const type = pinTypeSel.value;
+        ptTypeBadge.classList.remove('visible');
+        playBtn.classList.remove('visible');
+        prevPriceWrap.style.display = 'none';
+
+        if (type === 'video') {
+            ptTypeBadge.textContent = '▶ VIDEO';
+            ptTypeBadge.classList.add('visible');
+            playBtn.classList.add('visible');
+        } else if (type === 'idea') {
+            ptTypeBadge.textContent = '💡 IDEA';
+            ptTypeBadge.classList.add('visible');
+        } else if (type === 'shopping') {
+            ptTypeBadge.textContent = '🛒 SHOPPING';
+            ptTypeBadge.classList.add('visible');
+            prevPriceWrap.style.display = 'block';
+        }
+    }
+
+    // ── Price ──
+    priceIn.addEventListener('input', () => {
+        prevPrice.textContent = priceIn.value.trim() || '$49.99';
+    });
+
+    // ── Title ──
+    pinTitleIn.addEventListener('input', () => {
+        const v = pinTitleIn.value;
+        const len = v.length;
+        titleChar.textContent = len + ' / 100 characters';
+        titleChar.className = len > 100 ? 'over' : '';
+        titleWarn.style.display = len > 40 ? 'inline' : 'none';
+        prevTitle.textContent = v || 'Your pin title will appear here';
+    });
+
+    // ── Description ──
+    pinDescIn.addEventListener('input', () => {
+        const v = pinDescIn.value;
+        const len = v.length;
+        descChar.textContent = len + ' / 500 characters';
+        descChar.className = len > 500 ? 'over' : '';
+        if (v) {
+            prevDesc.textContent = v;
+            prevDesc.style.display = 'block';
+        } else {
+            prevDesc.style.display = 'none';
+        }
+    });
+
+    // ── Destination link ──
+    destLinkIn.addEventListener('input', () => {
+        const v = destLinkIn.value.trim();
+        if (v && showLink) {
+            prevLinkRow.style.display = 'flex';
+            prevLinkDomain.textContent = getDomain(v);
+        } else {
+            prevLinkRow.style.display = 'none';
+        }
+    });
+
+    // ── Image upload ──
+    imgIn.addEventListener('change', handleImg);
+    function handleImg() {
+        const file = imgIn.files[0];
+        if (!file) return;
+        fileNameEl.textContent = file.name;
+        fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = e => {
+            currentImg = e.target.result;
+            renderImage(currentImg);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function renderImage(src) {
+        imgPlaceholder.style.display = 'none';
+        // remove old
+        const old = ptImgWrap.querySelector('.pt-uploaded-img');
+        if (old) old.remove();
+        const oldMini = miniPinMain.querySelector('img');
+        if (oldMini) oldMini.remove();
+        miniPlaceholder.style.display = 'none';
+
+        const img = document.createElement('img');
+        img.src = src; img.alt = 'Pin image'; img.className = 'pt-uploaded-img';
+        ptImgWrap.insertBefore(img, ptImgWrap.firstChild);
+        ptImgWrap.style.paddingBottom = '0';
+        ptImgWrap.style.minHeight = 'unset';
+
+        // Mini board preview
+        const miniImg = document.createElement('img');
+        miniImg.src = src; miniImg.alt = 'Mini pin'; miniImg.style.cssText = 'width:100%;display:block;object-fit:cover;height:100%;';
+        miniPinMain.appendChild(miniImg);
+    }
+
+    // Drag & drop
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault(); uploadArea.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (!file || !file.type.startsWith('image/')) return;
+        fileNameEl.textContent = file.name; fileNameEl.style.display = 'block';
+        const reader = new FileReader();
+        reader.onload = ev => { currentImg = ev.target.result; renderImage(currentImg); };
+        reader.readAsDataURL(file);
+    });
+
+    // ── Aspect ratio ──
+    document.querySelectorAll('.ratio-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeRatio = btn.dataset.ratio;
+            if (!currentImg) {
+                const ratios = { '1:1': '100%', '2:3': '150%', '4:5': '125%', '9:16': '177.78%' };
+                ptImgWrap.style.paddingBottom = ratios[activeRatio] || '150%';
+            }
+        });
+    });
+    // Init ratio
+    ptImgWrap.style.paddingBottom = '150%';
+    ptImgWrap.style.position = 'relative';
+
+    // ── Engagement ──
+    function updateEngagement() {
+        const s = fmtNum(savesIn.value);
+        const c = fmtNum(commentsIn.value);
+        prevSaves.textContent   = (s || '2,841') + ' saves';
+        prevComments.textContent = (c || '47') + ' comments';
+    }
+    [savesIn, commentsIn].forEach(el => el.addEventListener('input', updateEngagement));
+
+    // ── Follow toggle ──
+    followToggle.addEventListener('click', () => {
+        showFollow = !showFollow;
+        followToggle.classList.toggle('on', showFollow);
+        prevFollowBtn.style.display = showFollow ? 'inline-block' : 'none';
+    });
+
+    // ── Saves toggle ──
+    savesToggle.addEventListener('click', () => {
+        showSaves = !showSaves;
+        savesToggle.classList.toggle('on', showSaves);
+        prevSavesRow.style.display = showSaves ? 'flex' : 'none';
+    });
+
+    // ── Link toggle ──
+    linkToggle.addEventListener('click', () => {
+        showLink = !showLink;
+        linkToggle.classList.toggle('on', showLink);
+        const url = destLinkIn.value.trim();
+        prevLinkRow.style.display = (showLink && url) ? 'flex' : 'none';
+    });
+
+    // ── View tabs ──
+    document.getElementById('tab-feed').addEventListener('click', () => {
+        document.getElementById('feed-view').classList.remove('hidden');
+        document.getElementById('board-view').classList.remove('visible');
+        document.getElementById('tab-feed').classList.add('active');
+        document.getElementById('tab-board').classList.remove('active');
+    });
+    document.getElementById('tab-board').addEventListener('click', () => {
+        document.getElementById('feed-view').classList.add('hidden');
+        document.getElementById('board-view').classList.add('visible');
+        document.getElementById('tab-board').classList.add('active');
+        document.getElementById('tab-feed').classList.remove('active');
+    });
+
+    // ── Reset ──
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        profileNameIn.value = ''; boardNameIn.value = '';
+        pinTypeSel.value = 'standard'; priceIn.value = '';
+        pinTitleIn.value = ''; pinDescIn.value = ''; destLinkIn.value = '';
+        savesIn.value = ''; commentsIn.value = '';
+        showFollow = true; showSaves = true; showLink = true; currentImg = null; activeRatio = '2:3';
+
+        followToggle.classList.add('on'); savesToggle.classList.add('on'); linkToggle.classList.add('on');
+        prevFollowBtn.style.display = 'inline-block';
+        prevSavesRow.style.display = 'flex';
+        prevLinkRow.style.display = 'none';
+
+        prevProfileName.textContent = 'Your Brand'; prevProfileAvatar.textContent = 'Y';
+        boardProfileName.textContent = 'Your Brand';
+        prevBoardNameBadge.textContent = 'My Inspiration Board';
+        boardTitleHeader.textContent = 'My Inspiration Board';
+        prevTitle.textContent = 'Your pin title will appear here';
+        prevDesc.style.display = 'none'; prevDesc.textContent = '';
+        prevPriceWrap.style.display = 'none';
+        titleChar.textContent = '0 / 100 characters'; titleChar.className = '';
+        titleWarn.style.display = 'none';
+        descChar.textContent = '0 / 500 characters'; descChar.className = '';
+        ptTypeBadge.classList.remove('visible'); playBtn.classList.remove('visible');
+
+        const old = ptImgWrap.querySelector('.pt-uploaded-img');
+        if (old) old.remove();
+        imgPlaceholder.style.display = 'flex';
+        ptImgWrap.style.paddingBottom = '150%';
+        fileNameEl.style.display = 'none';
+
+        const oldMini = miniPinMain.querySelector('img');
+        if (oldMini) oldMini.remove();
+        miniPlaceholder.style.display = 'flex';
+
+        document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-ratio="2:3"]').classList.add('active');
+
+        // Back to feed view
+        document.getElementById('feed-view').classList.remove('hidden');
+        document.getElementById('board-view').classList.remove('visible');
+        document.getElementById('tab-feed').classList.add('active');
+        document.getElementById('tab-board').classList.remove('active');
+
+        updateEngagement();
+    });
+
+    // ── Screenshot ──
+    document.getElementById('screenshot-btn').addEventListener('click', () => {
+        const isBoard = document.getElementById('board-view').classList.contains('visible');
+        const target = isBoard ? document.getElementById('board-view') : document.getElementById('pt-pin-card');
+        html2canvas(target, { useCORS: true, scale: 2, backgroundColor: '#f8f8f8' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'pinterest-pin-preview.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    });
+
+    // ── Copy description ──
+    document.getElementById('copy-btn').addEventListener('click', () => {
+        const text = pinDescIn.value || 'Your pin description will appear here…';
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.innerHTML = '✓ Description Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Pin Description';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    // Init
+    updatePinType();
+    updateEngagement();
+})();
+</script>
+
+</body>
+</html>
