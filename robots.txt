@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://serpsimulator.github.io/sitemap.xml
